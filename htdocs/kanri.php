@@ -52,25 +52,25 @@
 				}
 
 				print '<br />';
-				print '<a href="create.php">商品入力</a><br />';
+				print '<a href="create.php">新規登録</a><br />';
 
 				print '<br />';
 				print '<form method="get" action="read.php">';
-				print '商品表示：番号';
+				print '商品表示：商品ID';
 				print '<input type="text" name="procode" style="width:20px">';
 				print '<input type="submit" value="決定">';
 				print '</form>';
 
 				print '<br />';
 				print '<form method="get" action="update.php">';
-				print '商品修正：番号';
+				print '商品修正：商品ID';
 				print '<input type="text" name="procode" style="width:20px">';
 				print '<input type="submit" value="決定">';
 				print '</form>';
 
 				print '<br />';
 				print '<form method="get" action="erase.php">';
-				print '商品削除：番号';
+				print '商品削除：商品ID';
 				print '<input type="text" name="procode" style="width:20px">';
 				print '<input type="submit" value="決定">';
 				print '</form>';
