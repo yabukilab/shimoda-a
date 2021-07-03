@@ -31,7 +31,7 @@
 				if($rec==false)
 				{
 					print'商品がコードが正しくありません。';
-					print'<a href="index.php">戻る</a>';
+					print'<a href="kanri.php">戻る</a>';
 					print '<br />';
 					exit();
 				}
@@ -70,7 +70,7 @@
 		<input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br />
 		<!--画像-->
 		画像<br />
-		<?php print $disp_gazou; ?><br />
+		<?php print $disp_gazou; ?>
 		画像を選んでください。<br />
 		<input type="file" name="gazou" style="width:400px"><br />
 		<br />

@@ -14,18 +14,18 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//				$sql='SELECT * FROM mst_product';
-				$sql='SELECT * FROM mst_product WHERE flag = :flag ';
+				$sql='SELECT * FROM mst_product';
+//				$sql='SELECT * FROM mst_product WHERE flag = :flag ';
 //				$sql='SELECT code,name,price FROM mst_product ORDER BY price DESC';
 				$prepare=$db->prepare($sql);
-				$prepare->bindValue(':flag', 1, PDO::PARAM_INT);
+//				$prepare->bindValue(':flag', 1, PDO::PARAM_INT);
 				$prepare->execute();
 
 				$db=null;
 
 				print '商品一覧<br /><br />';
 
-				$i=1;
+//				$i=1;
 
 				while(true)
 				{
@@ -34,8 +34,8 @@
 					{
 						break;
 					}
-					//print h($rec['code']).' ';
-					print h($i).' ';
+					print h($rec['code']).' ';
+					//print h($i).' ';
 					print h($rec['name']).' ';
 					print h($rec['price']);
 					//画像
@@ -48,7 +48,7 @@
 					}
 					print $disp_gazou;
 					print '<br />';
-					$i++;
+//					$i++;
 				}
 
 				print '<br />';
@@ -80,10 +80,11 @@
 				echo 'エラーが発生しました。内容: ' . h($e->getMessage());
 	 			exit();
 			}
-			{
-				print '<input type="button" onclick="history.back()" value="戻る">';
-				print '</form>';
-			}
+//			{
+//				print'<a href="index.php">戻る</a>';
+//				print '</form>';
+//			}
 		?>
+		<input type="button" onclick="location.href='index.php'" value="戻る">
 	</body>
 </html>
