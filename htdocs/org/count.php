@@ -45,15 +45,16 @@
 				$day = date ( 'd' );
 				$hour = date ( 'G' );
 				$minute = date ( 'i' );
-				
+				$second = date ('s');
 
 //test
 //					$date_start = '2021/06/30';
 //					$date_end = '2021/07/02';
 //					$time_start = '9:00:00';
-//					$time_end = '9:30:00';
+//					$time_end = '18:00:00';
 
-				//date_start
+
+//              date_start
 //				$timedata = mktime ( 00, 00, 00, $month, $day - 7, $year );
 //				$date_start = date('Y/m/d',$timedata);
 //				echo 'date_start ';
@@ -66,20 +67,143 @@
 //				echo $date_end;
 //
 //				//time_start
-//				$hour = '9';
+//				$hour = '09';
 //				$minute = '00';
+//				$second ='00';
 //				
 //				$timedata = mktime ( $hour, $minute, $second );
 //				$time_start = date('H:i:s',$timedata);
 //				echo ' time_start ';
 //				echo $time_start;
-//
-//				//time_end
-//				$timedata = mktime ( 13, 47, 00 );
+
+//              $timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				
+//				time_start
+//				$hour = '10';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
 //				$time_end = date('H:i:s',$timedata);
 //				echo ' time_end ';
 //				echo $time_end;
 //				print '<br />';
+//
+//              time_start
+//				$hour = '11';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '12';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '13';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '14';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '15';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '16';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '17';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '18';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+//
+//              time_start
+//				$hour = '19';
+//				$minute = '00';
+//				$second ='00';
+//				
+//              time_end
+//				$timedata = mktime ( $hour, $minute, $second );
+//				$time_end = date('H:i:s',$timedata);
+//				echo ' time_end ';
+//				echo $time_end;
+//				print '<br />';
+
+
+
+
 
 				$sql='SELECT * FROM acount_data WHERE
 					(DATE(datetime) BETWEEN :date_start AND :date_end)
@@ -102,19 +226,19 @@
 
 			$db=null;
 
-//				print '商品一覧<br /><br />';
-//			print '<br />DBの中身<br />';
+				print '商品一覧<br /><br />';
+			print '<br />DBの中身<br />';
 
-//			while(true)
-//			{
-//				$rec=$prepare->fetch(PDO::FETCH_ASSOC);
-//				if($rec==false)
-//				{
-//					break;
-//				}
-//				print h($rec['datetime']);
-//				print '<br />';
-//			}
+			while(true)
+			{
+				$rec=$prepare->fetch(PDO::FETCH_ASSOC);
+				if($rec==false)
+				{
+					break;
+				}
+				print h($rec['datetime']);
+				print '<br />';
+			}
 		}
 		catch (Exception $e)
 		{
