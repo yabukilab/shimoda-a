@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品入力</title>
+		<title>新規登録</title>
 	</head>
 	<body>
-		商品入力<br /><br />
+		新規登録<br /><br />
 		<form method="post" action="create_check.php" enctype="multipart/form-data">
 		名前を入力してください。<br />
 		<input type="text" name="name" style="width:100px"><br />

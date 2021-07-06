@@ -73,7 +73,7 @@
 
 				print '<form method="post" action="create_done.php">';
 				print '<input type="button" onclick="history.back()" value="戻る">';
-				print '<input type="submit" value="登録">';
+//				print '<input type="submit" value="登録">';
 				print '</form>';
 
 			}

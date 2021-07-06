@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品削除</title>
+		<title>商品修正</title>
 	</head>
 	<body>
 		<?php
@@ -26,7 +26,6 @@
 				$stmt->execute();
 
 				$rec=$stmt->fetch(PDO::FETCH_ASSOC);
-
 				$dbh=null;
 
 				if($rec==false)
@@ -39,6 +38,18 @@
 
 				$_SESSION['code'] = "$pro_code";
 
+				$pro_name = $rec['name'];
+				$pro_price = $rec['price'];
+
+				//画像
+				if($rec['gazou']=='')
+				{
+					$disp_gazou='';
+				}
+				else
+				{
+					$disp_gazou='<img src="./gazou/'.$rec['gazou'].'">';
+				}
 			}
 			catch(Exception $e)
 			{
@@ -47,19 +58,22 @@
 			}
 		?>
 
-		商品削除<br />
+		商品修正<br />
 		<br />
 		商品コード<br />
-		<?php print h($rec['code']); ?><br />
-		商品名<br />
-		<?php print h($rec['name']); ?><br />
-		価格<br />
-		<?php print h($rec['price']); ?><br />
-		<br />
-		この商品を削除してよろしいですか？<br />
-		<br />
+		<?php print $pro_code; ?><br />
 
-		<form method="post" action="delete_done.php">
+		<form method="post" action="update_check.php" enctype="multipart/form-data">
+		商品名<br />
+		<input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br />
+		価格<br />
+		<input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br />
+		<!--画像-->
+		画像<br />
+		<?php print $disp_gazou; ?><br />
+		画像を選んでください。<br />
+		<input type="file" name="gazou" style="width:400px"><br />
+		<br />
 		<input type="button" onclick="history.back()" value="戻る">
 		<input type="submit" value="ＯＫ">
 		</form>
