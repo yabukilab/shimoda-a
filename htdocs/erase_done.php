@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>DB登録</title>
+		<title>商品削除</title>
+		<h>管理者ページ<h><br /><br />
 	</head>
 	<body>
 		<?php
@@ -17,20 +18,6 @@
 				print'商品コードが受信できません。';
 				exit();
 			}
-			if (isset($_SESSION['name'])) {
-				$pro_name=$_SESSION['name'];
-			}
-			else{
-				print'名前が受信できません。';
-				exit();
-			}
-			if (isset($_SESSION['price'])) {
-				$pro_price=$_SESSION['price'];
-			}
-			else{
-				print'価格が受信できません。';
-				exit();
-			}
 			session_unset();// セッション変数をすべて削除
 			session_destroy();// セッションIDおよびデータを破棄
 
@@ -40,16 +27,15 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='UPDATE mst_product SET name=:name,price=:price WHERE code=:code';
+				$sql='DELETE FROM mst_product WHERE code = :code';
 				$prepare=$db->prepare($sql);
-				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
-				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
 				$prepare->bindValue(':code', $pro_code, PDO::PARAM_INT);
 				$prepare->execute();
 
 				$db=null;
 
-				print '修正しました。<br />';
+				print '＜削除＞<br />';
+				print '削除しました。<br /><br />';
 
 			}
 			catch(Exception$e)
@@ -58,6 +44,7 @@
 	 			exit();
 			}
 		?>
-		<a href="index.php">戻る</a>
+		<form method="get" action="kanri.php">
+		<input type="submit" value="戻る" style="width:40px,height:20px">
 	</body>
 </html>

@@ -23,7 +23,7 @@
 				print  h($pro_name);
 				print '<br />';
 			}
- 
+
 			if($pro_price=='')
 			{
 				print '価格が入力されていません。<br />';

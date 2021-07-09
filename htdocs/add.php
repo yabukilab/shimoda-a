@@ -17,5 +17,5 @@
 		<input type="submit" value="確認">
 		</form>
 
-	</body> 
+	</body>
 </html>

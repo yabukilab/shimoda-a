@@ -2,70 +2,85 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品一覧</title>
+		<link rel="stylesheet" href="PM演習.css">
+		<script type="text/javascript">
+		var now = new Date();
+    function LoadProc() {
+      var target = document.getElementById("DateTimeDisp");
+
+      var Year = now.getFullYear();
+      var Month = now.getMonth()+1;
+      var Date = now.getDate();
+      var Hour = now.getHours();
+      var Min = now.getMinutes();
+      var Sec = now.getSeconds();
+
+      target.innerHTML = Year + "年" + Month + "月" + Date + "日" + Hour + ":" + Min + ":" + Sec;
+    }
+
+  </script>
+	</head>
+	<body onload = "LoadProc();">
+   
+
+		<title>学生食堂</title>
 	</head>
 	<body>
-		<?php
-			require_once '_database_conf.php';
-			require_once '_h.php';
-			try
-			{
-				$db = new PDO($dsn, $dbUser, $dbPass);
-				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-				$sql='SELECT * FROM mst_product';
-//				$sql='SELECT code,name,price FROM mst_product WHERE price > 100';
-//				$sql='SELECT code,name,price FROM mst_product ORDER BY price DESC';
-				$prepare=$db->prepare($sql);
-				$prepare->execute();
-
-				$db=null;
-
-				print '商品一覧<br /><br />';
-
-		 		while(true)
-				{
-					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
-					if($rec==false)
-					{
-						break;
-					}
-					print h($rec['code']).' ';
-					print h($rec['name']).' ';
-					print h($rec['price']);
-					print '<br />';
-				}
-
+	<div class="titlebar">
+	<?php        
+				print '<div class="subject"><p>学生食堂</p></div>';
+	?>
+				<div class="subject2">
+				<a href="kanri.php">
+	            <?php
 				print '<br />';
-				print '<a href="add.php">商品入力</a><br />';
-
-				print '<br />';
-				print '<form method="get" action="disp.php">';
-				print '商品表示：番号';
-				print '<input type="text" name="procode" style="width:20px">';
-				print '<input type="submit" value="決定">';
+		        print '<form action="kanri.php" method="post">';
+		      	print '<input type="button" name="kanri" value="管理者"/>';
 				print '</form>';
-
 				print '<br />';
-				print '<form method="get" action="edit.php">';
-				print '商品修正：番号';
-				print '<input type="text" name="procode" style="width:20px">';
-				print '<input type="submit" value="決定">';
+                ?>
+				</div>
+	</div>
+				
+				<a href="count.php">
+				<div class="box1">
+	            <?php
+		        print '<br />';
+		        print '<form action="count.php" method="post">';
+		        print '<input type="submit" name="count" value="利用希望者カウント" />';
 				print '</form>';
+		        print '<br />';
+                ?>
+				</div><br />
+				
+				
+				<br />
+				<div class="box2">
+				<a href="syokudou.php">
+	            <?php
+		        print '<br />';
+		        print '<form action="syokudou.php" method="post">';
+		        print '<input type="submit" name="syokudou" value="食堂メニュー" />';
+				print '</form>';
+		        print '<br />';
+                ?>
+				</div><br />
 
-				print '<br />';
-				print '<form method="get" action="delete.php">';
-				print '商品削除：番号';
-				print '<input type="text" name="procode" style="width:20px">';
-				print '<input type="submit" value="決定">';
+				<br />
+				<div class="box3">
+				<a href="obentou.php">
+	            <?php
+		        print '<br />';
+		        print '<form action="obentou.php" method="post">';
+		        print '<input type="submit" name="obentou" value="お弁当メニュー" />';
 				print '</form>';
-			}
-			catch (Exception $e)
-			{
-				echo 'エラーが発生しました。内容: ' . h($e->getMessage());
-	 			exit();
-			}
-		?>
+		        print '<br />';
+                ?>
+			    </div><br />
+			
+		
+		
+
+
 	</body>
 </html>

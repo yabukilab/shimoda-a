@@ -2,16 +2,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品削除</title>
+		<title>商品表示</title>
 	</head>
 	<body>
 		<?php
 			require_once '_database_conf.php';
 			require_once '_h.php';
-
-			session_cache_expire(30);// 有効期間30分
-			session_start();
-
 			try
 			{
 				$pro_code=$_GET['procode'];
@@ -26,7 +22,6 @@
 				$stmt->execute();
 
 				$rec=$stmt->fetch(PDO::FETCH_ASSOC);
-
 				$dbh=null;
 
 				if($rec==false)
@@ -37,32 +32,36 @@
 					exit();
 				}
 
-				$_SESSION['code'] = "$pro_code";
-
+				//画像
+				if($rec['gazou']=='')
+				{
+					$disp_gazou='';
+				}
+				else
+				{
+					$disp_gazou='<img src="./gazou/'.$rec['gazou'].'">';
+				}
 			}
-			catch(Exception $e)
+			catch(Exception$e)
 			{
 				echo 'エラーが発生しました。内容: ' . h($e->getMessage());
 	 			exit();
 			}
 		?>
 
-		商品削除<br />
+		商品表示<br />
 		<br />
 		商品コード<br />
 		<?php print h($rec['code']); ?><br />
 		商品名<br />
 		<?php print h($rec['name']); ?><br />
 		価格<br />
-		<?php print h($rec['price']); ?><br />
+		<?php print h($rec['price']); ?>円<br />
+		画像<br />
+		<?php print $disp_gazou; ?>
 		<br />
-		この商品を削除してよろしいですか？<br />
-		<br />
-
-		<form method="post" action="delete_done.php">
+		<form>
 		<input type="button" onclick="history.back()" value="戻る">
-		<input type="submit" value="ＯＫ">
 		</form>
-
 	</body>
 </html>

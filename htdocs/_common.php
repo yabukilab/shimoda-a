@@ -6,7 +6,7 @@ function pulldown_disp()
 	print '<select name="procode">';
 	print '<option value="1">1</option>';
 	print '<option value="2">2</option>';
-	print '<option value="3">3</option>';d
+	print '<option value="3">3</option>';
 	print '<option value="4">4</option>';
 	print '<option value="5">5</option>';
 	print '<option value="6">6</option>';

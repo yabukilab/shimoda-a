@@ -10,7 +10,7 @@
 
 			session_cache_expire(30);// 有効期間30分
 			session_start();
- 
+
 			$pro_name=$_POST['name'];
 			$pro_price=$_POST['price'];
 
