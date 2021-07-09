@@ -14,7 +14,8 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-				$sql='SELECT * FROM mst_product';
+//				$sql='SELECT * FROM mst_product';
+				$sql='SELECT * FROM table1';
 				$prepare=$db->prepare($sql);
 				$prepare->execute();
 
@@ -29,9 +30,14 @@
 					{
 						break;
 					}
-					print h($rec['code']).' ';
-					print h($rec['name']).' ';
-					print h($rec['price']);
+//					print h($rec['code']).' ';
+//					print h($rec['name']).' ';
+//					print h($rec['price']);
+
+					print h($rec['id']).' ';
+					print h($rec['varcharA']).' ';
+					print h($rec['intA']);
+					print h($rec['intB']);
 					print '<br />';
 				}
 			}
