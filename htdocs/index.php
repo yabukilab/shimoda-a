@@ -14,8 +14,8 @@
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//				$sql='SELECT * FROM mst_product';
-				$sql='SELECT * FROM table1';
+				$sql='SELECT * FROM mst_product';
+//				$sql='SELECT * FROM table1';
 				$prepare=$db->prepare($sql);
 				$prepare->execute();
 
