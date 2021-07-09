@@ -39,20 +39,13 @@
 				$prepare->bindValue(':date', $timetext, PDO::PARAM_STR);
 				$prepare->execute();
 
-				$sql='INSERT INTO acount_data(date) VALUES (:date)';
-				$prepare=$db->prepare($sql);
-				$prepare->bindValue(':date', $timetext, PDO::PARAM_STR);
-				$prepare->execute();
 
 				$sql='INSERT INTO acount_data(time) VALUES (:time)';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':time', $timetext2, PDO::PARAM_STR);
 				$prepare->execute();
 
-				$sql='INSERT INTO acount_data(time) VALUES (:time)';
-				$prepare=$db->prepare($sql);
-				$prepare->bindValue(':time', $timetext2, PDO::PARAM_STR);
-				$prepare->execute();
+
 
 
 
@@ -95,10 +88,10 @@
 				echo ' time_start ';
 				echo $time_start;
 
-              $timedata = mktime ( $hour, $minute, $second );
+              /*$timedata = mktime ( $hour, $minute, $second );
 				$time_end = date('H:i:s',$timedata);
 				echo ' time_end ';
-				echo $time_end;
+				echo $time_end;*/
 				
 				//time_start
 				$hour = '10';
@@ -111,6 +104,11 @@
 				echo ' time_end ';
 				echo $time_end;
 				print '<br />';
+
+				$timedata = mktime ( $hour, $minute, $second );
+				$time_start = date('H:i:s',$timedata);
+				echo ' time_start ';
+				echo $time_start;
 
               //time_start
 				$hour = '11';
