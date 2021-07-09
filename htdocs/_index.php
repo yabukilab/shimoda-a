@@ -11,7 +11,7 @@
 			//プルダウンメニュー
 			require_once '_common.php';
 
-			try
+			try 
 			{
 				$db = new PDO($dsn, $dbUser, $dbPass);
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

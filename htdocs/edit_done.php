@@ -23,7 +23,7 @@
 			else{
 				print'名前が受信できません。';
 				exit();
-			}
+			} 
 			if (isset($_SESSION['price'])) {
 				$pro_price=$_SESSION['price'];
 			}

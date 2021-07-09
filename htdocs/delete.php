@@ -19,7 +19,7 @@
 				$db = new PDO($dsn, $dbUser, $dbPass);
 				$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+ 
 				$sql='SELECT * FROM mst_product WHERE code = :code';
 				$stmt=$db->prepare($sql);
 				$stmt->bindValue(':code', $pro_code, PDO::PARAM_INT);

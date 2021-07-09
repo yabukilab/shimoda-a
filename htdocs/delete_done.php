@@ -19,7 +19,7 @@
 			}
 			session_unset();// セッション変数をすべて削除
 			session_destroy();// セッションIDおよびデータを破棄
-
+ 
 			try
 			{
 				$db = new PDO($dsn, $dbUser, $dbPass);

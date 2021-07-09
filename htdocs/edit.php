@@ -24,7 +24,7 @@
 				$stmt=$db->prepare($sql);
 				$stmt->bindValue(':code', $pro_code, PDO::PARAM_INT);
 				$stmt->execute();
-
+ 
 				$rec=$stmt->fetch(PDO::FETCH_ASSOC);
 				$dbh=null;
 

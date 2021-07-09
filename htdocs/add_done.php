@@ -13,7 +13,7 @@
 			if (isset($_SESSION['name'])) {
 				$pro_name=$_SESSION['name'];
 			}
-			else{
+			else{ 
 				print'名前が受信できません。';
 				exit();
 			}
