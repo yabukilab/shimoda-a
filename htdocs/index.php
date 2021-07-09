@@ -24,7 +24,7 @@
 
 				print '商品一覧<br /><br />';
 
-				while(true)
+		 		while(true)
 				{
 					$rec=$prepare->fetch(PDO::FETCH_ASSOC);
 					if($rec==false)
