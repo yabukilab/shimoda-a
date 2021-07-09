@@ -15,8 +15,6 @@
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 				$sql='SELECT * FROM mst_product';
-//				$sql='SELECT code,name,price FROM mst_product WHERE price > 100';
-//				$sql='SELECT code,name,price FROM mst_product ORDER BY price DESC';
 				$prepare=$db->prepare($sql);
 				$prepare->execute();
 
@@ -36,30 +34,6 @@
 					print h($rec['price']);
 					print '<br />';
 				}
-
-				print '<br />';
-				print '<a href="add.php">商品入力</a><br />';
-
-				print '<br />';
-				print '<form method="get" action="disp.php">';
-				print '商品表示：番号';
-				print '<input type="text" name="procode" style="width:20px">';
-				print '<input type="submit" value="決定">';
-				print '</form>';
-
-				print '<br />';
-				print '<form method="get" action="edit.php">';
-				print '商品修正：番号';
-				print '<input type="text" name="procode" style="width:20px">';
-				print '<input type="submit" value="決定">';
-				print '</form>';
-
-				print '<br />';
-				print '<form method="get" action="delete.php">';
-				print '商品削除：番号';
-				print '<input type="text" name="procode" style="width:20px">';
-				print '<input type="submit" value="決定">';
-				print '</form>';
 			}
 			catch (Exception $e)
 			{
