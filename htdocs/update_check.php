@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<?php
+<<<<<<< HEAD
 		require_once '_database_conf.php';
 		require_once '_h.php';
 
@@ -64,6 +65,9 @@
 	?>
 	<?
 			//require_once '_h.php';
+=======
+			require_once '_h.php';
+>>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 
 			$pro_name=$_POST['name'];
 			$pro_price=$_POST['price'];
@@ -77,6 +81,7 @@
 			print '＜修正＞<br /><br />';
 			print '以下の内容でよろしいでしょうか？<br /><br />';
 
+<<<<<<< HEAD
 			session_start();
 		
 			if (isset($_SESSION["code"])) {
@@ -96,6 +101,8 @@
 			print  h($pro_code);
 			print '<br />';
 
+=======
+>>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 			if($pro_name=='')
 			{
 				print '商品名：入力されていません。<br />';
@@ -181,4 +188,8 @@
 			}
 		?>
 	</body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
