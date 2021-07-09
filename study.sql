@@ -19,10 +19,10 @@
 -- Table structure for table `mst_product`
 --
 
-DROP TABLE IF EXISTS `mst_product`;
+DROP TABLE IF EXISTS `table1`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mst_product` (
+CREATE TABLE `table1` (
   `code` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
@@ -34,9 +34,9 @@ CREATE TABLE `mst_product` (
 -- Dumping data for table `mst_product`
 --
 
-LOCK TABLES `mst_product` WRITE;
+LOCK TABLES `table1` WRITE;
 /*!40000 ALTER TABLE `mst_product` DISABLE KEYS */;
-INSERT INTO `mst_product` VALUES (1,'きゃべつ',100),(3,'tomato',1100000),(4,'きゃべつ',100),(5,'とうもろし',1000),(6,'きゃべつ',100),(7,'きゃべつ',100),(8,'きゅうり',10000),(9,'きゅうり',10),(10,'tomat',1222),(11,'みかん',1000),(12,'かぼちゃ',50),(13,'みかん',1000),(14,'かぼちゃ',50),(15,'いちころ',100);
+INSERT INTO `table1` VALUES (1,'きゃべつ',100),(3,'tomato',1100000),(4,'きゃべつ',100),(5,'とうもろし',1000),(6,'きゃべつ',100),(7,'きゃべつ',100),(8,'きゅうり',10000),(9,'きゅうり',10),(10,'tomat',1222),(11,'みかん',1000),(12,'かぼちゃ',50),(13,'みかん',1000),(14,'かぼちゃ',50),(15,'いちころ',100);
 /*!40000 ALTER TABLE `mst_product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

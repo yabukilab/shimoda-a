@@ -30,15 +30,15 @@
 					{
 						break;
 					}
-//					print h($rec['code']).' ';
-//					print h($rec['name']).' ';
-//					print h($rec['price']);
+					print h($rec['code']).' ';
+					print h($rec['name']).' ';
+					print h($rec['price']);
 
-					print h($rec['id']).' ';
-					print h($rec['varcharA']).' ';
-					print h($rec['intA']);
-					print h($rec['intB']);
-					print '<br />';
+//					print h($rec['id']).' ';
+//					print h($rec['varcharA']).' ';
+//					print h($rec['intA']);
+//					print h($rec['intB']);
+//					print '<br />';
 				}
 			}
 			catch (Exception $e)
