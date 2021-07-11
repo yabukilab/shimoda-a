@@ -2,8 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="update.css">
 		<title>修正画面</title>
-		<h>管理者ページ<h><br /><br />
+		<div class="subject"><p>
+		<h>管理者ページ<h></p></div>
+		<br /><br />
 	</head>
 	<body>
 		<?php
