@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>商品削除</title>
+		<h>管理者ページ<h><br /><br />
 	</head>
 	<body>
 		<?php
@@ -33,7 +34,8 @@
 
 				$db=null;
 
-				print '削除しました。<br />';
+				print '＜削除＞<br />';
+				print '削除しました。<br /><br />';
 
 			}
 			catch(Exception$e)
@@ -42,6 +44,7 @@
 	 			exit();
 			}
 		?>
-		<a href="kanri.php">戻る</a>
+		<form method="get" action="kanri.php">
+		<input type="submit" value="戻る" style="width:40px,height:20px">
 	</body>
 </html>

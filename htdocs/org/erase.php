@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品削除</title>
+		<title>削除画面</title>
+		<h>管理者ページ<h><br /><br />
 	</head>
 	<body>
 		<?php
@@ -31,8 +32,8 @@
 
 				if($rec==false)
 				{
-					print'商品がコードが正しくありません。';
-					print'<a href="index.php">戻る</a>';
+					print'商品IDが正しくありません。';
+					print'<a href="kanri.php">戻る</a>';
 					print '<br />';
 					exit();
 				}
@@ -56,24 +57,25 @@
 			}
 		?>
 
-		商品削除<br />
-		<br />
-		商品コード<br />
+		＜削除＞<br /><br />
+		以下の内容でよろしいでしょうか？<br /><br />
+		商品ID<br />
 		<?php print h($rec['code']); ?><br />
 		商品名<br />
 		<?php print h($rec['name']); ?><br />
 		価格<br />
 		<?php print h($rec['price']); ?><br />
-		<!--画像-->
+		説明・販売状況<br />
+		<?php print h($rec['letter']); ?><br />
 		画像<br />
 		<?php print $disp_gazou; ?><br />
+		食堂1/お弁当2<br />
+		<?php print h($rec['flag']); ?><br />
 		<br />
-		この商品を削除してよろしいですか？<br />
-		<br />
-
+		
 		<form method="post" action="erase_done.php">
 		<input type="button" onclick="history.back()" value="戻る">
-		<input type="submit" value="ＯＫ">
+		<input type="submit" value="削除">
 		</form>
 
 	</body>

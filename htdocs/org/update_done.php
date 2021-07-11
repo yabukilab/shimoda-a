@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>DB登録</title>
+		<title>修正完了</title>
+		<h>管理者ページ<h><br /><br />
 	</head>
 	<body>
 		<?php
@@ -10,18 +11,19 @@
 			require_once '_h.php';
 
 			session_start();
+
 			if (isset($_SESSION['code'])) {
 				$pro_code=$_SESSION['code'];
 			}
 			else{
-				print'商品コードが受信できません。';
+				print'商品IDが受信できません。';
 				exit();
 			}
 			if (isset($_SESSION['name'])) {
 				$pro_name=$_SESSION['name'];
 			}
 			else{
-				print'名前が受信できません。';
+				print'商品名が受信できません。';
 				exit();
 			}
 			if (isset($_SESSION['price'])) {
@@ -29,6 +31,13 @@
 			}
 			else{
 				print'価格が受信できません。';
+				exit();
+			}
+			if (isset($_SESSION['letter'])) {
+				$pro_letter=$_SESSION['letter'];
+			}
+			else{
+				print'説明・販売状況が受信できません。';
 				exit();
 			}
 			//画像
@@ -49,11 +58,13 @@
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 				//発売日、画像
-				$sql='UPDATE mst_product SET name=:name,price=:price,gazou=:gazou WHERE code=:code';
+				$sql='UPDATE mst_product SET name=:name,price=:price,gazou=:gazou,letter=letter,flag=flag WHERE code=:code';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
 				$prepare->bindValue(':gazou', $pro_gazou, PDO::PARAM_STR);
+				$prepare->bindValue(':flag', $pro_flag, PDO::PARAM_INT);
+				$prepare->bindValue(':letter', $pro_letter, PDO::PARAM_INT);
 				$prepare->bindValue(':code', $pro_code, PDO::PARAM_INT);
 				$prepare->execute();
 
@@ -68,6 +79,7 @@
 	 			exit();
 			}
 		?>
-		<a href="kanri.php">戻る</a>
+		<form method="get" action="kanri.php">
+		<input type="submit" value="戻る" style="width:40px,height:20px">
 	</body>
 </html>

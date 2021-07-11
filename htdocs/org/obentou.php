@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品一覧</title>
+		<title>お弁当メニュー画面</title>
+		<h>お弁当メニュー<h>
+		<input type="button" onclick="location.href='index.php'" value="HOME"><br /><br />
 	</head>
 	<body>
 		<?php
@@ -24,7 +26,7 @@
 
 				$db=null;
 
-				print '商品一覧<br /><br />';
+				print '＜今日のメニュー＞<br /><br />';
 
 				$i=1;
 
@@ -37,8 +39,6 @@
 					}
 //					print h($rec['code']).' ';
                     print h($i).' ';
-					print h($rec['name']).' ';
-					print h($rec['price']);
 					//画像
 					if($rec['gazou']=='')
 					{
@@ -48,6 +48,9 @@
 						$disp_gazou='<img src="./gazou/'.$rec['gazou'].'" height="50">';
 					}
 					print $disp_gazou;
+					print h($rec['name']).'  ';
+					print h($rec['price']).'円  ';
+					print h($rec['letter']).'  ';
 					print '<br />';
 					$i++;
 				}
@@ -58,7 +61,7 @@
 	 			exit();
 			}
 			{
-				print '<input type="button" onclick="history.back()" value="戻る">';
+				print '<input type="button" onclick="history.back()" value="HOME">';
 				print '</form>';
 			}
 		?>
