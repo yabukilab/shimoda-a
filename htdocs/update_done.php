@@ -40,6 +40,14 @@
 				print'説明・販売状況が受信できません。';
 				exit();
 			}
+			if (isset($_SESSION['flag'])) {
+				$pro_flag=$_SESSION['flag'];
+			}
+			else{
+				print'食堂・お弁当が受信できません。';
+				exit();
+			}
+
 			//画像
 			if (isset($_SESSION['gazou'])) {
 				$pro_gazou=$_SESSION['gazou'];
@@ -58,13 +66,13 @@
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 				//発売日、画像
-				$sql='UPDATE mst_product SET name=:name,price=:price,gazou=:gazou,letter=letter,flag=flag WHERE code=:code';
+				$sql='UPDATE mst_product SET name=:name,price=:price,gazou=:gazou,letter=:letter,flag=:flag WHERE code=:code';
 				$prepare=$db->prepare($sql);
 				$prepare->bindValue(':name', $pro_name, PDO::PARAM_STR);
 				$prepare->bindValue(':price', $pro_price, PDO::PARAM_INT);
 				$prepare->bindValue(':gazou', $pro_gazou, PDO::PARAM_STR);
 				$prepare->bindValue(':flag', $pro_flag, PDO::PARAM_INT);
-				$prepare->bindValue(':letter', $pro_letter, PDO::PARAM_INT);
+				$prepare->bindValue(':letter', $pro_letter, PDO::PARAM_STR);
 				$prepare->bindValue(':code', $pro_code, PDO::PARAM_INT);
 				$prepare->execute();
 

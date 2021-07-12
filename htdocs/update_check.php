@@ -62,7 +62,7 @@
 //		}
 		?>
 
-	<?
+	<?php
 		require_once '_h.php';
 
 		session_start();

@@ -10,11 +10,8 @@
 			require_once '_database_conf.php';
 			require_once '_h.php';
 
-//			$_SESSION['code'] = "$pro_code";
-
 			session_cache_expire(30);// 有効期間30分
 			session_start();
-
 
 			try
 			{
@@ -40,17 +37,12 @@
 					exit();
 				}
 
-				//$_SESSION['code'] = "$pro_code";
-				//print '<form method="post" action="create_done.php">';
-				//print '<input type="button" onclick="history.back()" value="戻る">';
-				//print '<input type="submit" value="登録">';
-				//print '</form>';
+				$_SESSION['code'] = "$pro_code";
 
 				$pro_name = $rec['name'];
 				$pro_price = $rec['price'];
 				$pro_letter = $rec['letter'];
 				$pro_flag = $rec['flag'];
-//				$_SESSION["code"]
 
 				//画像
 
@@ -74,18 +66,8 @@
 		修正したい項目を入力してください。<br /><br />
 		商品ID<br />
 		<?php print $pro_code;?>
-
-<!--		<form method="post" action="update_check.php" enctype="multipart/form-data">
--->	
-		<?php 
-//			$_SESSION['code'] = "$pro_code";
-//  		session_start();
-//			// 有効期限30日
-//  		session_cache_expire(60 * 24 * 30);
-//    		$_SESSION["code"]
-		?>
-
 		<form method="post" action="update_check.php" enctype="multipart/form-data">
+
 		商品名<br />
 		<input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br />
 
