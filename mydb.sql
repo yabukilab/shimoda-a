@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.19-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.18-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: mydb
+-- Host: localhost    Database: _project
 -- ------------------------------------------------------
--- Server version	10.4.19-MariaDB
+-- Server version	10.4.18-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +16,80 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `table1`
+-- Table structure for table `acount_data`
 --
 
-DROP TABLE IF EXISTS `table1`;
+DROP TABLE IF EXISTS `acount_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `table1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `varcharA` varchar(40) NOT NULL,
-  `intA` int(11) NOT NULL,
-  `intB` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `acount_data` (
+  `date` date DEFAULT NULL,
+  `time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `table1`
+-- Dumping data for table `acount_data`
 --
 
-LOCK TABLES `table1` WRITE;
-/*!40000 ALTER TABLE `table1` DISABLE KEYS */;
-INSERT INTO `table1` VALUES (1,'A',1280,1),(2,'B',2980,0),(3,'C',198,121);
-/*!40000 ALTER TABLE `table1` ENABLE KEYS */;
+LOCK TABLES `acount_data` WRITE;
+/*!40000 ALTER TABLE `acount_data` DISABLE KEYS */;
+INSERT INTO `acount_data` VALUES ('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-06-30',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-02',0),('2021-07-04',0),('2021-07-04',0),('2021-07-04',0),('2021-07-04',0),('2021-07-06',0),('2021-07-06',0),('2021-07-06',0),('2021-07-07',0),('2021-07-07',0),('2021-07-07',0),('2021-07-08',0),('2021-07-08',0),('2021-07-08',0),('2021-07-08',0),('2021-07-08',0),('2021-07-08',0),(NULL,2021),(NULL,2021),('2021-07-08',0),('2021-07-08',0),(NULL,2021),(NULL,2021),('2021-07-08',0),('2021-07-08',0),(NULL,1),(NULL,1),('2021-07-08',0),('2021-07-08',0),(NULL,1),(NULL,1),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),(NULL,0),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-08',0),('2021-07-08',0),(NULL,2),(NULL,2),('2021-07-09',0),('2021-07-09',0),(NULL,11),(NULL,11),('2021-07-09',0),('2021-07-09',0),(NULL,11),(NULL,11),('2021-07-09',0),('2021-07-09',0),(NULL,12),(NULL,12),('2021-07-09',0),('2021-07-09',0),(NULL,2),(NULL,2);
+/*!40000 ALTER TABLE `acount_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login_data`
+--
+
+DROP TABLE IF EXISTS `login_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login_data` (
+  `code` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login_data`
+--
+
+LOCK TABLES `login_data` WRITE;
+/*!40000 ALTER TABLE `login_data` DISABLE KEYS */;
+INSERT INTO `login_data` VALUES (1,'chiba','koudai');
+/*!40000 ALTER TABLE `login_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mst_product`
+--
+
+DROP TABLE IF EXISTS `mst_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mst_product` (
+  `code` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `gazou` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `datetime` datetime DEFAULT NULL,
+  `flag` int(11) NOT NULL,
+  `letter` int(11) NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mst_product`
+--
+
+LOCK TABLES `mst_product` WRITE;
+/*!40000 ALTER TABLE `mst_product` DISABLE KEYS */;
+INSERT INTO `mst_product` VALUES (1,'きゃべつ',100,'',NULL,0,0),(2,'とまと',1000,'',NULL,0,0),(3,'みかん',500,'',NULL,0,0),(4,'すいか',200,'',NULL,0,0),(9,'ごぼう',100,'',NULL,0,0),(17,'おれ',1100000,'天音かなたん.jpg',NULL,0,0);
+/*!40000 ALTER TABLE `mst_product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-03 10:54:11
+-- Dump completed on 2021-07-09 14:44:50

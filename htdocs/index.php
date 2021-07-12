@@ -35,7 +35,7 @@
 	            <?php
 				print '<br />';
 		        print '<form action="kanri.php" method="post">';
-		        print '<input type="button" name="kanri" value="管理者"/>';
+		      	print '<input type="button" name="kanri" value="管理者"/>';
 				print '</form>';
 				print '<br />';
                 ?>
@@ -56,11 +56,11 @@
 				
 				<br />
 				<div class="box2">
-				<a href="obentou.php">
+				<a href="syokudou.php">
 	            <?php
 		        print '<br />';
-		        print '<form action="obentou.php" method="post">';
-		        print '<input type="submit" name="obentou" value="お弁当メニュー" />';
+		        print '<form action="syokudou.php" method="post">';
+		        print '<input type="submit" name="syokudou" value="食堂メニュー" />';
 				print '</form>';
 		        print '<br />';
                 ?>
@@ -68,11 +68,11 @@
 
 				<br />
 				<div class="box3">
-				<a href="syokudou.php">
+				<a href="obentou.php">
 	            <?php
 		        print '<br />';
-		        print '<form action="syokudou.php" method="post">';
-		        print '<input type="submit" name="syokudou" value="食堂メニュー" />';
+		        print '<form action="obentou.php" method="post">';
+		        print '<input type="submit" name="obentou" value="お弁当メニュー" />';
 				print '</form>';
 		        print '<br />';
                 ?>

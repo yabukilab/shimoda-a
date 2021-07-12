@@ -27,7 +27,7 @@
 				if($rec==false)
 				{
 					print'商品がコードが正しくありません。';
-					print'<a href="kanri.php">戻る</a>';
+					print'<a href="index.php">戻る</a>';
 					print '<br />';
 					exit();
 				}
