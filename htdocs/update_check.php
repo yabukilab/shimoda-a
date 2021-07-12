@@ -7,67 +7,74 @@
 	</head>
 	<body>
 		<?php
-<<<<<<< HEAD
-		require_once '_database_conf.php';
+//		require_once '_database_conf.php';
+//		require_once '_h.php';
+//
+//		session_cache_expire(30);// 有効期間30分
+//		session_start();
+//
+//		try
+//		{
+//			//$pro_code=$_POST['procode'];
+//
+//			$db = new PDO($dsn, $dbUser, $dbPass);
+//			$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+//			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//
+//			$sql='SELECT * FROM mst_product WHERE code = :code';
+//			$stmt=$db->prepare($sql);
+//			$stmt->bindValue(':code', $pro_code, PDO::PARAM_INT);
+//			$stmt->execute();
+//
+//			$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+//			$dbh=null;
+//
+//			if($rec==false)
+//			{
+//				print'商品入力が正しくありません。';
+//				print'<a href="kanri.php">戻る</a>';
+//				print '<br />';
+//				exit();
+//			}
+//
+			//$_SESSION['code'] = "$pro_code";
+//
+//			$pro_name = $rec['name'];
+//			$pro_price = $rec['price'];
+//			$pro_letter = $rec['letter'];
+//			$pro_flag = $rec['flag'];
+//
+//			//画像
+
+//			if($rec['gazou']=='')
+//			{
+//				$disp_gazou='';
+//			}
+//			else
+//			{
+//				$disp_gazou='<img src="./gazou/'.$rec['gazou'].'">';
+//			}
+//		}
+//		catch(Exception $e)
+//		{
+//			echo 'エラーが発生しました。内容: ' . h($e->getMessage());
+//			 exit();
+//		}
+		?>
+
+	<?
 		require_once '_h.php';
 
-		session_cache_expire(30);// 有効期間30分
 		session_start();
-
-		try
-		{
-			//$pro_code=$_POST['procode'];
-
-			$db = new PDO($dsn, $dbUser, $dbPass);
-			$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-			$sql='SELECT * FROM mst_product WHERE code = :code';
-			$stmt=$db->prepare($sql);
-			$stmt->bindValue(':code', $pro_code, PDO::PARAM_INT);
-			$stmt->execute();
-
-			$rec=$stmt->fetch(PDO::FETCH_ASSOC);
-			$dbh=null;
-
-			if($rec==false)
+			if (isset($_SESSION['code'])) 
 			{
-				print'商品入力が正しくありません。';
-				print'<a href="kanri.php">戻る</a>';
-				print '<br />';
-				exit();
-			}
-
-			//$_SESSION['code'] = "$pro_code";
-
-			$pro_name = $rec['name'];
-			$pro_price = $rec['price'];
-			$pro_letter = $rec['letter'];
-			$pro_flag = $rec['flag'];
-
-			//画像
-
-			if($rec['gazou']=='')
-			{
-				$disp_gazou='';
+				$pro_code=$_SESSION['code'];
 			}
 			else
 			{
-				$disp_gazou='<img src="./gazou/'.$rec['gazou'].'">';
+				print'商品IDが受信できません。';
+				exit();
 			}
-		}
-		catch(Exception $e)
-		{
-			echo 'エラーが発生しました。内容: ' . h($e->getMessage());
-			 exit();
-		}
-		
-	?>
-	<?
-			//require_once '_h.php';
-=======
-			require_once '_h.php';
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 
 			$pro_name=$_POST['name'];
 			$pro_price=$_POST['price'];
@@ -81,14 +88,10 @@
 			print '＜修正＞<br /><br />';
 			print '以下の内容でよろしいでしょうか？<br /><br />';
 
-<<<<<<< HEAD
-			session_start();
-		
-			if (isset($_SESSION["code"])) {
-				print "<p>";
-				print "商品ID：".$_SESSION["code"];
-				print "</p>";
-			}
+			print '商品ID：';
+			print $pro_code;
+			print '<br />';
+
 //			if (isset($_SESSION['code'])) {
 //				$pro_code=$_SESSION['code'];
 //			}
@@ -97,12 +100,10 @@
 //				exit();
 //			}
 
-			print '商品ID：';
-			print  h($pro_code);
-			print '<br />';
+//			print '商品ID：';
+//			print  h($pro_code);
+//			print '<br />';
 
-=======
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 			if($pro_name=='')
 			{
 				print '商品名：入力されていません。<br />';
@@ -188,8 +189,4 @@
 			}
 		?>
 	</body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181

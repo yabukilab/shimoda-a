@@ -2,29 +2,20 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="update.css">
 		<title>修正画面</title>
-		<div class="subject"><p>
-		<h>管理者ページ<h></p></div>
-		<br /><br />
+		<h>管理者ページ<h><br /><br />
 	</head>
 	<body>
 		<?php
 			require_once '_database_conf.php';
 			require_once '_h.php';
 
-<<<<<<< HEAD
 //			$_SESSION['code'] = "$pro_code";
 
 			session_cache_expire(30);// 有効期間30分
 			session_start();
 
 
-=======
-			session_cache_expire(30);// 有効期間30分
-			session_start();
-
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 			try
 			{
 				$pro_code=$_GET['procode'];
@@ -49,24 +40,17 @@
 					exit();
 				}
 
-<<<<<<< HEAD
 				//$_SESSION['code'] = "$pro_code";
 				//print '<form method="post" action="create_done.php">';
 				//print '<input type="button" onclick="history.back()" value="戻る">';
 				//print '<input type="submit" value="登録">';
 				//print '</form>';
-=======
-				$_SESSION['code'] = "$pro_code";
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 
 				$pro_name = $rec['name'];
 				$pro_price = $rec['price'];
 				$pro_letter = $rec['letter'];
 				$pro_flag = $rec['flag'];
-<<<<<<< HEAD
 //				$_SESSION["code"]
-=======
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 
 				//画像
 
@@ -90,7 +74,6 @@
 		修正したい項目を入力してください。<br /><br />
 		商品ID<br />
 		<?php print $pro_code;?>
-<<<<<<< HEAD
 
 <!--		<form method="post" action="update_check.php" enctype="multipart/form-data">
 -->	
@@ -103,10 +86,6 @@
 		?>
 
 		<form method="post" action="update_check.php" enctype="multipart/form-data">
-=======
-		<form method="post" action="update_check.php" enctype="multipart/form-data">
-
->>>>>>> bc5535487d1f321791403d5eeccecff46ed64181
 		商品名<br />
 		<input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br />
 
