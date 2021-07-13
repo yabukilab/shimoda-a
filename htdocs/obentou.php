@@ -5,7 +5,8 @@
 		<link rel="stylesheet" href="obentou.css">
 		<title>お弁当メニュー画面</title>
 		<div class="titlebar">
-		<div class="subject"><p>お弁当メニュー</p></div>
+		<div class="subject">
+		<p>お弁当メニュー</p></div>
 		<br>
 		<div class="subject2"><input type="button" onclick="location.href='index.php'" value="HOME"></div>
         </br>
