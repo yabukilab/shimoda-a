@@ -77,7 +77,7 @@
 				$date_end = date('Y/m/d',$timedata);
 				echo ' date_end ';
 				echo $date_end;
-
+               
 				//time_start
 				$hour = '09';
 				$minute = '00';
@@ -247,7 +247,7 @@
 		
 			
 
-				print '商品一覧<br /><br />';
+				
 			print '<br />DBの中身<br />';
 
 			while(true)
