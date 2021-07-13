@@ -1,4 +1,3 @@
-<<<<<<< HEAD:htdocs/org/update_done.php
 <!DOCTYPE html>
 <html>
 	<head>
@@ -148,4 +147,3 @@
 		<a href="index.php">戻る</a>
 	</body>
 </html>
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/edit_done.php

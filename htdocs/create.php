@@ -2,10 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-<<<<<<< HEAD
 		<link rel="stylesheet" href="create.css">
-=======
->>>>>>> 266ab01b256d466a57280852788e76b3bb4c91e9
 		<title>登録画面</title>
 		<div class="subject"><p>管理者ページ</p></div>
 	</head>

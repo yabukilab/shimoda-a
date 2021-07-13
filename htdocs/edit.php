@@ -48,7 +48,6 @@
 
 				$pro_name = $rec['name'];
 				$pro_price = $rec['price'];
-<<<<<<< HEAD:htdocs/org/update.php
 				$pro_letter = $rec['letter'];
 				$pro_flag = $rec['flag'];
 //				$_SESSION["code"]
@@ -63,8 +62,7 @@
 				{
 					$disp_gazou='<img src="./gazou/'.$rec['gazou'].'">';
 				}
-=======
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/edit.php
+
 			}
 			catch(Exception $e)
 			{
@@ -94,7 +92,6 @@
 
 		価格<br />
 		<input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br />
-<<<<<<< HEAD:htdocs/org/update.php
 		
 		説明・販売状況<br />
 		<input type="text" name="letter" style="width: 300px" value="<?php print $pro_letter; ?>"><br />
@@ -107,8 +104,7 @@
 		食堂1/お弁当2<br />
 		<input type="radio" name="flag" value="1" checked="checked" />1<br>
 		<input type="radio" name="flag" value="2" />2<br>
-=======
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/edit.php
+
 		<br />
 
 		<input type="button" onclick="history.back()" value="戻る">

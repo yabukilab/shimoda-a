@@ -1,4 +1,3 @@
-<<<<<<< HEAD:htdocs/org/update_check.php
 <!DOCTYPE html>
 <html>
 	<head>
@@ -252,4 +251,3 @@
 		?>
 	</body>
 </html>
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/edit_check.php
