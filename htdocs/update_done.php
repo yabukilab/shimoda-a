@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="update_done.css">
 		<title>修正完了</title>
-		<h>管理者ページ<h><br /><br />
+		<div class="subject"><p>管理者ページ</p></div>
 	</head>
 	<body>
 		<?php

@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="erase.css">
 		<title>削除画面</title>
-		<h>管理者ページ<h><br /><br />
+		<div class="subject"><p>管理者ページ</p></div>
 	</head>
 	<body>
 		<?php
@@ -56,7 +57,6 @@
 	 			exit();
 			}
 		?>
-
 		＜削除＞<br /><br />
 		以下の内容でよろしいでしょうか？<br /><br />
 		商品ID<br />

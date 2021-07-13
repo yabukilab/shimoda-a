@@ -24,25 +24,15 @@
    
 
 		<title>学生食堂</title>
+		<div class="titlebar">
+		<div class="subject"><p>学生食堂</p></div>
+		<br>
+		<div class="subject2"><input type="button" onclick="location.href='kanri.php'" value="管理者"></div>
+        </br>
+        </div>
 	</head>
-	<body>
-	<div class="titlebar">
-	<?php        
-				print '<div class="subject"><p>学生食堂</p></div>';
-	?>
-				<div class="subject2">
-				<a href="kanri.php">
-	            <?php
-				print '<br />';
-		        print '<form action="kanri.php" method="post">';
-		      	print '<input type="button" name="kanri" value="管理者"/>';
-				print '</form>';
-				print '<br />';
-                ?>
-				</div>
-	</div>
-				
-				<a href="count.php">
+	<body>		
+			    <a href="count.php">
 				<div class="box1">
 	            <?php
 		        print '<br />';

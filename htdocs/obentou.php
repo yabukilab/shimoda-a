@@ -2,9 +2,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="obentou.css">
 		<title>お弁当メニュー画面</title>
-		<h>お弁当メニュー<h>
-		<input type="button" onclick="location.href='index.php'" value="HOME"><br /><br />
+		<div class="titlebar">
+		<div class="subject"><p>お弁当メニュー</p></div>
+		<br>
+		<div class="subject2"><input type="button" onclick="location.href='index.php'" value="HOME"></div>
+        </br>
+        </div>
 	</head>
 	<body>
 		<?php
@@ -59,10 +64,6 @@
 			{
 				echo 'エラーが発生しました。内容: ' . h($e->getMessage());
 	 			exit();
-			}
-			{
-				print '<input type="button" onclick="history.back()" value="HOME">';
-				print '</form>';
 			}
 		?>
 	</body>

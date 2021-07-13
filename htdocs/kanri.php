@@ -2,9 +2,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="kanri.css">
 		<title>管理者画面</title>
-		<h>管理者ページ<h>
-		<input type="button" onclick="location.href='index.php'" value="HOME">
+		<div class="titlebar">
+		<div class="subject"><p>管理者ページ</p></div>
+		<br>
+		<div class="subject2"><input type="button" onclick="location.href='index.php'" value="HOME"></div>
+        </br>
+        </div>
 	</head>
 	<body>
 		<?php
@@ -109,7 +114,5 @@
 //				print '</form>';
 //			}
 		?>
-		<br />
-		<input type="button" onclick="location.href='index.php'" value="HOME">
 	</body>
 </html>

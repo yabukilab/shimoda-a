@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品削除</title>
-		<h>管理者ページ<h><br /><br />
+		<link rel="stylesheet" href="erase_done.css">
+		<title>商品削除<</title>
+		<div class="subject"><p>管理者ページ</p></div>
 	</head>
 	<body>
 		<?php
