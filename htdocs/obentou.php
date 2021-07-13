@@ -131,8 +131,7 @@
 	 			exit();
 			}
 			{
-				print '<input type="button" onclick="history.back()" value="HOME">';
-				print '</form>';
+
 			}
 		?>
 	</body>
