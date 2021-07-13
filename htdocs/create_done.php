@@ -3,8 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>登録完了画面</title>
+<<<<<<< HEAD
 		<link rel="stylesheet" href="create_done.css">
 		<div class="subject"><p>管理者ページ<p></div><br /><br />
+=======
+		<h>管理者ページ<h><br /><br />
+>>>>>>> 266ab01b256d466a57280852788e76b3bb4c91e9
 	</head>
 	<body>
 		<?php

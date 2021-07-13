@@ -2,7 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+<<<<<<< HEAD
 		<link rel="stylesheet" href="create.css">
+=======
+>>>>>>> 266ab01b256d466a57280852788e76b3bb4c91e9
 		<title>登録画面</title>
 		<div class="subject"><p>管理者ページ</p></div>
 	</head>
@@ -11,7 +14,8 @@
 		登録したい項目を入力してください。<br/><br/>
 		商品ID<br/>
 		自動で作成されます。<br/>
-		<form method="post" action="create_check.php" enctype="multipart/form-data">
+<!--		<form method="post" action="create_check.php" enctype="multipart/form-data">
+-->		<form method="post" action="create_check.php" enctype="multipart/form-data">
 		商品名<br />
 		<input type="text" name="name" style="width:100px"><br />
 		価格<br />

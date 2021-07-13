@@ -2,6 +2,19 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+<<<<<<< HEAD:htdocs/org/create.php
+		<title>登録画面</title>
+		<h>管理者ページ<h><br /><br />
+	</head>
+	<body>
+		＜新規登録＞<br /><br />
+		登録したい項目を入力してください。<br/><br/>
+		商品ID<br/>
+		自動で作成されます。<br/>
+<!--		<form method="post" action="create_check.php" enctype="multipart/form-data">
+-->		<form method="post" action="create_check.php" enctype="multipart/form-data">
+		商品名<br />
+=======
 		<title>商品入力</title>
 	</head>
 	<body>
@@ -9,12 +22,25 @@
 
 		<form method="post" action="add_check.php">
 		名前を入力してください。<br />
+>>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/add.php
 		<input type="text" name="name" style="width:100px"><br />
-		価格を入力してください。<br />
+		価格<br />
 		<input type="text" name="price" style="width:50px"><br />
+<<<<<<< HEAD:htdocs/org/create.php
+		説明・販売状況<br />
+		<!--<!input type="text" name="letter" style="width:200px"><br />-->
+		<input type="text" name="letter" style="width:200px"><br />
+		<!--画像-->
+		画像<br />
+		<input type="file" name="gazou" style="width:400px"><br />
+		食堂1/お弁当2<br />
+		<input type="radio" name="flag" value="1" checked="checked" />1<br>
+		<input type="radio" name="flag" value="2" />2<br>
+=======
+>>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/add.php
 		<br />
 		<input type="button" onclick="history.back()" value="戻る">
-		<input type="submit" value="確認">
+		<input type="submit" value="次へ">
 		</form>
 
 	</body>

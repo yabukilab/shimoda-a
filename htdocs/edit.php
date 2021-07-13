@@ -2,15 +2,19 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品修正</title>
+		<title>修正画面</title>
+		<h>管理者ページ<h><br /><br />
 	</head>
 	<body>
 		<?php
 			require_once '_database_conf.php';
 			require_once '_h.php';
 
+//			$_SESSION['code'] = "$pro_code";
+
 			session_cache_expire(30);// 有効期間30分
 			session_start();
+
 
 			try
 			{
@@ -30,16 +34,37 @@
 
 				if($rec==false)
 				{
-					print'商品がコードが正しくありません。';
-					print'<a href="index.php">戻る</a>';
+					print'商品入力が正しくありません。';
+					print'<a href="kanri.php">戻る</a>';
 					print '<br />';
 					exit();
 				}
 
-				$_SESSION['code'] = "$pro_code";
+				//$_SESSION['code'] = "$pro_code";
+				//print '<form method="post" action="create_done.php">';
+				//print '<input type="button" onclick="history.back()" value="戻る">';
+				//print '<input type="submit" value="登録">';
+				//print '</form>';
 
 				$pro_name = $rec['name'];
 				$pro_price = $rec['price'];
+<<<<<<< HEAD:htdocs/org/update.php
+				$pro_letter = $rec['letter'];
+				$pro_flag = $rec['flag'];
+//				$_SESSION["code"]
+
+				//画像
+
+				if($rec['gazou']=='')
+				{
+					$disp_gazou='';
+				}
+				else
+				{
+					$disp_gazou='<img src="./gazou/'.$rec['gazou'].'">';
+				}
+=======
+>>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/edit.php
 			}
 			catch(Exception $e)
 			{
@@ -48,19 +73,46 @@
 			}
 		?>
 
-		商品修正<br />
-		<br />
-		商品コード<br />
-		<?php print $pro_code; ?><br />
+		＜修正＞<br /><br />
+		修正したい項目を入力してください。<br /><br />
+		商品ID<br />
+		<?php print $pro_code;?>
+
+<!--		<form method="post" action="update_check.php" enctype="multipart/form-data">
+-->	
+		<?php 
+//			$_SESSION['code'] = "$pro_code";
+//  		session_start();
+//			// 有効期限30日
+//  		session_cache_expire(60 * 24 * 30);
+//    		$_SESSION["code"]
+		?>
 
 		<form method="post" action="edit_check.php">
 		商品名<br />
 		<input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br />
+
 		価格<br />
 		<input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br />
+<<<<<<< HEAD:htdocs/org/update.php
+		
+		説明・販売状況<br />
+		<input type="text" name="letter" style="width: 300px" value="<?php print $pro_letter; ?>"><br />
+
+		画像<br />
+		<?php print $disp_gazou; ?><br />
+		画像を選んでください。<br />
+		<input type="file" name="gazou" style="width:400px"><br />
+
+		食堂1/お弁当2<br />
+		<input type="radio" name="flag" value="1" checked="checked" />1<br>
+		<input type="radio" name="flag" value="2" />2<br>
+=======
+>>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/edit.php
 		<br />
+
 		<input type="button" onclick="history.back()" value="戻る">
-		<input type="submit" value="ＯＫ">
+		<input type="submit" value="次へ">
 		</form>
 
 	</body>
