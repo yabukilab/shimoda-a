@@ -14,15 +14,13 @@
 
 			$pro_name=$_POST['name'];
 			$pro_price=$_POST['price'];
-<<<<<<< HEAD:htdocs/org/create_check.php
 			$pro_letter=$_POST['letter'];
 			$pro_flag=$_POST['flag'];
 			//画像
 			$pro_gazou=$_FILES['gazou'];
 			//最大画像サイズ
 			$max_size=4*1024*1024;//4MB
-=======
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/add_check.php
+
 
 			print '＜新規登録＞<br/>';
 			print '以下の内容でよろしいでしょうか？<br/><br/>';
@@ -60,7 +58,7 @@
 				print  h($pro_letter);
 				print '<br />';
 			}
-<<<<<<< HEAD:htdocs/org/create_check.php
+
 //			if($pro_gazou== 0)
 //			{
 //				print '画像が選択されていません。<br />';
@@ -129,10 +127,9 @@
 			//登録ボタン表示
 //			if( $pro_name=='' || $pro_letter =='' || $pro_name=='' || $pro_price==0 || $pro_gazou['size']>$max_size)
 			if( $pro_name=='' || $pro_letter =='' || $pro_name=='' || $pro_price==0 || $pro_gazou['size']>$max_size || $pro_gazou['name']=='' || strpos($pro_gazou['name'],$img_type)===false || $pro_gazou['size']>$max_size)
-=======
+
 
 			if($pro_name=='' || $pro_price=='')
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/add_check.php
 			{
 				print '<form>';
 				print '<input type="button" onclick="history.back()" value="戻る">';
@@ -142,13 +139,10 @@
 			{
 				$_SESSION['name'] = "$pro_name";
 				$_SESSION['price'] = "$pro_price";
-<<<<<<< HEAD:htdocs/org/create_check.php
 				$_SESSION['letter'] = "$pro_letter";
 				$_SESSION['flag'] = "$pro_flag";
 				//画像
 				$_SESSION['gazou'] = $pro_gazou['name'];
-=======
->>>>>>> 4ea87e6ab11a93b117b7128a5a7270c1a0f8cba0:htdocs/add_check.php
 
 				print '<form method="post" action="add_done.php">';
 				print '<input type="button" onclick="history.back()" value="戻る">';
