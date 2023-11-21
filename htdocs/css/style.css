@@ -10,18 +10,15 @@ html {
     margin: 0 auto;
     position: relative;
   }
-.container_service .service_block{
-  display: flex;
-  justify-content: space-between;
-}
-.container_service .service_block{
-  display: flex;
-  justify-content: space-between;
-}
 @media only screen and (max-width: 768px) {
   .container {
       max-width: 100%;
   }
+}
+/* ------丸山さん担当------ */
+.container_service .service_block{
+  display: flex;
+  justify-content: space-between;
 }
 .container_service .service{
   width: 300px;
@@ -58,14 +55,24 @@ html {
   color: #79a1b1; /* テキスト色を白に変更 */
   border: 4px double #79a1b1; /* ボーダーの変更 */
 }
+@media only screen and (max-width: 768px) {
+  /* 画面縮小時変な改行が起きないように設定を追加しました */
+  .container_service .service  a{
+    font-size: 10px;
+    padding: 15px 15px 12px;
+  }
+  .container_service .service  a:hover {
+    font-size: 10px;
+    padding: 15px 15px 12px;
+    border: 3px double #79a1b1;
+  }
+}
   .flex {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
   }
-  
-  
   /* ヘッダー */
   header {
     padding: 27px 0;
@@ -203,7 +210,7 @@ html {
     .concept-img {margin-top: 30px;}
   }
     .column-a {
-      background-image: url(../images/ラーメン屋Top.jpg);
+      background-image: url(../images/tudanuma.night.jpg);
       background-position: center;
       background-size: cover;
       width: 90%;
@@ -219,7 +226,7 @@ html {
       border-radius: 20px;
     }
     .column-c {
-      background-image: url(../images/tudanumaeki.jpg);
+      background-image: url(../images/カフェ・喫茶店img.jpg);
       background-position: center;
       background-size: cover;
       width: 90%;
