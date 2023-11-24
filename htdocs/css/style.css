@@ -32,12 +32,12 @@ html {
 .container_service .service img{
   margin-bottom: 20px;
 }
-.container_service .service .ttl{
+.container_service .service .ttl{/*ttl*/
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 15px;
 }
-.container_service .service .explain{
+.container_service .service .explain{/*explain*/
   margin-bottom: 20px;
 }
 .container_service .service  a{
