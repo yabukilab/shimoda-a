@@ -33,12 +33,12 @@ html {
 .container_service .service img{
   margin-bottom: 20px;
 }
-.container_service .service .ttl{
+.container_service .service .ttl{/*ttl*/
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 15px;
 }
-.container_service .service .explain{
+.container_service .service .explain{/*explain*/
   margin-bottom: 20px;
 }
 .container_service .service  a{
@@ -287,8 +287,11 @@ html {
     font-weight: 700;
     margin-bottom: 24px;
   }
+  #information a{
+    color: rgb(46, 160, 230);
+  }
   #information a:hover{
-    color:rgba(0, 110, 255, 0.669);
+    color: #c81111
   }
   
   @media only screen and (max-width: 768px) {
