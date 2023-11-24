@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset='utf-8' />
-  <title>（実験用）</title>
-</head>
-
-<body>
- こんにちは
-</body>
-
-=======
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -36,7 +22,7 @@
 <body>
   
   <header>
-    <div class="container pop">
+    <div class="container flex pop">
       <a href="" class="logo">
         <span>津田沼information(実験用)</span>
       </a>
@@ -47,34 +33,58 @@
     
     <section id="hero" class="container">
       <div class="hero_inner">
-        <p class="pop text">Welcome to Tudanuma</p>
-        <h1>津田沼へようこそ</h1>
+        <a href="index.html" class="btn-square text">ホーム</a><!--classにtextを追加-->
+        <h1>スーパー　ゆーやくん</h1>
       </div>
     </section>
     
-    <section id="concept" class="container">
-      <div class="heading">Spot</div>
-      <h2 class="title pop">Concept</h2>
-      <h3>津田沼に引っ越した方に近場で
-        <br>便利なスポットをご紹介</h3>
-          <p class="text">
-            <br>
-            このサイトでは、津田沼で一人暮らしを始めた方に向けて、お店の情報や概要を記載しています。<br>
-            津田沼に引っ越したばかりだと、どんなお店があるかわかりませんよね。<br>
-            そんな方々に向けて津田沼の色々なお店の情報をまとめました。<br>
-            飲食店だけでなく娯楽施設なども紹介しているので、下の写真や店名などを見て、気になったものをぜひご覧ください！
-            
+    <section id="information" class="container">
+      <h2 class="title pop">information</h2>
+      <div class="information_inner flex">
+        <div class="column-40">
+          <img src="ここに写真を入れて" style="width:100%" alt="">
+        </div>
+        <div class="column-55">
+          <div class="heading">Naritake</div>
+          <h3>ラーメン屋　名前入れてね</h3>
+          <p class="text">ここに説明のテキストをぶち込んで
+            <br><a href= "お店のリンクを入れる">店の名前</a>
           </p>
-       
+        </div>
+      </div>
+      <div class="information_inner flex">
+        <div class="column-40">
+          <img src="写真を入れる" style="width:100%" alt="">
+        </div>
+        <div class="column-55">
+          <div class="heading">Torimero</div>
+          <h3>業務スーパー ミーナ津田沼店</h3>
+          <p class="text">お店の説明テキスト
+            <br><a href= "お店のリンク" >店の名前</a>
+          </p>
+        </div>
+      </div>
+      <div class="information_inner flex">
+        <div class="column-40">
+          <img src="写真入れる" style="width:100%" alt="">
+        </div>
+        <div class="column-55">
+          <div class="heading">Aburagumi</div>
+          <h3>ベルク フォルテ津田沼店</h3>
+          <p class="text">お店の説明テキスト
+            <br><a href= "店のリンク" >店名</a>
+          </p>
+        </div>
+      </div>
     </section>
-   
+    
     <section id="sevice" class="container">
       <div class="container_service">
         <h2 class="title pop">Service</h2>
         <div class="service_block">
           <div class="service">
             <div class="column-a"></div>
-            <div class="ttl">せきくんー</div>
+            <div class="ttl">せきくんー</div><!--ttlとexplainがわからん CSS内には存在しなかった-->
             <div class="explain">ここにテキストが入ります</div>
             <a href="seki.html">詳しくはこちら</a>
         </div>
@@ -107,6 +117,3 @@
   </footer>
   
 </body>
-
->>>>>>> f84f731cf0d468d429850f4a00714b416618b93c
-</html>
