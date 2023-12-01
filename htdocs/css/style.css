@@ -60,12 +60,12 @@ html {
 @media only screen and (max-width: 768px) {
   /* 画面縮小時変な改行が起きないように設定を追加しました */
   .container_service .service  a{
-    font-size: 6px;
-    padding: 15px 3px 12px;
+    font-size: 10px;
+    padding: 15px 15px 12px;
   }
   .container_service .service  a:hover {
-    font-size: 6px;
-    padding: 15px 3px 12px;
+    font-size: 10px;
+    padding: 15px 15px 12px;
     border: 3px double #79a1b1;
   }
 }
@@ -234,7 +234,7 @@ html {
       border-radius: 20px;
     }
     .column-b {
-      background-image: url(../images/paruko.webp);
+      background-image: url(../images/ラーメン屋Top.jpg);
       background-position: center;
       background-size: cover;
       width: 90%;
@@ -250,7 +250,7 @@ html {
       border-radius: 20px;
     }
     .column-d {
-      background-image: url(../images/tudamumaekimae.jpg);
+      background-image: url(../images/寿司img.jpg);
       background-position: center;
       background-size: cover;
       width: 90%;
