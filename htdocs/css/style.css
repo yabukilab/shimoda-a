@@ -341,3 +341,6 @@ html {
   color: #000000; /* テキスト色を白に変更 */
   border: 3px double #000000; /* ボーダーの変更 */
 }
+.deny{
+  color: #ddd!important;
+}
