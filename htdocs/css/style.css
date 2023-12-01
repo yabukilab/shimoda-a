@@ -60,7 +60,7 @@ html {
 @media only screen and (max-width: 768px) {
   /* 画面縮小時変な改行が起きないように設定を追加しました */
   .container_service .service  a{
-    font-size: 10px;
+    font-size: 6px;
     padding: 15px 3px 12px;
   }
   .container_service .service  a:hover {
