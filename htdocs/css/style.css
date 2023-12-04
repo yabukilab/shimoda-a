@@ -8,65 +8,11 @@ html {
     width: 90%;
     max-width: 1120px;
     margin: 0 auto;
-    position: relative;/* 相対配置に変更。親要素として起点となる場所を指定する */
+    position: relative;
   }
 @media only screen and (max-width: 768px) {
   .container {
       max-width: 100%;
-  }
-}
-/* ------丸山さん担当------ */
-.container_service .service_block{
-  display: flex;
-  /* コンテナにflexを指定し、子要素のレイアウトを変更可能に
-  初期値の設定で子要素を横並びに */
-  justify-content: space-between;/* 水平方向の配置を変更　両端に寄せつつ均等に配置 */
-}
-.container_service .service{
-  width: 300px;
-  text-align: center;
-}
-.container_service h2{
-  text-align: left;
-  margin-bottom: 20px;
-}
-.container_service .service img{
-  margin-bottom: 20px;
-}
-.container_service .service .ttl{/*ttl*/
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-.container_service .service .explain{/*explain*/
-  margin-bottom: 20px;
-}
-.container_service .service  a{
-  background: #79a1b1;
-  padding: 15px 20px 12px; /*枠の大きさ変更*/
-  text-decoration: none; /*テキストの装飾を初期化*/
-  /* 背景色とテキスト色以外のスタイルを追加 */
-  border: 2px solid #000000; /* ボーダーを設定 */
-  border-radius: 5px; /* 角を丸める */
-  font-size: 16px;
-  cursor: pointer; /*カーソルの形変更*/
-  color: #ffffff; /* テキスト色を設定 */
-}
-.container_service .service  a:hover {
-  background: #ffffff; /* マウスオーバー時の背景色を変更 */
-  color: #79a1b1; /* テキスト色を白に変更 */
-  border: 4px double #79a1b1; /* ボーダーの変更 */
-}
-@media only screen and (max-width: 768px) {
-  /* 画面縮小時変な改行が起きないように設定を追加しました */
-  .container_service .service  a{
-    font-size: 10px;
-    padding: 15px 15px 12px;
-  }
-  .container_service .service  a:hover {
-    font-size: 10px;
-    padding: 15px 15px 12px;
-    border: 3px double #79a1b1;
   }
 }
   .flex {
@@ -112,6 +58,9 @@ html {
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.04em;
+  }
+  .deny{
+    color: #ddd!important;
   }
   @media only screen and (max-width: 768px) {
     header .container {
@@ -168,7 +117,25 @@ html {
     .hero_inner p {font-size: 15px;}
     .hero_inner h1 {font-size: 17px;}
   }
-  
+
+  /* ボタンのスタイル */
+.btn-square {
+  padding: 0px 40px; /*枠の大きさ変更*/
+  text-decoration: none; /*テキストの装飾を初期化*/
+  /* 背景色とテキスト色以外のスタイルを追加 */
+  border: 3px solid #ffffff; /* ボーダーを設定 */
+  border-radius: 5px; /* 角を丸める */
+  font-size: 16px;
+  cursor: pointer; /*カーソルの形変更*/
+  color: #ffffff; /* テキスト色を設定 */
+  background: none; /* 背景を透明にする */
+}
+/* ボタンのマウスオーバー時のスタイル */
+.btn-square:hover {
+  background: #ffffff; /* マウスオーバー時の背景色を変更 */
+  color: #000000; /* テキスト色を白に変更 */
+  border: 3px double #000000; /* ボーダーの変更 */
+}
   
   
   #concept {
@@ -185,18 +152,8 @@ html {
     font-weight: 700;
     margin-bottom: 60px;
   }
-  .column-2 {
-    width: 48%;
-  }
   .text {
     line-height: 2;
-  }
-  .concept-img {
-    background-image: url(../images/tudanuma.night.jpg);
-    background-position: center;
-    background-size: cover;
-    height: 340px;
-    border-radius: 20px;
   }
   .heading {
     font-family: 'Kdam Thmor Pro', sans-serif;
@@ -223,7 +180,6 @@ html {
       font-size: 15px;
       line-height: 1.7;
     }
-    .concept-img {margin-top: 30px;}
   }
     .column-a {
       background-image: url(../images/tudanuma.night.jpg);
@@ -234,7 +190,7 @@ html {
       border-radius: 20px;
     }
     .column-b {
-      background-image: url(../images/paruko.webp);
+      background-image: url(../images/ラーメン屋Top.jpg);
       background-position: center;
       background-size: cover;
       width: 90%;
@@ -250,7 +206,7 @@ html {
       border-radius: 20px;
     }
     .column-d {
-      background-image: url(../images/tudamumaekimae.jpg);
+      background-image: url(../images/寿司img.jpg);
       background-position: center;
       background-size: cover;
       width: 90%;
@@ -312,6 +268,60 @@ html {
   #service {
     margin-bottom: 120px;
   }
+.container_service .service_block{
+  display: flex;
+  justify-content: space-between;
+}
+.container_service .service{
+  width: 300px;
+  text-align: center;
+}
+.container_service h2{
+  text-align: left;
+  margin-bottom: 20px;
+}
+.container_service .service img{
+  margin-bottom: 20px;
+}
+.container_service .service .ttl{
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.container_service .service .explain{
+  margin-bottom: 20px;
+}
+.container_service .service  a{
+  background: #79a1b1;
+  padding: 15px 20px 12px; /*枠の大きさ変更*/
+  text-decoration: none; /*テキストの装飾を初期化*/
+  /* 背景色とテキスト色以外のスタイルを追加 */
+  border: 2px solid #000000; /* ボーダーを設定 */
+  border-radius: 5px; /* 角を丸める */
+  font-size: 16px;
+  cursor: pointer; /*カーソルの形変更*/
+  color: #ffffff; /* テキスト色を設定 */
+}
+.container_service .service  a:hover {
+  background: #ffffff; /* マウスオーバー時の背景色を変更 */
+  color: #79a1b1; /* テキスト色を白に変更 */
+  border: 4px double #79a1b1; /* ボーダーの変更 */
+}
+@media only screen and (max-width: 768px) {
+  /* 画面縮小時変な改行が起きないように設定を追加しました */
+  .container_service .service  a{
+    font-size: 10px;
+    padding: 15px 15px 12px;
+  }
+  .container_service .service  a:hover {
+    font-size: 10px;
+    padding: 15px 15px 12px;
+    border: 3px double #79a1b1;
+  }
+}
+
+
+/* フッター */
   footer {
     text-align: center;
     margin: 90px 0;
@@ -322,22 +332,4 @@ html {
     color: #fff;
     font-size: 12px;
     padding: 7px 0px 3px;
-}
-/* ボタンのスタイル */
-.btn-square {
-  padding: 0px 40px; /*枠の大きさ変更*/
-  text-decoration: none; /*テキストの装飾を初期化*/
-  /* 背景色とテキスト色以外のスタイルを追加 */
-  border: 3px solid #ffffff; /* ボーダーを設定 */
-  border-radius: 5px; /* 角を丸める */
-  font-size: 16px;
-  cursor: pointer; /*カーソルの形変更*/
-  color: #ffffff; /* テキスト色を設定 */
-  background: none; /* 背景を透明にする */
-}
-/* ボタンのマウスオーバー時のスタイル */
-.btn-square:hover {
-  background: #ffffff; /* マウスオーバー時の背景色を変更 */
-  color: #000000; /* テキスト色を白に変更 */
-  border: 3px double #000000; /* ボーダーの変更 */
 }
