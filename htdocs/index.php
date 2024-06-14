@@ -6,7 +6,10 @@ $query = "SELECT * FROM boards";
 $result = $db->query($query);
 
 // 結果を配列に格納
-$boards = $result->fetchAll(PDO::FETCH_ASSOC);
+$boards = [];
+while ($board = $result->fetch(PDO::FETCH_ASSOC)) {
+    $boards[] = $board;
+}
 
 // 学部のカスタム順序を定義
 $faculty_order = ['工学部', '創造工学部', '先進工学部','情報変革科学部','未来変革科学部','社会システム科学部'];
@@ -16,7 +19,7 @@ usort($boards, function($a, $b) use ($faculty_order) {
     $pos_a = array_search($a['faculty'], $faculty_order);
     $pos_b = array_search($b['faculty'], $faculty_order);
 
-    if ($pos_a === $pos_a) {
+    if ($pos_a === $pos_b) {
         return strcmp($a['name'], $b['name']); // 同じ学部内では名前でソート
     }
     return $pos_a - $pos_b;
