@@ -1,9 +1,9 @@
 <?php
 // データベース接続情報
 $servername = "localhost";
-$username = "kazu";
-$password = "gamera";
-$database = "bbs";
+$username = "testuser";
+$password = "pass";
+$database = "mydb";
 
 // データベースへの接続
 $conn = new mysqli($servername, $username, $password, $database);
