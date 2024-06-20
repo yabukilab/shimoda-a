@@ -4,7 +4,7 @@ $board_id = $_GET['board_id'] ?? 1; // デフォルト値を設定
 $search_keyword = $_GET['search'] ?? ''; // 検索キーワードを取得
 
 $query = "SELECT thread_id, title, post_date FROM threads WHERE board_id = ? AND title LIKE ? ORDER BY post_date DESC";
-$stmt = $conn->prepare($query);
+$stmt = $db->prepare($query);
 $search_param = '%' . $search_keyword . '%';
 $stmt->bind_param("is", $board_id, $search_param);
 $stmt->execute();
