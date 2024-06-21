@@ -20,7 +20,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <header>
-        <h1>スレッド一覧</h1>
+        <h1>科目一覧</h1>
     </header>
     <div class="container">
         <!-- 検索フォームの追加 -->
@@ -29,7 +29,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="text" name="search" placeholder="スレッドタイトル検索" value="<?= htmlspecialchars($search_keyword) ?>">
             <button type="submit">検索</button>
         </form>
-        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">スレッド作成</a> <!-- スレッド作成リンクを追加 -->
+        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a> <!-- スレッド作成リンクを追加 -->
         <?php if (count($result) > 0): ?>
             <?php foreach ($result as $thread): ?>
                 <div>
@@ -42,7 +42,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
     </div>
     <footer>
-        <p>&copy; 2024 Bulletin Board</p>
+        <p>&copy; 2024 下田A班</p>
     </footer>
 </body>
 </html>
