@@ -9,7 +9,7 @@ if (isset($_POST['helpful_comment_id'])) {
     $comment_id = $_POST['helpful_comment_id'];
 
     // コメントの評価を更新
-    $stmt = $conn->prepare("UPDATE comments SET helpful_count = helpful_count + 1 WHERE id = ?");
+    $stmt = $db->prepare("UPDATE comments SET helpful_count = helpful_count + 1 WHERE id = ?");
     $stmt->bind_param("i", $comment_id);
     $stmt->execute();
 
@@ -133,7 +133,7 @@ $comment_result = $comment_stmt->get_result();
         </form>
     </div>
     <footer>
-        <p>&copy; 2024 Bulletin Board</p>
+        <p>&copy; 2024 下田A班</p>
     </footer>
 </body>
 </html>
