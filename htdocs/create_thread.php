@@ -7,9 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = $_POST['content'];
 
     // スレッドをデータベースに挿入するクエリ
-    $query = "INSERT INTO threads (board_id, title, content) VALUES (?, ?, ?)";
+    $query = "INSERT INTO threads (board_id, title, content) VALUES (:board_id, :title, :content)";
     $stmt = $db->prepare($query);
-    $stmt->bind_param('iss', $board_id, $title, $content);
+    $stmt->bindParam(':board_id', $board_id, PDO::PARAM_INT);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':content', $content, PDO::PARAM_STR);
     $stmt->execute();
 
     // スレッド作成後、リダイレクトする
