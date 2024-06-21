@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // スレッドをデータベースに挿入するクエリ
     $query = "INSERT INTO threads (board_id, title, content) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($query);
+    $stmt = $db->prepare($query);
     $stmt->bind_param('iss', $board_id, $title, $content);
     $stmt->execute();
 
