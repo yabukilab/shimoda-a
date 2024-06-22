@@ -99,7 +99,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- コメントがある場合、それを表示 -->
         <?php if (count($comments) > 0): ?>
-            <h3>コメント:</h3>
+            
             <ul>
                 <?php foreach ($comments as $comment): ?>
                     <li>
