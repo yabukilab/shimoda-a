@@ -99,11 +99,11 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- コメントがある場合、それを表示 -->
         <?php if (count($comments) > 0): ?>
-            
+
             <ul>
                 <?php foreach ($comments as $comment): ?>
                     <li>
-                        <strong><?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
+                        <?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
                         <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
                         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
                             <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
