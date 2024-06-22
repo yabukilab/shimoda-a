@@ -81,7 +81,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <header>
-        <h1><?= htmlspecialchars($thread['title'])-(htmlspecialchars($thread['content'])) ?></h1>
+        <h1><?= htmlspecialchars($thread['title'])-($thread['content']) ?></h1>
     </header>
     <div class="container">
         <p><?= nl2br(htmlspecialchars($thread['content'])) ?></p>
