@@ -84,7 +84,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
     <div class="container">
-        <p><?= nl2br(htmlspecialchars($thread['content'])) ?></p>
+        
 
         <!-- ソート順選択フォーム -->
         <form action="thread.php" method="get">
