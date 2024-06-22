@@ -1,8 +1,18 @@
 <?php
 include 'db.php';
-$board_id = $_GET['board_id'] ?? 1; // デフォルト値を設定
-$search_keyword = $_GET['search'] ?? ''; // 検索キーワードを取得
 
+// デフォルトのboard_idと検索キーワードを取得
+$board_id = $_GET['board_id'] ?? 1;
+$search_keyword = $_GET['search'] ?? '';
+
+// board_idに基づいて学科名を取得するクエリ
+$board_query = "SELECT name FROM boards WHERE board_id = :board_id";
+$board_stmt = $db->prepare($board_query);
+$board_stmt->bindParam(':board_id', $board_id, PDO::PARAM_INT);
+$board_stmt->execute();
+$board_name = $board_stmt->fetchColumn();
+
+// threadsテーブルからデータを取得するクエリ
 $query = "SELECT thread_id, title, post_date FROM threads WHERE board_id = :board_id AND title LIKE :search_keyword ORDER BY post_date DESC";
 $stmt = $db->prepare($query);
 $search_param = '%' . $search_keyword . '%';
@@ -15,12 +25,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>板ページ</title>
+    <title><?= htmlspecialchars($board_name) ?> - 科目一覧</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>科目一覧</h1>
+        <h1><?= htmlspecialchars($board_name) ?> - 科目一覧</h1>
     </header>
     <div class="container">
         <!-- 検索フォームの追加 -->
