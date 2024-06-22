@@ -10,17 +10,15 @@ if (isset($_POST['helpful_comment_id'])) {
 
     // コメントの評価を更新
     $stmt = $db->prepare("UPDATE comments SET helpful_count = helpful_count + 1 WHERE id = ?");
-    $stmt->bind_param("i", $comment_id);
-    $stmt->execute();
+    $stmt->execute([$comment_id]);
 
-    if ($stmt->affected_rows > 0) {
+    if ($stmt->rowCount() > 0) {
         // 評価追加後に同じスレッドページにリダイレクト
         header("Location: thread.php?thread_id=$thread_id");
         exit();
     } else {
         echo "コメントの評価に失敗しました。";
     }
-    $stmt->close();
 }
 
 // コメント投稿フォームの処理
@@ -30,25 +28,21 @@ if (isset($_POST['submit_comment'])) {
 
     // コメントをデータベースに挿入
     $stmt = $db->prepare("INSERT INTO comments (thread_id, name, content) VALUES (?, ?, ?)");
-    $stmt->bind_param("iss", $thread_id, $name, $content);
-    $stmt->execute();
+    $stmt->execute([$thread_id, $name, $content]);
 
-    if ($stmt->affected_rows > 0) {
+    if ($stmt->rowCount() > 0) {
         // コメント追加後に同じスレッドページにリダイレクト
         header("Location: thread.php?thread_id=$thread_id");
         exit();
     } else {
         echo "コメントの追加に失敗しました。";
     }
-    $stmt->close();
 }
 
 // スレッド情報を取得
 $stmt = $db->prepare("SELECT title, content FROM threads WHERE thread_id = ?");
-$stmt->bind_param("i", $thread_id);
-$stmt->execute();
-$thread = $stmt->get_result()->fetch_assoc();
-$stmt->close();
+$stmt->execute([$thread_id]);
+$thread = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$thread) {
     echo "指定されたスレッドは存在しません。";
@@ -74,9 +68,8 @@ switch ($sort_order) {
 
 // コメントをデータベースから取得
 $comment_stmt = $db->prepare("SELECT id, name, content, created_at, helpful_count FROM comments WHERE thread_id = ? ORDER BY $order_by");
-$comment_stmt->bind_param("i", $thread_id);
-$comment_stmt->execute();
-$comment_result = $comment_stmt->get_result();
+$comment_stmt->execute([$thread_id]);
+$comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -105,10 +98,10 @@ $comment_result = $comment_stmt->get_result();
         </form>
 
         <!-- コメントがある場合、それを表示 -->
-        <?php if ($comment_result->num_rows > 0): ?>
+        <?php if (count($comments) > 0): ?>
             <h3>コメント:</h3>
             <ul>
-                <?php while ($comment = $comment_result->fetch_assoc()): ?>
+                <?php foreach ($comments as $comment): ?>
                     <li>
                         <strong><?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
                         <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
@@ -117,12 +110,11 @@ $comment_result = $comment_stmt->get_result();
                             <input type="submit" value="役に立った (<?= htmlspecialchars($comment['helpful_count']) ?>)">
                         </form>
                     </li>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </ul>
         <?php else: ?>
             <p>コメントはまだありません。</p>
         <?php endif; ?>
-        <?php $comment_stmt->close(); ?>
 
         <!-- コメント投稿フォーム -->
         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
