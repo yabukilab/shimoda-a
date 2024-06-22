@@ -64,7 +64,7 @@ $current_faculty = null;
         ?>
     </div>
     <footer>
-        <p>&copy; 2024 Bulletin Board</p>
+        <p> 2024 下田A班</p>
     </footer>
 </body>
 </html>
