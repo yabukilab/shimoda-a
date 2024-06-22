@@ -37,7 +37,7 @@ $current_faculty = null;
 </head>
 <body>
     <header>
-        <h1>掲示板リスト</h1>
+        <h1>授業ナビ@CIT</h1>
     </header>
     <div class="container">
         <?php foreach ($boards as $board): ?>
