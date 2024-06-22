@@ -29,7 +29,7 @@ if (isset($_POST['submit_comment'])) {
     $content = $_POST['comment_content'];
 
     // コメントをデータベースに挿入
-    $stmt = $conn->prepare("INSERT INTO comments (thread_id, name, content) VALUES (?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO comments (thread_id, name, content) VALUES (?, ?, ?)");
     $stmt->bind_param("iss", $thread_id, $name, $content);
     $stmt->execute();
 
@@ -44,7 +44,7 @@ if (isset($_POST['submit_comment'])) {
 }
 
 // スレッド情報を取得
-$stmt = $conn->prepare("SELECT title, content FROM threads WHERE thread_id = ?");
+$stmt = $db->prepare("SELECT title, content FROM threads WHERE thread_id = ?");
 $stmt->bind_param("i", $thread_id);
 $stmt->execute();
 $thread = $stmt->get_result()->fetch_assoc();
@@ -73,7 +73,7 @@ switch ($sort_order) {
 }
 
 // コメントをデータベースから取得
-$comment_stmt = $conn->prepare("SELECT id, name, content, created_at, helpful_count FROM comments WHERE thread_id = ? ORDER BY $order_by");
+$comment_stmt = $db->prepare("SELECT id, name, content, created_at, helpful_count FROM comments WHERE thread_id = ? ORDER BY $order_by");
 $comment_stmt->bind_param("i", $thread_id);
 $comment_stmt->execute();
 $comment_result = $comment_stmt->get_result();
