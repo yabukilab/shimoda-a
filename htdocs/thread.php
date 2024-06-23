@@ -23,7 +23,8 @@ if (isset($_POST['helpful_comment_id'])) {
 
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
-    $name = trim($_POST['name']) !== '' ? $_POST['name'] : '名無しの千葉工大生';
+    // 名前を固定で設定
+    $name = '名無しの千葉工大生';
     $content = $_POST['comment_content'];
 
     // コメントをデータベースに挿入
@@ -84,8 +85,6 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
     <div class="container">
-        
-
         <!-- ソート順選択フォーム -->
         <form action="thread.php" method="get">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
@@ -99,7 +98,6 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- コメントがある場合、それを表示 -->
         <?php if (count($comments) > 0): ?>
-
             <ul>
                 <?php foreach ($comments as $comment): ?>
                     <li>
@@ -119,7 +117,6 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- コメント投稿フォーム -->
         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
-            <input type="text" name="name" placeholder="お名前"><br>
             <textarea name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
             <input type="submit" name="submit_comment" value="コメントを追加">
         </form>
