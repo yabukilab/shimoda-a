@@ -21,6 +21,23 @@ if (isset($_POST['helpful_comment_id'])) {
     }
 }
 
+// コメントの通報処理
+if (isset($_POST['report_comment_id'])) {
+    $comment_id = $_POST['report_comment_id'];
+
+    // コメントの通報回数を更新
+    $stmt = $db->prepare("UPDATE comments SET report_count = report_count + 1 WHERE id = ?");
+    $stmt->execute([$comment_id]);
+
+    if ($stmt->rowCount() > 0) {
+        // 通報追加後に同じスレッドページにリダイレクト
+        header("Location: thread.php?thread_id=$thread_id");
+        exit();
+    } else {
+        echo "コメントの通報に失敗しました。";
+    }
+}
+
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
     // 名前を固定で設定
@@ -68,7 +85,7 @@ switch ($sort_order) {
 }
 
 // コメントをデータベースから取得
-$comment_stmt = $db->prepare("SELECT id, name, content, created_at, helpful_count FROM comments WHERE thread_id = ? ORDER BY $order_by");
+$comment_stmt = $db->prepare("SELECT id, name, content, created_at, helpful_count, report_count FROM comments WHERE thread_id = ? ORDER BY $order_by");
 $comment_stmt->execute([$thread_id]);
 $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -101,12 +118,20 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
             <ul>
                 <?php foreach ($comments as $comment): ?>
                     <li>
-                        <?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
-                        <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
-                        <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
-                            <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
-                            <input type="submit" value="役に立った (<?= htmlspecialchars($comment['helpful_count']) ?>)">
-                        </form>
+                        <?php if ($comment['report_count'] >= 5): ?>
+                            このコメントは削除されました。
+                        <?php else: ?>
+                            <?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
+                            <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
+                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
+                                <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
+                                <input type="submit" value="役に立った (<?= htmlspecialchars($comment['helpful_count']) ?>)">
+                            </form>
+                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
+                                <input type="hidden" name="report_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
+                                <input type="submit" value="通報する (<?= htmlspecialchars($comment['report_count']) ?>)">
+                            </form>
+                        <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -114,15 +139,4 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>コメントはまだありません。</p>
         <?php endif; ?>
 
-        <!-- コメント投稿フォーム -->
-        <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
-            <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
-            <textarea name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
-            <input type="submit" name="submit_comment" value="コメントを追加">
-        </form>
-    </div>
-    <footer>
-        <p>&copy; 2024 下田A班</p>
-    </footer>
-</body>
-</html>
+        <!-- コメント投稿
