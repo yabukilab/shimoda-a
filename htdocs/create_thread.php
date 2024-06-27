@@ -37,11 +37,11 @@ $board_id = $_GET['board_id'] ?? 1;
         <form action="create_thread.php" method="post">
             <input type="hidden" name="board_id" value="<?= htmlspecialchars($board_id) ?>">
             <div>
-                <label for="title">タイトル:</label>
+                <label for="title">科目名:</label>
                 <input type="text" id="title" name="title" required>
             </div>
             <div>
-                <label for="content">内容:</label>
+                <label for="content">教授名:</label>
                 <input type="text" id="content" name="content" required>
             </div>
             <div>
