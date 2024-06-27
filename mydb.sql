@@ -1,194 +1,54 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
--- ホスト: 127.0.0.1
--- 生成日時: 2024-06-27 06:01:15
--- サーバのバージョン： 10.4.32-MariaDB
--- PHP のバージョン: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: mydb
+-- ------------------------------------------------------
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- データベース: `bbs`
+-- Table structure for table `productinfo`
 --
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `productinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `productinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `productname` varchar(30) NOT NULL,
+  `price` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `imgfile` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- テーブルの構造 `boards`
+-- Dumping data for table `productinfo`
 --
 
-CREATE TABLE `boards` (
-  `board_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `faculty` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+LOCK TABLES `productinfo` WRITE;
+/*!40000 ALTER TABLE `productinfo` DISABLE KEYS */;
+INSERT INTO `productinfo` VALUES (1,'イヤホン',1500,100,'product6.png'),(2,'モバイルバッテリ',3980,10,NULL),(3,'USB-TypeC接続ケーブル',800,50,NULL);
+/*!40000 ALTER TABLE `productinfo` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- テーブルのデータのダンプ `boards`
---
-
-INSERT INTO `boards` (`board_id`, `name`, `description`, `faculty`) VALUES
-(22, '機械工学科', NULL, '工学部'),
-(23, '先端材料工学科', NULL, '工学部'),
-(24, '電気電子工学科', NULL, '工学部'),
-(25, '情報通信システム工学科', NULL, '工学部'),
-(26, '応用科学科', NULL, '工学部'),
-(27, '機械電子創成工学科', NULL, '工学部'),
-(28, '建築学科', NULL, '創造工学部'),
-(29, 'デザイン科学学科', NULL, '創造工学部'),
-(30, '都市環境工学科', NULL, '創造工学部'),
-(31, '未来ロボティクス学科', NULL, '先進工学部'),
-(32, '生命学科', NULL, '先進工学部'),
-(33, '知能メディア工学科', NULL, '先進工学部'),
-(34, '情報工学科', NULL, '情報変革科学部'),
-(35, '認知情報科学科', NULL, '情報変革科学部'),
-(36, '高度応用情報科学科', NULL, '情報変革科学部'),
-(37, '情報工学科', NULL, '情報科学部'),
-(38, '情報ネットワーク学科', NULL, '情報科学部'),
-(39, 'デジタル変革科学科', NULL, '未来変革科学部'),
-(40, '経営デザイン科学科', NULL, '未来変革科学部'),
-(41, '経営情報科学科', NULL, '社会システム科学部'),
-(42, 'プロジェクトマネジメント学科', NULL, '社会システム科学部'),
-(43, '金融・経営リスク科学科', NULL, '社会システム科学部');
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `comments`
---
-
-CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `thread_id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT '名無しの千葉工大生',
-  `content` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `helpful_count` int(11) DEFAULT 0,
-  `report_count` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- テーブルのデータのダンプ `comments`
---
-
-INSERT INTO `comments` (`id`, `thread_id`, `name`, `content`, `created_at`, `helpful_count`, `report_count`) VALUES
-(36, 18, '名無しの千葉工大生', '囚人', '2024-05-09 03:25:53', 0, 0),
-(37, 18, 'おねがい', 'ああ', '2024-05-09 03:26:05', 0, 0),
-(38, 18, 'おねがい', 'ああ', '2024-05-09 03:26:09', 0, 0),
-(39, 18, '名無しの千葉工大生', '囚人', '2024-05-09 03:26:15', 0, 0),
-(40, 18, 'jii', 'nk', '2024-05-10 03:15:26', 0, 0),
-(41, 20, 'fsdf', 'sdfsdf', '2024-05-10 05:32:25', 0, 0),
-(42, 22, 'おねがい', 'aaaaaaaaaaaaaaaaaaa', '2024-05-10 07:12:38', 0, 0),
-(43, 24, 'dsd', 'dfsa', '2024-05-17 05:53:36', 25, 0),
-(44, 24, '名無しの千葉工大生', 'ちゅき', '2024-05-17 06:02:09', 0, 0),
-(45, 24, '名無しの千葉工大生', 'ちゅき', '2024-05-17 06:02:16', 0, 0),
-(46, 24, '名無しの千葉工大生', 'いっぱいちゅき', '2024-05-17 06:02:29', 0, 0),
-(47, 23, '名無しの千葉工大生', '革命', '2024-05-23 05:19:26', 0, 0),
-(48, 23, '名無しの千葉工大生', '運命', '2024-05-23 05:19:30', 0, 0),
-(49, 30, 'しね', 'しね', '2024-06-07 20:30:08', 0, 0),
-(50, 29, 'ewq', 'eq', '2024-06-07 20:36:21', 0, 0),
-(51, 28, 'ewq', 'qew', '2024-06-07 20:36:30', 8, 0),
-(52, 32, 'a', 'a', '2024-06-20 05:25:49', 0, 0),
-(53, 33, 'dfs', 'afs', '2024-06-20 05:28:02', 5, 0);
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `threads`
---
-
-CREATE TABLE `threads` (
-  `thread_id` int(11) NOT NULL,
-  `board_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `content` text NOT NULL,
-  `user_code` varchar(255) DEFAULT NULL,
-  `post_date` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- テーブルのデータのダンプ `threads`
---
-
-INSERT INTO `threads` (`thread_id`, `board_id`, `title`, `content`, `user_code`, `post_date`) VALUES
-(27, 25, 'ぱぱ', 'あか', NULL, '2024-06-07 15:20:49'),
-(28, 26, 'ｆｓ', 'ｆｓ', NULL, '2024-06-08 05:20:21'),
-(29, 26, 'れｗ', 'うぇｒ', NULL, '2024-06-08 05:20:46'),
-(30, 36, 'えｒｗ', 'れｗ', NULL, '2024-06-08 05:25:33'),
-(31, 42, 'ewq', 'eq', NULL, '2024-06-08 05:37:45'),
-(32, 23, 'a', 'a', NULL, '2024-06-20 14:25:41'),
-(33, 23, 'ff', 'ff', NULL, '2024-06-20 14:27:57'),
-(35, 23, 'tiki', 'syo', NULL, '2024-06-21 15:44:17'),
-(36, 23, 'pya', 'pya', NULL, '2024-06-21 15:55:40'),
-(37, 23, 'a', 'a', NULL, '2024-06-21 16:08:45');
-
---
--- ダンプしたテーブルのインデックス
---
-
---
--- テーブルのインデックス `boards`
---
-ALTER TABLE `boards`
-  ADD PRIMARY KEY (`board_id`);
-
---
--- テーブルのインデックス `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
-
---
--- テーブルのインデックス `threads`
---
-ALTER TABLE `threads`
-  ADD PRIMARY KEY (`thread_id`),
-  ADD KEY `board_id` (`board_id`);
-
---
--- ダンプしたテーブルの AUTO_INCREMENT
---
-
---
--- テーブルの AUTO_INCREMENT `boards`
---
-ALTER TABLE `boards`
-  MODIFY `board_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- テーブルの AUTO_INCREMENT `comments`
---
-ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- テーブルの AUTO_INCREMENT `threads`
---
-ALTER TABLE `threads`
-  MODIFY `thread_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- ダンプしたテーブルの制約
---
-
---
--- テーブルの制約 `threads`
---
-ALTER TABLE `threads`
-  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`board_id`) REFERENCES `boards` (`board_id`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-06-27 13:16:21
