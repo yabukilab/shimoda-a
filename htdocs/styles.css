@@ -82,6 +82,7 @@ footer {
 
 .rules-box {
     border: 1px solid #ccc; /* ボックスの境界線 */
+    width: 900px;
     border-radius: 4px; /* ボックスの角を丸くする */
     padding: 10px; /* ボックス内のパディング */
     margin-top: 20px; /* ボックスの上部の余白 */
