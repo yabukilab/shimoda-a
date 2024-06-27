@@ -48,9 +48,17 @@ $board_id = $_GET['board_id'] ?? 1;
                 <button type="submit">作成</button>
             </div>
         </form>
+        <div class="rules-box">
+            <p>科目を追加する際のルール:</p>
+            <ul class="rules">
+                <li>教授名には旧字体ではなく新字体を使用してください</li>
+                <li>既に科目が登録されていないことを確認してください</li>
+                <li>実在する科目を登録してください</li>
+            </ul>
+        </div>
     </div>
     <footer>
-        <p>&copy; 2024 Bulletin Board</p>
+        <p>&copy; 2024 下田A班</p>
     </footer>
 </body>
 </html>
