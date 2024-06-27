@@ -72,6 +72,4 @@ footer {
 #large-textbox {
     width: 500px;  /* 幅を調整 */
     height: 150px; /* 高さを調整 */
-    padding: 10px; /* パディングを追加して見た目を良くする */
-    box-sizing: border-box; /* パディングとボーダーを要素の全体の幅と高さに含める */
 }
