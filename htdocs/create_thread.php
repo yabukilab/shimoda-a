@@ -42,7 +42,7 @@ $board_id = $_GET['board_id'] ?? 1;
             </div>
             <div>
                 <label for="content">内容:</label>
-                <textarea id="content" name="content" required></textarea>
+                <tinput type="text" id="content" name="content" required>
             </div>
             <div>
                 <button type="submit">作成</button>
