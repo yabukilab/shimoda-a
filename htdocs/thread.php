@@ -145,12 +145,14 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
             <textarea id="large-textbox" name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
             <input type="submit" name="submit_comment" value="コメントを追加">
         </form>
-        <p>コメントを追加する際のルール:</p>
-        <ul class="rules">
-            <li>他人を尊重し、攻撃的な言葉や不適切な内容を避けてください。</li>
-            <li>スパムや宣伝行為を行わないでください。</li>
-            <li>プライバシーを尊重し、個人情報を公開しないでください。</li>
-        </ul>
+        <div class="rules-box">
+            <p>コメントを追加する際のルール:</p>
+            <ul class="rules">
+                <li>他人を尊重し、攻撃的な言葉や不適切な内容を避けてください。</li>
+                <li>スパムや宣伝行為を行わないでください。</li>
+                <li>プライバシーを尊重し、個人情報を公開しないでください。</li>
+            </ul>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 下田A班</p>

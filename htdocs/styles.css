@@ -79,3 +79,11 @@ footer {
     padding-left: 20px;
     list-style-type: disc;
 }
+
+.rules-box {
+    border: 1px solid #ccc; /* ボックスの境界線 */
+    border-radius: 4px; /* ボックスの角を丸くする */
+    padding: 10px; /* ボックス内のパディング */
+    margin-top: 20px; /* ボックスの上部の余白 */
+    background-color: #f9f9f9; /* 背景色を薄いグレーにする */
+}
