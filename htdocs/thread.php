@@ -142,4 +142,12 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- コメント投稿フォーム -->
         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
-            <textarea name
+            <textarea name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
+            <input type="submit" name="submit_comment" value="コメントを追加">
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 下田A班</p>
+    </footer>
+</body>
+</html>
