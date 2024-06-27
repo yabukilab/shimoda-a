@@ -68,3 +68,13 @@ footer {
     margin-top: auto;
     width: 100%;
 }
+
+#large-textbox {
+    width: 500px;  /* 幅を調整 */
+    height: 150px; /* 高さを調整 */
+    font-size: 16px; /* フォントサイズを調整 */
+    padding: 10px; /* パディングを追加して見た目を良くする */
+    border: 1px solid #ccc; /* ボーダーを追加 */
+    border-radius: 4px; /* 任意: 角を丸くする */
+    box-sizing: border-box; /* パディングとボーダーを要素の全体の幅と高さに含める */
+}
