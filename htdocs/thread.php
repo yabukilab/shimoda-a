@@ -139,4 +139,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>コメントはまだありません。</p>
         <?php endif; ?>
 
-        <!-- コメント投稿
+        <!-- コメント投稿フォーム -->
+        <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
+            <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
+            <textarea name
