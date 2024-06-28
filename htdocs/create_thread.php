@@ -31,7 +31,7 @@ $board_id = $_GET['board_id'] ?? 1;
 </head>
 <body>
     <header>
-        <h1>新しいスレッドを作成</h1>
+        <h1>新しい科目を作成</h1>
     </header>
     <div class="container">
         <form action="create_thread.php" method="post">
