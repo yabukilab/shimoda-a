@@ -40,7 +40,7 @@ if (isset($_POST['report_comment_id'])) {
 
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
-    // 名前を固定で設定
+    
     $name = '名無しの千葉工大生';
     $content = $_POST['comment_content'];
 
