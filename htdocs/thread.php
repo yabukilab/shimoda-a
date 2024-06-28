@@ -40,12 +40,13 @@ if (isset($_POST['report_comment_id'])) {
 
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
-    // 名前を固定で設定
-    $name = '名無しの千葉工大生';
+    // あれする
+    $name = trim($_POST['name']) !== '' ? $_POST['name'] : '名無しの千葉工大生';
     $content = $_POST['comment_content'];
 
     // コメントをデータベースに挿入
     $stmt = $db->prepare("INSERT INTO comments (thread_id, name, content) VALUES (?, ?, ?)");
+    $stmt->bind_param("iss", $thread_id, $name, $content);
     $stmt->execute([$thread_id, $name, $content]);
 
     if ($stmt->rowCount() > 0) {
