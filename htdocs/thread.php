@@ -46,7 +46,6 @@ if (isset($_POST['submit_comment'])) {
 
     // コメントをデータベースに挿入
     $stmt = $db->prepare("INSERT INTO comments (thread_id, name, content) VALUES (?, ?, ?)");
-    $stmt->bind_param("iss", $thread_id, $name, $content);
     $stmt->execute([$thread_id, $name, $content]);
 
     if ($stmt->rowCount() > 0) {
@@ -143,6 +142,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- コメント投稿フォーム -->
         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
+            <input type="text" name="name" placeholder="お名前"><br>
             <textarea id="large-textbox" name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
             <input type="submit" name="submit_comment" value="コメントを追加">
         </form>
