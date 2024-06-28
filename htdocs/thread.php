@@ -41,7 +41,7 @@ if (isset($_POST['report_comment_id'])) {
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
     
-    $name = '名無しの千葉工大生';
+    $name = trim($_POST['name']) !== '' ? $_POST['name'] : '名無しの千葉工大生';
     $content = $_POST['comment_content'];
 
     // コメントをデータベースに挿入
