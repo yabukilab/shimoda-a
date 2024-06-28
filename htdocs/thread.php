@@ -70,7 +70,7 @@ if (!$thread) {
 // ソート順を取得（デフォルトは古い順）
 $sort_order = $_GET['sort_order'] ?? 'oldest';
 
-// ソート順に基づいてSQLクエリを構築
+// ソート順に基づいてSQLクエリを構築a
 switch ($sort_order) {
     case 'newest':
         $order_by = "created_at DESC";
