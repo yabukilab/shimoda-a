@@ -20,7 +20,7 @@ usort($boards, function($a, $b) use ($faculty_order) {
     $pos_b = array_search($b['faculty'], $faculty_order);
 
     if ($pos_a === $pos_b) {
-        return strcmp($a['name'], $b['name']); // 同じ学部内では名前でソート
+        return strcmp($a['name'], $b['name']); // 同じ学部内では名前でソートする
     }
     return $pos_a - $pos_b;
 });
