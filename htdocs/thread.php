@@ -40,7 +40,7 @@ if (isset($_POST['report_comment_id'])) {
 
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
-    // 名前を固定で設定
+    
     $name = '名無しの千葉工大生';
     $content = $_POST['comment_content'];
 
@@ -129,7 +129,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
                             </form>
                             <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
                                 <input type="hidden" name="report_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
-                                <input type="submit" value="通報する (<?= htmlspecialchars($comment['report_count']) ?>)">
+                                <!--<input type="submit" value="通報する )">-->
                             </form>
                         <?php endif; ?>
                     </li>
