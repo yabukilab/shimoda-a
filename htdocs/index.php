@@ -14,7 +14,7 @@ while ($board = $result->fetch(PDO::FETCH_ASSOC)) {
 // 学部のカスタム順序を定義
 $faculty_order = ['工学部', '創造工学部', '先進工学部','情報変革科学部','未来変革科学部','社会システム科学部'];
 
-// カスタム順序に基づいてソート
+// カスタム順序に基づいてソートする
 usort($boards, function($a, $b) use ($faculty_order) {
     $pos_a = array_search($a['faculty'], $faculty_order);
     $pos_b = array_search($b['faculty'], $faculty_order);

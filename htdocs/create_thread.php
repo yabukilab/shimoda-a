@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':content', $content, PDO::PARAM_STR);
     $stmt->execute();
 
-    // スレッド作成後にリダイレクトする
+    // スレッド作成後にリダイレクト
     header('Location: board.php?board_id=' . $board_id);
     exit();
 }
