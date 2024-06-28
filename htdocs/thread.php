@@ -40,8 +40,8 @@ if (isset($_POST['report_comment_id'])) {
 
 // コメント投稿フォームの処理
 if (isset($_POST['submit_comment'])) {
-    // あれする
-    $name = trim($_POST['name']) !== '' ? $_POST['name'] : '名無しの千葉工大生';
+    
+    $name = '名無しの千葉工大生';
     $content = $_POST['comment_content'];
 
     // コメントをデータベースに挿入
@@ -70,7 +70,7 @@ if (!$thread) {
 // ソート順を取得（デフォルトは古い順）
 $sort_order = $_GET['sort_order'] ?? 'oldest';
 
-// ソート順に基づいてSQLクエリを構築
+// ソート順に基づいてSQLクエリを構築a
 switch ($sort_order) {
     case 'newest':
         $order_by = "created_at DESC";
@@ -142,7 +142,6 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- コメント投稿フォーム -->
         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
-            <input type="text" name="name" placeholder="お名前"><br>
             <textarea id="large-textbox" name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
             <input type="submit" name="submit_comment" value="コメントを追加">
         </form>
