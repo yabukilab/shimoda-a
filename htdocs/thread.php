@@ -129,7 +129,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
                             </form>
                             <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
                                 <input type="hidden" name="report_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
-                                <input type="submit" value="通報する )">
+                                <input type="submit" value="通報する ">
                             </form>
                         <?php endif; ?>
                     </li>
