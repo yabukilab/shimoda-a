@@ -120,7 +120,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <header>
-    <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
+    <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1><br>
         <div class="nav-container">
             <a href="link1.html">リンク1</a>
             <a href="link2.html">リンク2</a>
