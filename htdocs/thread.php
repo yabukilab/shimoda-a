@@ -90,7 +90,7 @@ $comment_stmt->execute([$thread_id]);
 $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
