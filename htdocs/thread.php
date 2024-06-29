@@ -90,16 +90,43 @@ $comment_stmt->execute([$thread_id]);
 $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($thread['title']) ?></title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* 追加されたCSSスタイル */
+        .nav-container {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #555;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-container a:hover {
+            background-color: #777;
+        }
+    </style>
 </head>
 <body>
     <header>
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
+        <div class="nav-container">
+            <a href="link1.html">リンク1</a>
+            <a href="link2.html">リンク2</a>
+            <a href="link3.html">リンク3</a>
+            <a href="link4.html">リンク4</a>
+        </div>
     </header>
     <div class="container">
         <!-- ソート順選択フォーム -->
