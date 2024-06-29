@@ -99,17 +99,9 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <header>
-        <h1><?= htmlspecialchars($thread['title']) ?></h1>
-        <nav class="nav-container">
-            <a href="link1.html">リンク1</a>
-            <a href="link2.html">リンク2</a>
-            <a href="link3.html">リンク3</a>
-            <a href="link4.html">リンク4</a>
-        </nav>
+    <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
     <div class="container">
-        <p><?= nl2br(htmlspecialchars($thread['content'])) ?></p>
-
         <!-- ソート順選択フォーム -->
         <form action="thread.php" method="get">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
@@ -122,35 +114,49 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
         </form>
 
         <!-- コメントがある場合、それを表示 -->
-        <?php if ($comment_result->num_rows > 0): ?>
-            <h3>コメント:</h3>
+        <?php if (count($comments) > 0): ?>
             <ul>
-                <?php while ($comment = $comment_result->fetch_assoc()): ?>
+                <?php foreach ($comments as $comment): ?>
                     <li>
-                        <strong><?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
-                        <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
-                        <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
-                            <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
-                            <input type="submit" value="役に立った (<?= htmlspecialchars($comment['helpful_count']) ?>)">
-                        </form>
+                        <?php if ($comment['report_count'] >= 5): ?>
+                            このコメントは削除されました。
+                        <?php else: ?>
+                            <?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
+                            <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
+                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
+                                <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
+                                <input type="submit" value="役に立った (<?= htmlspecialchars($comment['helpful_count']) ?>)">
+                            </form>
+                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
+                                <input type="hidden" name="report_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
+                                <input type="submit" value="通報する ">
+                            </form>
+                        <?php endif; ?>
                     </li>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </ul>
         <?php else: ?>
             <p>コメントはまだありません。</p>
         <?php endif; ?>
-        <?php $comment_stmt->close(); ?>
 
         <!-- コメント投稿フォーム -->
         <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
             <input type="text" name="name" placeholder="お名前"><br>
-            <textarea name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
+            <textarea id="large-textbox" name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
             <input type="submit" name="submit_comment" value="コメントを追加">
         </form>
+        <div class="rules-box">
+            <p>コメントを追加する際のルール:</p>
+            <ul class="rules">
+                <li>他人を尊重し、攻撃的な言葉や不適切な内容を避けてください。</li>
+                <li>スパムや宣伝行為を行わないでください。</li>
+                <li>プライバシーを尊重し、個人情報を公開しないでください。</li>
+            </ul>
+        </div>
     </div>
     <footer>
-        <p>&copy; 2024 Bulletin Board</p>
+        <p>&copy; 2024 下田A班</p>
     </footer>
 </body>
 </html>
