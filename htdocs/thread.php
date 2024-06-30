@@ -3,6 +3,7 @@ include 'db.php';
 
 // スレッドIDを取得
 $thread_id = $_GET['thread_id'] ?? 0;
+$board_id = $_GET['board_id'] ?? 1;
 
 // コメントの評価処理
 if (isset($_POST['helpful_comment_id'])) {
@@ -104,7 +105,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="home">
             <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
             <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
-         <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
+            <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
         </div>
     <div class="container">
         <!-- ソート順選択フォーム -->
