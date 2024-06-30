@@ -121,3 +121,12 @@ footer {
     background-color: #eaeaea;
     border-color: #bbb;
 }
+
+.home a {
+    padding: 10px 15px; /* ボタンのパディングを少し減らす */
+    margin-right: 5px; /* ボタン間のマージンを減らす */
+}
+
+.home {
+    padding: 10px 5px; /* 全体のパディングを減らす */
+}
