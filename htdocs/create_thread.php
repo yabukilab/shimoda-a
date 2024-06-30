@@ -36,7 +36,7 @@ $board_id = $_GET['board_id'] ?? 1;
     <div class="home">
             <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
             <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
-        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
+            <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
         </div>
     <div class="container">
         <form action="create_thread.php" method="post">
