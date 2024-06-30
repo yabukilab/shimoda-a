@@ -33,6 +33,11 @@ $board_id = $_GET['board_id'] ?? 1;
     <header>
         <h1>新しい科目を作成</h1>
     </header>
+    <div class="home">
+            <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
+            <a href="board.php?board_id=<?= htmlspecialchars($board['board_id']) ?>">科目一覧</a>
+            <a href="link3.html">科目作成</a>
+        </div>
     <div class="container">
         <form action="create_thread.php" method="post">
             <input type="hidden" name="board_id" value="<?= htmlspecialchars($board_id) ?>">

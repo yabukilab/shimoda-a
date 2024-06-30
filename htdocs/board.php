@@ -32,6 +32,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <h1><?= htmlspecialchars($board_name) ?> - 科目一覧</h1>
     </header>
+    <div class="home">
+            <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
+            <a href="board.php?board_id=<?= htmlspecialchars($board['board_id']) ?>">科目一覧</a>
+            <a href="link3.html">科目作成</a>
+        </div>
     <div class="container">
         <!-- 検索フォームの追加 -->
         <form method="get" action="">
