@@ -58,7 +58,7 @@ if (isset($_POST['submit_comment'])) {
 }
 
 // スレッド情報を取得
-$stmt = $db->prepare("SELECT title, content FROM threads WHERE thread_id = ?");
+$stmt = $db->prepare("SELECT board_id, title, content FROM threads WHERE thread_id = ?");
 $stmt->execute([$thread_id]);
 $thread = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -66,6 +66,9 @@ if (!$thread) {
     echo "指定されたスレッドは存在しません。";
     exit;
 }
+
+// board_id を変数に設定
+$board_id = $thread['board_id'];
 
 // ソート順を取得（デフォルトは古い順）
 $sort_order = $_GET['sort_order'] ?? 'oldest';
@@ -102,10 +105,10 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
     <div class="home">
-            <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
-            <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
-            <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
-        </div>
+        <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
+        <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
+        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
+    </div>
     <div class="container">
         <!-- ソート順選択フォーム -->
         <form action="thread.php" method="get">
