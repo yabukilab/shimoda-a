@@ -101,11 +101,10 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <header>
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
-    <div class="nav-container">
-            <a href="link1.html">リンク1</a>
-            <a href="link2.html">リンク2</a>
-            <a href="link3.html">リンク3</a>
-            <a href="link4.html">リンク4</a>
+    <div class="home">
+            <a href="link1.html">HOME</a>
+            <a href="link2.html">科目一覧</a>
+            <a href="link3.html">科目作成</a>
         </div>
     <div class="container">
         <!-- ソート順選択フォーム -->
