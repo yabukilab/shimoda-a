@@ -103,10 +103,10 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
     <div class="home">
-            <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
-            <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
-            <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
-        </div>
+        <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
+        <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
+        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
+    </div>
     <div class="container">
         <!-- ソート順選択フォーム -->
         <form action="thread.php" method="get">
@@ -128,7 +128,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php if ($comment['report_count'] >= 5): ?>
                             このコメントは削除されました。
                         <?php else: ?>
-                            <?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
+                            <?= htmlspecialchars($comment['name']) ?> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
                             <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
                             <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>&board_id=<?= htmlspecialchars($board_id) ?>" method="post" style="display:inline;">
                                 <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
