@@ -34,7 +34,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
     <div class="home">
             <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
-            <a href="board.php?board_id=<?= htmlspecialchars($board['board_id']) ?>">科目一覧</a>
+            <<a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
             <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
         </div>
     <div class="container">
