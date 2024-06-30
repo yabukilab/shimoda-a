@@ -3,7 +3,7 @@ include 'db.php';
 
 // スレッドIDを取得
 $thread_id = $_GET['thread_id'] ?? 0;
-$board_id = $_GET['board_id'] ?? 1;
+$board_id = $_GET['board_id'] ?? 0;
 
 // コメントの評価処理
 if (isset($_POST['helpful_comment_id'])) {
