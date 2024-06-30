@@ -3,7 +3,6 @@ include 'db.php';
 
 // スレッドIDを取得
 $thread_id = $_GET['thread_id'] ?? 0;
-$board_id = $_GET['board_id'] ?? 0;
 
 // コメントの評価処理
 if (isset($_POST['helpful_comment_id'])) {
@@ -15,7 +14,7 @@ if (isset($_POST['helpful_comment_id'])) {
 
     if ($stmt->rowCount() > 0) {
         // 評価追加後に同じスレッドページにリダイレクト
-        header("Location: thread.php?thread_id=$thread_id&board_id=$board_id");
+        header("Location: thread.php?thread_id=$thread_id");
         exit();
     } else {
         echo "コメントの評価に失敗しました。";
@@ -32,7 +31,7 @@ if (isset($_POST['report_comment_id'])) {
 
     if ($stmt->rowCount() > 0) {
         // 通報追加後に同じスレッドページにリダイレクト
-        header("Location: thread.php?thread_id=$thread_id&board_id=$board_id");
+        header("Location: thread.php?thread_id=$thread_id");
         exit();
     } else {
         echo "コメントの通報に失敗しました。";
@@ -51,7 +50,7 @@ if (isset($_POST['submit_comment'])) {
 
     if ($stmt->rowCount() > 0) {
         // コメント追加後に同じスレッドページにリダイレクト
-        header("Location: thread.php?thread_id=$thread_id&board_id=$board_id");
+        header("Location: thread.php?thread_id=$thread_id");
         exit();
     } else {
         echo "コメントの追加に失敗しました。";
@@ -71,7 +70,7 @@ if (!$thread) {
 // ソート順を取得（デフォルトは古い順）
 $sort_order = $_GET['sort_order'] ?? 'oldest';
 
-// ソート順に基づいてSQLクエリを構築
+// ソート順に基づいてSQLクエリを構築a
 switch ($sort_order) {
     case 'newest':
         $order_by = "created_at DESC";
@@ -103,15 +102,14 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1><?= htmlspecialchars($thread['title'] . ' - ' . $thread['content'] . '先生') ?></h1>
     </header>
     <div class="home">
-        <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
-        <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
-        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
-    </div>
+            <a href="https://shimoda-a.pm-chiba.tech/">HOME</a>
+            <a href="board.php?board_id=<?= htmlspecialchars($board_id) ?>">科目一覧</a>
+            <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
+        </div>
     <div class="container">
         <!-- ソート順選択フォーム -->
         <form action="thread.php" method="get">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
-            <input type="hidden" name="board_id" value="<?= htmlspecialchars($board_id); ?>">
             <label for="sort_order">ソート順:</label>
             <select name="sort_order" id="sort_order" onchange="this.form.submit()">
                 <option value="oldest" <?= $sort_order == 'oldest' ? 'selected' : '' ?>>古い順</option>
@@ -128,15 +126,15 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php if ($comment['report_count'] >= 5): ?>
                             このコメントは削除されました。
                         <?php else: ?>
-                            <?= htmlspecialchars($comment['name']) ?> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
+                            <?= htmlspecialchars($comment['name']) ?></strong> (<?= htmlspecialchars($comment['created_at']) ?>):<br>
                             <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
-                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>&board_id=<?= htmlspecialchars($board_id) ?>" method="post" style="display:inline;">
+                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
                                 <input type="hidden" name="helpful_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
                                 <input type="submit" value="役に立った (<?= htmlspecialchars($comment['helpful_count']) ?>)">
                             </form>
-                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>&board_id=<?= htmlspecialchars($board_id) ?>" method="post" style="display:inline;">
+                            <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post" style="display:inline;">
                                 <input type="hidden" name="report_comment_id" value="<?= htmlspecialchars($comment['id']) ?>">
-                                <input type="submit" value="通報する">
+                                <input type="submit" value="通報する ">
                             </form>
                         <?php endif; ?>
                     </li>
@@ -147,9 +145,8 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
 
         <!-- コメント投稿フォーム -->
-        <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>&board_id=<?= htmlspecialchars($board_id) ?>" method="post">
+        <form action="thread.php?thread_id=<?= htmlspecialchars($thread_id) ?>" method="post">
             <input type="hidden" name="thread_id" value="<?= htmlspecialchars($thread_id); ?>">
-            <input type="hidden" name="board_id" value="<?= htmlspecialchars($board_id); ?>">
             <input type="text" name="name" placeholder="お名前"><br>
             <textarea id="large-textbox" name="comment_content" required placeholder="コメントを入力してください"></textarea><br>
             <input type="submit" name="submit_comment" value="コメントを追加">
