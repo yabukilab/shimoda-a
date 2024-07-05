@@ -106,7 +106,7 @@ $comments = $comment_stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
     <div class="home">
     <a href="javascript:history.back()">戻る</a>    
-    <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a>
+    <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目更新</a>
     <a href="https://shimoda-a.pm-chiba.tech/">学科選択</a>
     </div>
     <div class="container">
