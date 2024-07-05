@@ -44,7 +44,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="text" name="search" placeholder="スレッドタイトル検索" value="<?= htmlspecialchars($search_keyword) ?>">
             <button type="submit">検索</button>
         </form>
-        <a href="create_thread.php?board_id=<?= htmlspecialchars($board_id) ?>">科目作成</a> <!-- スレッド作成リンクを追加 -->
         <?php if (count($result) > 0): ?>
             <?php foreach ($result as $thread): ?>
                 <div>
