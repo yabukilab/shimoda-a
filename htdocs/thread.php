@@ -8,16 +8,23 @@ $thread_id = $_GET['thread_id'] ?? 0;
 if (isset($_POST['helpful_comment_id'])) {
     $comment_id = $_POST['helpful_comment_id'];
 
-    // コメントの評価を更新
-    $stmt = $db->prepare("UPDATE comments SET helpful_count = helpful_count + 1 WHERE id = ?");
-    $stmt->execute([$comment_id]);
-
-    if ($stmt->rowCount() > 0) {
-        // 評価追加後に同じスレッドページにリダイレクト
-        header("Location: thread.php?thread_id=$thread_id");
-        exit();
+    // クッキーのチェック
+    if (isset($_COOKIE['helpful_' . $comment_id])) {
+        echo "このコメントは既に評価されています。";
     } else {
-        echo "コメントの評価に失敗しました。";
+        // コメントの評価を更新
+        $stmt = $db->prepare("UPDATE comments SET helpful_count = helpful_count + 1 WHERE id = ?");
+        $stmt->execute([$comment_id]);
+
+        if ($stmt->rowCount() > 0) {
+            // クッキーを設定（24時間有効）
+            setcookie('helpful_' . $comment_id, '1', time() + 86400);
+            // 評価追加後に同じスレッドページにリダイレクト
+            header("Location: thread.php?thread_id=$thread_id");
+            exit();
+        } else {
+            echo "コメントの評価に失敗しました。";
+        }
     }
 }
 
@@ -25,16 +32,23 @@ if (isset($_POST['helpful_comment_id'])) {
 if (isset($_POST['report_comment_id'])) {
     $comment_id = $_POST['report_comment_id'];
 
-    // コメントの通報回数を更新
-    $stmt = $db->prepare("UPDATE comments SET report_count = report_count + 1 WHERE id = ?");
-    $stmt->execute([$comment_id]);
-
-    if ($stmt->rowCount() > 0) {
-        // 通報追加後に同じスレッドページにリダイレクト
-        header("Location: thread.php?thread_id=$thread_id");
-        exit();
+    // クッキーのチェック
+    if (isset($_COOKIE['report_' . $comment_id])) {
+        echo "このコメントは既に通報されています。";
     } else {
-        echo "コメントの通報に失敗しました。";
+        // コメントの通報回数を更新
+        $stmt = $db->prepare("UPDATE comments SET report_count = report_count + 1 WHERE id = ?");
+        $stmt->execute([$comment_id]);
+
+        if ($stmt->rowCount() > 0) {
+            // クッキーを設定（24時間有効）
+            setcookie('report_' . $comment_id, '1', time() + 86400);
+            // 通報追加後に同じスレッドページにリダイレクト
+            header("Location: thread.php?thread_id=$thread_id");
+            exit();
+        } else {
+            echo "コメントの通報に失敗しました。";
+        }
     }
 }
 
@@ -73,7 +87,7 @@ $board_id = $thread['board_id'];
 // ソート順を取得（デフォルトは古い順）
 $sort_order = $_GET['sort_order'] ?? 'oldest';
 
-// ソート順に基づいてSQLクエリを構築a
+// ソート順に基づいてSQLクエリを構築
 switch ($sort_order) {
     case 'newest':
         $order_by = "created_at DESC";
