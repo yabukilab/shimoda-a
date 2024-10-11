@@ -1,0 +1,38 @@
+/* タイトルの文字を4倍にして中央に配置 */
+header h1 {
+    font-size: 4em;
+    text-align: center;
+}
+
+/* 説明タイトルの部分は写真が左側、テキストが右側に配置されるようにする */
+.ranking-item {
+    display: flex;
+    align-items: flex-start; /* テキストを上に揃える */
+    margin-bottom: 20px;
+}
+
+/* ランキングのテキスト部分を調整 */
+.ranking-text {
+    margin-left: 20px; /* 写真とテキストの間のスペース */
+    display: flex;
+    flex-direction: column; /* 順位と説明を縦に配置 */
+}
+
+.ranking-text strong {
+    font-size: 1.2em; /* 順位の強調 */
+}
+
+/* リスト全体のスタイル調整 */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 20px;
+}
+
+/* フッターの文字を中央に配置 */
+footer p {
+    text-align: center;
+}
