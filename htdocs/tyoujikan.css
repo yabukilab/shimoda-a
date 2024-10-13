@@ -1,38 +1,212 @@
-/* タイトルの文字を4倍にして中央に配置 */
-header h1 {
-    font-size: 4em;
-    text-align: center;
-}
-
-/* 説明タイトルの部分は写真が左側、テキストが右側に配置されるようにする */
-.ranking-item {
-    display: flex;
-    align-items: flex-start; /* テキストを上に揃える */
-    margin-bottom: 20px;
-}
-
-/* ランキングのテキスト部分を調整 */
-.ranking-text {
-    margin-left: 20px; /* 写真とテキストの間のスペース */
-    display: flex;
-    flex-direction: column; /* 順位と説明を縦に配置 */
-}
-
-.ranking-text strong {
-    font-size: 1.2em; /* 順位の強調 */
-}
-
-/* リスト全体のスタイル調整 */
-ul {
-    list-style: none;
+/* ベーススタイル */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
     padding: 0;
 }
 
-ul li {
+/* ヘッダー */
+header {
+    background-color: #90D7EC;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* メインコンテンツ */
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #90D7EC;
+    padding-bottom: 5px;
     margin-bottom: 20px;
 }
 
-/* フッターの文字を中央に配置 */
-footer p {
+p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* ランキングセクション */
+#ranking {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 40px;
+}
+
+/* 各施設情報 */
+.ranking-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.ranking-text {
+    flex: 1;
+    min-width: 300px;
+    margin-left: 20px;
+}
+
+.ranking-text p {
+    margin: 10px 0;
+}
+
+.ranking-text strong {
+    font-size: 1.5em;
+    color: #90D7EC;
+}
+
+/* Google Maps iframe */
+iframe {
+    border: none;
+    margin-top: 10px;
+}
+
+/* 店舗情報テーブル */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #90D7EC;
+    color: white;
+}
+
+/* モーダル用のスタイル */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/* 他のランキングセクション */
+#other-rankings {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#other-rankings ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#other-rankings li {
+    margin-bottom: 10px;
+}
+
+#other-rankings a {
+    color: #90D7EC;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+#other-rankings a:hover {
+    text-decoration: underline;
+}
+
+/* フッター */
+footer {
+    background-color: white;
+    color: white;
     text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
 }
