@@ -9,6 +9,16 @@ body {
 
 /* ヘッダー */
 header {
+    a {
+        color: white; /* リンクの文字色を白に設定 */
+        text-decoration: none; /* 下線を消す */
+    }
+    
+    a:hover {
+        color: lightgray; /* ホバー時の色を設定 */
+        text-decoration: underline; /* ホバー時に下線を追加 */
+    }
+    
     background-color: #90D7EC;
     color: white;
     padding: 20px 0;
