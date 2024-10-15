@@ -9,16 +9,6 @@ body {
 
 /* ヘッダー */
 header {
-    a {
-        color: white; /* リンクの文字色を白に設定 */
-        text-decoration: none; /* 下線を消す */
-    }
-    
-    a:hover {
-        color: lightgray; /* ホバー時の色を設定 */
-        text-decoration: underline; /* ホバー時に下線を追加 */
-    }
-    
     background-color: #90D7EC;
     padding: 20px 0;
     text-align: center;
@@ -27,6 +17,18 @@ header {
 h1 {
     margin: 0;
     font-size: 2.5em;
+}
+
+/* グローバルなリンクのスタイルを定義 */
+a {
+    color: white; /* リンクの文字色を白に設定 */
+    text-decoration: none; /* 下線を消す */
+    background-color: transparent; /* 背景色が変わらないように透明に設定 */
+}
+
+a:hover {
+    color: lightgray; /* ホバー時の色を設定 */
+    text-decoration: underline; /* ホバー時に下線を追加 */
 }
 
 /* メインコンテンツ */
@@ -53,6 +55,10 @@ p {
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+/* その他のスタイル */
+...
+
 
 ul {
     list-style-type: none;
