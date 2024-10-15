@@ -18,10 +18,9 @@ header {
         text-decoration: underline; /* ホバー時に下線を追加 */
     }
     
-    background-color: #90D7EC!important;
+    background-color: #90D7EC !important;
     padding: 20px 0;
     text-align: center;
-    -webkit-appearance: none; 
 }
 
 header h1 {
