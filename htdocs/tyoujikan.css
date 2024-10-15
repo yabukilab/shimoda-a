@@ -9,12 +9,6 @@ body {
 
 /* ヘッダー */
 header {
-    @media screen and (max-width: 768px) {
-        a {
-            color: white;
-            background-color: transparent;
-        }
-    }
     a {
         color: white; /* リンクの文字色を白に設定 */
         text-decoration: none; /* 下線を消す */
