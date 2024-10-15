@@ -6,7 +6,7 @@ body {
 
 /* 背景色を津田沼の娯楽施設ランキングセクションまで適用 */
 section {
-    background-color: gray; /* 水色をグレーに変更 */
+    background-color: #90D7EC;
     padding: 40px 0;
     border-bottom: none;
 }
@@ -35,5 +35,6 @@ li {
 footer {
     text-align: center;
     padding: 20px 0;
-    background-color: white; /* 背景を黒の無地に設定 */
+    background-color: black; /* 背景を黒の無地に設定 */
+    color: white; /* テキストの色を白に設定 */
 }
