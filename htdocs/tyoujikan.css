@@ -8,26 +8,19 @@ body {
 }
 
 /* ヘッダー */
-header {
-    a {
-        color: white; /* リンクの文字色を白に設定 */
-        text-decoration: none; /* 下線を消す */
-    }
-    
-    a:hover {
-        color: lightgray; /* ホバー時の色を設定 */
-        text-decoration: underline; /* ホバー時に下線を追加 */
-    }
-    
-    background-color: #90D7EC;
-    padding: 20px 0;
-    text-align: center;
+/* ヘッダー内のリンクにスタイルを適用 */
+header a {
+    color: white; /* リンクの文字色を白に設定 */
+    text-decoration: none; /* 下線を消す */
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
+header a:hover {
+    color: lightgray; /* ホバー時の色を設定 */
+    text-decoration: underline; /* ホバー時に下線を追加 */
 }
+
+/* ヘッダーの背景色とスタイル */
+
 
 /* メインコンテンツ */
 main {
