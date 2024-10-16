@@ -73,7 +73,7 @@ li a:hover {
 footer {
     text-align: center;
     background-color: #004d40;
-    color: black;
+    color: white;
     padding: 10px 0;
     position: absolute;
     width: 100%;
@@ -83,5 +83,7 @@ footer {
 footer p {
     margin: 5px 0;
     font-size: 0.9em;
+    color: white; /* 個別に文字色を白に設定 */
 }
+
 
