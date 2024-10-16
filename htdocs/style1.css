@@ -4,6 +4,21 @@ body {
     text-align: center;
 }
 
+header {
+    a {
+        color: white; /* リンクの文字色を白に設定 */
+        text-decoration: none; /* 下線を消す */
+    }
+    
+    a:hover {
+        color: lightgray; /* ホバー時の色を設定 */
+        text-decoration: underline; /* ホバー時に下線を追加 */
+    }
+    
+    background-color: #90D7EC !important;
+    padding: 20px 0;
+    text-align: center;
+}
 /* 背景色を津田沼の娯楽施設ランキングセクションまで適用 */
 section {
     background-color: #90D7EC;
