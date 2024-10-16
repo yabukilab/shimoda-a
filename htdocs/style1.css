@@ -1,55 +1,87 @@
-/* 全体の初期設定 */
+/* style1.css */
+
+/* 全体設定 */
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa; /* 淡い水色 */
+    color: #333;
     margin: 0;
-    text-align: center;
+    padding: 0;
 }
 
-header {
-    a {
-        color: white; /* リンクの文字色を白に設定 */
-        text-decoration: none; /* 下線を消す */
-    }
-    
-    a:hover {
-        color: lightgray; /* ホバー時の色を設定 */
-        text-decoration: underline; /* ホバー時に下線を追加 */
-    }
-    
-    background-color: #90D7EC !important;
-    padding: 20px 0;
-    text-align: center;
-}
-/* 背景色を津田沼の娯楽施設ランキングセクションまで適用 */
-section {
-    background-color: #90D7EC;
-    padding: 40px 0;
-    border-bottom: none;
+h2, p, li {
+    margin: 0;
+    padding: 0.5em 0;
 }
 
-/* 「津田沼の娯楽施設ランキング」の文字を4倍に */
-h2 {
-    color: white;
-    font-size: 4em;
+a {
+    color: #00796b; /* 落ち着いた緑色 */
+    text-decoration: none;
 }
 
-/* <ul>を白線で囲む */
-ul {
-    border: 2px solid white;
+a:hover {
+    text-decoration: underline;
+}
+
+/* セクション全体のスタイル */
+#rankings {
+    background-color: #ffffff; /* 背景色は白 */
     padding: 20px;
-    list-style: none;
-    margin: 0 auto;
-    display: inline-block;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影の効果で立体感 */
 }
 
-/* リストアイテムのスタイル調整 */
+h2 {
+    font-size: 2em;
+    color: #004d40; /* 深めの緑色 */
+    text-align: center;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    color: #555;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
 li {
     margin: 10px 0;
 }
 
-/* フッターを無地の背景にする */
+li a {
+    font-size: 1.2em;
+    background-color: #80deea; /* 淡い水色のリンクボタン風 */
+    color: #004d40;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+li a:hover {
+    background-color: #4dd0e1; /* ホバー時に色が濃くなる */
+}
+
+/* フッター */
 footer {
     text-align: center;
-    padding: 20px 0;
-    background-color: black; /* 背景を黒の無地に設定 */
-    color: white; /* テキストの色を白に設定 */
+    background-color: #004d40;
+    color: #fff;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
