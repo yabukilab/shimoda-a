@@ -5,11 +5,12 @@
   <meta charset='utf-8' />
   <title>（実験・演習用）</title>
   <link rel="stylesheet" href="ekikaranokyori.css"> <!-- 外部CSSファイル -->
+  <link rel="stylesheet" href="styles.css"> <!-- 拡大用CSS -->
 </head>
 
 <body>
     <header>
-        <h1>津田沼の娯楽施設</h1>
+      <h1><a href="index.html" >津田沼の娯楽施設</a></h1> <!-- タイトル -->
     </header>
 
     <main>
@@ -40,7 +41,7 @@
           クレーンゲーム、メダルゲーム、音ゲーなどがそろっているゲームセンター
       </table>
        
-        <br><img src="S__146718726_0.jpg" alt="アミューズメントエース津田沼" />
+        <br><img src="S__146718726_0.jpg" alt="アミューズメントエース津田沼" class="thumbnail" />
     </div>
   </table>
     <div class="description">
@@ -59,7 +60,7 @@
           大学生を対象としたフリータイムがお得になるプランがあるカラオケ
       </table>
        
-        <br><img src="S__146718725_0.jpg" alt="カラオケまねきねこ津田沼北口店" />
+        <br><img src="S__146718725_0.jpg" alt="カラオケまねきねこ津田沼北口店" class="thumbnail" />
     </div>
 
     <div class="description">
@@ -78,7 +79,7 @@
           学生は一般よりも安い料金のカラオケ
       </table>
         
-        <br><img src="S__146718723_0.jpg" alt="カラオケ館津田沼店" />
+        <br><img src="S__146718723_0.jpg" alt="カラオケ館津田沼店" class="thumbnail" />
     </div>
 
     <div class="description">
@@ -97,7 +98,7 @@
           カフェやゲームセンターがあるショッピングモール
       </table>
        
-        <br><img src="S__146636802.jpg" alt="津田沼ビート" />
+        <br><img src="S__146636802.jpg" alt="津田沼ビート" class="thumbnail" />
     </div>
 
     <div class="description">
@@ -116,7 +117,7 @@
           カフェ、雑貨、ファッションなどの様々な店がそろったショッピングモール
       </table>
         
-        <br><img src="S__146628610.jpg" alt="モリシア津田沼" />
+        <br><img src="S__146628610.jpg" alt="モリシア津田沼" class="thumbnail" />
     </div>
       <section id="other-rankings">
         <h2>他のランキング</h2> <!-- 他のランキングのURLリストタイトル -->
@@ -131,6 +132,13 @@
     <footer>
       <p>© CIT_PM実験にて作成.</p>
     </footer>
+    <!-- モーダル -->
+    <div class="modal" id="modal">
+      <span class="close" id="close">&times;</span>
+      <img class="modal-content" id="modal-img">
+   </div>
+
+   <script src="ekikara.js"></script> <!-- 拡大用JavaScript -->
 </body>
 
 </html>
