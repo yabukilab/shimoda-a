@@ -84,3 +84,28 @@ footer p {
     color: white; /* 個別に文字色を白に設定 */
 }
 
+/* スマホ向けのレスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #rankings {
+        width: 95%; /* スマホでは横幅を広げすぎない */
+        margin: 10px auto;
+    }
+
+    ul {
+        padding: 0;
+        text-align: center;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+
+    footer {
+        position: relative; /* フッターを固定せず、自然に下に配置 */
+        margin-top: 20px;
+    }
+}
