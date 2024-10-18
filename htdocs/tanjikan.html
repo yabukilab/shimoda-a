@@ -5,10 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>津田沼の娯楽施設</title>
     <link rel="stylesheet" href="tanjikan.css"> <!-- 外部CSSファイル -->
+    <style>
+        /* モーダルスタイル */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>津田沼の娯楽施設</h1> <!-- タイトル -->
+        <h1><a href="index.html" >津田沼の娯楽施設</a></h1> <!-- タイトル -->
     </header>
 
     <main>
@@ -22,9 +60,7 @@
 
         <section id="description">
             <h2>紹介ポイント！</h2> <!-- 説明タイトル -->
-            <p>駅チカでふらっと寄って軽く時間つぶしできるような施設を紹介します。
-
-            </p> <!-- 説明文 -->
+            <p>駅チカでふらっと寄って軽く時間つぶしできるような施設を紹介します。</p> <!-- 説明文 -->
         
             <ul>
                 <li>
@@ -33,16 +69,17 @@
                     <table border="1">
                         <tr><th>店舗情報</th><th> </th></tr>
                         <tr>
-                        <td>最短費用</td><td>100円</td>
+                            <td>最短費用</td><td>100円</td>
                         </tr>
                         <tr><td>最低滞在時間</td><td>3分</td>
                         </tr>
                         <tr><td>駅から</td><td>徒歩約７分</td></tr>
                     </table>
 
-
                     <!-- 画像をここに挿入 -->
-                    <img src="tanjikan_gamelandpic.png" alt="ゲームランド 津田沼店" width="300">
+                    <img src="a_tanjikan_gamelandpic.png" alt="ゲームランド 津田沼店" class="clickable-image" width="300">
+                    <img src="a_gameland1.jpg" alt="ゲームランド 津田沼店" class="clickable-image" width="300">
+                    <img src="a_gameland2.jpg" alt="ゲームランド 津田沼店" class="clickable-image" width="300">
                 </li>
                 <li>
                     <strong>2位:</strong> <a href="https://karaoke-shin.jp/shop-list/232.html" target="_blank">カラオケBanBan津田沼店</a>  
@@ -50,16 +87,17 @@
                     <table border="1">
                         <tr><th>店舗情報</th><th> </th></tr>
                         <tr>
-                        <td>最低費用</td><td>90円</td>
+                            <td>最低費用</td><td>90円</td>
                         </tr>
                         <tr><td>最短滞在時間</td><td>30分</td>
                         </tr>
                         <tr><td>駅から</td><td>徒歩約2分</td></tr>
                     </table>
 
-
                     <!-- 画像をここに挿入 -->
-                    <img src="tanjikan_gamelandpic.png" alt="カラオケBanBan津田沼店" width="300">
+                    <img src="a_tanjikan_banban.png" alt="カラオケBanBan津田沼店" class="clickable-image" width="300">
+                    <img src="a_banban1.jpg" alt="カラオケBanBan津田沼店" class="clickable-image" width="300">
+                    <img src="a_banban2.jpg" alt="カラオケBanBan津田沼店" class="clickable-image" width="300">
                 </li>
                 <li>
                     <strong>3位:</strong> <a href="https://jiqoo.jp/shop/?9931347" target="_blank">自遊空間 津田沼北口店</a>  
@@ -67,26 +105,26 @@
                     <table border="1">
                         <tr><th>店舗情報</th><th> </th></tr>
                         <tr>
-                        <td>最低費用</td><td>250円</td>
+                            <td>最低費用</td><td>250円</td>
                         </tr>
                         <tr><td>最短滞在時間</td><td>30分</td>
                         </tr>
                         <tr><td>駅から</td><td>徒歩約3分</td></tr>
                     </table>
 
-
                     <!-- 画像をここに挿入 -->
-                    <img src="tanjikan_gamelandpic.png" alt="自遊空間 津田沼北口店" width="300">
+                    <img src="a_tanjikan_jiyuukuukanpic.png" alt="自遊空間 津田沼北口店" class="clickable-image" width="300">
+                    <img src="a_jiyuukuukan2.jpg" alt="自遊空間 津田沼北口店" class="clickable-image" width="300">
+                    <img src="a_jiyuukuukan1.jpg" alt="自遊空間 津田沼北口店" class="clickable-image" width="300"> 
                 </li>
             </ul>
         </section>
-        
 
         <section id="other-rankings">
             <h2>他のランキング</h2> <!-- 他のランキングのURLリストタイトル -->
             <ul>
-                <li><a href="ranking2.html">駅近の娯楽施設</a></li>
-                <li><a href="ranking1.html">滞在時間(長)</a></li>
+                <li><a href="ekikaranokyori.html">駅近の娯楽施設</a></li>
+                <li><a href="tyoujikan.html">滞在時間(長)</a></li>
             </ul>
         </section>
     </main>
@@ -94,5 +132,39 @@
     <footer>
         <p>© CIT_PM実験にて作成.</p>
     </footer>
+
+    <!-- モーダル -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // すべての画像を選択
+        const images = document.querySelectorAll('.clickable-image');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close');
+
+        // 画像がクリックされたときにモーダルを開く
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                modal.style.display = "block";
+                modalImage.src = image.src;
+            });
+        });
+
+        // モーダルを閉じる処理
+        closeModal.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+
+        // モーダルの外をクリックしたときに閉じる処理
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>

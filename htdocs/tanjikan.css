@@ -138,6 +138,28 @@ footer p {
     font-weight: bold;
     color: #007BFF;
 }
+/* リンクのスタイルを追加 */
+header h1 a {
+    color: #ffffff; /* リンクを白色に設定 */
+    text-decoration: none; /* 下線を削除 */
+}
+
+header h1 a:hover {
+    color: #ffffff; /* ホバー時も白色 */
+    text-decoration: underline; /* 必要に応じてホバー時に下線を追加 */
+}
+
+/* 他のスタイルはそのまま */
+
+
+#description ul li img {
+    width: 300px;  /* 横幅を300pxに統一 */
+    height: 200px; /* 高さも200pxに統一 */
+    object-fit: cover; /* 画像の切り取りで縦横比を維持 */
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
@@ -157,4 +179,13 @@ footer p {
         width: 100%;
         height: auto;
     }
+}
+#description ul li a:visited {
+    color: #007BFF; /* 訪問済みリンクの色を元の色に設定 */
+    text-decoration: none; /* 下線を削除 */
+}
+
+#other-rankings ul li a:visited {
+    color: #007BFF; /* 訪問済みリンクの色を元の色に設定 */
+    text-decoration: none; /* 下線を削除 */
 }
