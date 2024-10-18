@@ -36,22 +36,15 @@ h2 {
     font-size: 1.8em;
 }
 
-
 table {
-    width: 100%;
-    margin-top: 10px;
-    border-collapse: collapse;
+    border-collapse: collapse; /* 境界線を重ねる */
+    width: 100%; /* 幅を調整（必要に応じて） */
 }
 
-#table th, #table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-#table th {
-    background-color: #f4f4f9;
-    color: #333;
+th, td {
+    border: 1px solid black; /* 境界線を設定 */
+    padding: 8px; /* パディングを追加 */
+    text-align: left; /* テキストの配置を左寄せ */
 }
 
 
