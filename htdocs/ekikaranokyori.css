@@ -93,7 +93,7 @@ img {
     margin-top: 30px;
 }
 
-thumbnail {
+.thumbnail {
     width: 300px;
     cursor: pointer;
     transition: transform 0.2s;
