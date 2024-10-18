@@ -189,3 +189,15 @@ header h1 a:hover {
     color: #007BFF; /* 訪問済みリンクの色を元の色に設定 */
     text-decoration: none; /* 下線を削除 */
 }
+/* タブレットやiPad用の特定のスタイル */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    header {
+        background-color: #333 !important;
+    }
+
+    header a {
+        color: white !important;
+        text-decoration: none !important;
+    }
+}
