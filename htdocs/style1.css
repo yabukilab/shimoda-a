@@ -5,6 +5,7 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* これを追加 */
 }
 
 h2, p, li {
@@ -73,9 +74,9 @@ footer {
     background-color: #004d40;
     color: white;
     padding: 10px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    position: relative; /* 位置を固定しない */
+    width: 100%; /* 幅を100%に */
+    margin-top: 20px; /* これを追加 */
 }
 
 footer p {
@@ -91,7 +92,7 @@ footer p {
     }
 
     #rankings {
-        width: 95%; /* スマホでは横幅を広げすぎない */
+        width: 100%; /* スマホでは横幅を広げすぎない */
         margin: 10px auto;
     }
 
