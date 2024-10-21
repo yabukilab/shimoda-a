@@ -91,7 +91,7 @@ footer p {
     }
 
     #rankings {
-        width: 95%; /* スマホでは横幅を広げすぎない */
+        width: 100%; /* スマホでは横幅を広げすぎない */
         margin: 10px auto;
     }
 
