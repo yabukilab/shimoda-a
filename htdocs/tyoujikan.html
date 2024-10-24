@@ -112,41 +112,38 @@
             </ul>
         </section>
         
-        <!-- モーダル構造 -->
+<!-- モーダル構造 -->
 
-        <div id="modal1" class="modal">
-          <span class="close" onclick="closeModal('modal1')">&times;</span>
-          <img src="kuma_morisia.jpg" alt="モリシア津田沼" class="modal-content" id="img1">
-        </div>
-        <div id="modal2" class="modal">
-          <span class="close" onclick="closeModal('modal2')">&times;</span>
-          <img src="kuma_maneki.jpg" alt="まねきねこ" class="modal-content" id="img2">
-        </div>
-        <div id="modal3" class="modal">
-          <span class="close" onclick="closeModal('modal3')">&times;</span>
-          <img src="kuma_ace.jpg" alt="エース" class="modal-content" id="img3"> 
-</div>
-
-
-    </main>
-
-
-    <!-- JavaScriptコード -->
-    <script>
-        // モーダルを開く関数
-        function openModal(modalId, imgSrc) {
-            var modal = document.getElementById(modalId);
-            var modalImg = modal.querySelector(".modal-content"); // モーダル内の画像要素を取得
-            modal.style.display = "block"; // モーダルを表示
-            modalImg.src = imgSrc; // クリックされた画像のsrcをモーダルに設定
-        }
-
-        // モーダルを閉じる関数
-        function closeModal(modalId) {
-            var modal = document.getElementById(modalId);
-            modal.style.display = "none"; // モーダルを非表示
-        }
-    </script>
+<div id="modal1" class="modal" onclick="closeModal('modal1')">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img src="kuma_morisia.jpg" alt="モリシア津田沼" class="modal-content" id="img1" onclick="event.stopPropagation();">
+  </div>
+  <div id="modal2" class="modal" onclick="closeModal('modal2')">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <img src="kuma_maneki.jpg" alt="まねきねこ" class="modal-content" id="img2" onclick="event.stopPropagation();">
+  </div>
+  <div id="modal3" class="modal" onclick="closeModal('modal3')">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <img src="kuma_ace.jpg" alt="エース" class="modal-content" id="img3" onclick="event.stopPropagation();"> 
+  </div>
+  
+  <!-- JavaScriptコード -->
+  <script>
+      // モーダルを開く関数
+      function openModal(modalId, imgSrc) {
+          var modal = document.getElementById(modalId);
+          var modalImg = modal.querySelector(".modal-content"); // モーダル内の画像要素を取得
+          modal.style.display = "block"; // モーダルを表示
+          modalImg.src = imgSrc; // クリックされた画像のsrcをモーダルに設定
+      }
+  
+      // モーダルを閉じる関数
+      function closeModal(modalId) {
+          var modal = document.getElementById(modalId);
+          modal.style.display = "none"; // モーダルを非表示
+      }
+  </script>
+  
   <section id="other-rankings">
     <h2>他のランキングはこちら</h2> <!-- 他のランキングのURLリストタイトル -->
     <ul>
