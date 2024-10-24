@@ -91,16 +91,6 @@ img {
     margin-top: 30px;
 }
 
-.thumbnail {
-    width: 300px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.thumbnail:hover {
-    transform: scale(1.05);
-}
-
 .modal {
     display: none;
     position: fixed;
