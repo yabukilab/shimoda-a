@@ -2,146 +2,293 @@
 <html lang="ja">
 
 <head>
-  <meta charset='utf-8' />
+  <meta charset="utf-8" />
+  <meta name="description" content="駅近の娯楽施設の紹介ページです。">
   <title>駅近の娯楽施設</title>
   <link rel="stylesheet" href="ekikaranokyori.css"> <!-- 外部CSSファイル -->
-  <link rel="stylesheet" href="styles.css"> <!-- 拡大用CSS -->
+  <style>
+    /* モーダルスタイル */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-      <h1><a href="index.html" >津田沼の娯楽施設</a></h1> <!-- タイトル -->
-      <p>CIT_PM実験にて作成</p>
-    </header>
+  <header>
+    <h1><a href="index.html">津田沼の娯楽施設</a></h1> <!-- タイトル -->
+    <p>CIT_PM実験にて作成</p>
+  </header>
 
-    <main>
-      <h2>駅近の娯楽施設</h2>
-      <ul> <!-- <ul>を追加 -->
-        <li>1位　アミューズメントエース津田沼</li>
-        <li>2位　カラオケまねきねこ津田沼北口店</li>
-        <li>3位　カラオケ館</li>
-        <li>4位　津田沼ビート</li>
-        <li>5位　モリシア津田沼</li>
-     </ul> <!-- <ul>を閉じる -->
-      <br>
-      <br>
+  <main>
+    <h2>駅近の娯楽施設</h2>
+    <ul>
+      <li>1位　アミューズメントエース津田沼</li>
+      <li>2位　カラオケまねきねこ津田沼北口店</li>
+      <li>3位　カラオケ館</li>
+      <li>4位　津田沼ビート</li>
+      <li>5位　モリシア津田沼</li>
+    </ul>
+
     
 
     <!-- 施設の詳細情報 -->
     <div class="description">
-        <h2>1位　アミューズメントエース津田沼</h2>
-        クレーンゲーム、メダルゲーム、音ゲーなどがそろっているゲームセンター
-        <table>
-          <tr><th>店舗情報</th></tr>
+      <h2>1位　アミューズメントエース津田沼</h2>
+      クレーンゲーム、メダルゲーム、音ゲーなどがそろっているゲームセンター
+      <table>
+        <thead>
           <tr>
-          <td>駅からの距離</td><td>約100m</td>
+            <th>店舗情報</th>
           </tr>
-          <tr><td>営業時間</td><td>9時00分~24時00分</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>駅からの距離</td>
+            <td>約100m</td>
           </tr>
-          <tr><td>住所</td><td>千葉県船橋市前原西2丁目15番地1号ファミリービル1F~3F</td>
+          <tr>
+            <td>営業時間</td>
+            <td>9時00分~24時00分</td>
           </tr>
-          <tr><td>リンク</td><td><a href="https://leisurelan.co.jp/store/ace-tu/" target="_blank">https://leisurelan.co.jp/store/ace-tu/</a></td>
+          <tr>
+            <td>住所</td>
+            <td>千葉県船橋市前原西2丁目15番地1号ファミリービル1F~3F</td>
           </tr>
-       </table>
-       
-        <br><img src="S__146718726_0.jpg" alt="アミューズメントエース津田沼" class="thumbnail" />
+          <tr>
+            <td>リンク</td>
+            <td><a href="https://leisurelan.co.jp/store/ace-tu/" target="_blank">https://leisurelan.co.jp/store/ace-tu/</a></td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <img src="IMG_146718726_0.jpg" alt="アミューズメントエース津田沼" class="clickable-image" width="300" />
     </div>
 
     <div class="description">
-        <h2>2位　カラオケまねきねこ津田沼北口店</h2>
-        大学生を対象としたフリータイムがお得になるプランがあるカラオケ
-        <table>
-          <tr><th>店舗情報</th></tr>
+      <h2>2位 カラオケまねきねこ津田沼北口店</h2>
+      大学生を対象としたフリータイムがお得になるプランがあるカラオケ
+      <table>
+        <thead>
           <tr>
-          <td>駅からの距離</td><td>約140m</td>
+            <th>店舗情報</th>
           </tr>
-          <tr><td>営業時間</td><td>24時間</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>駅からの距離</td>
+            <td>約140m</td>
           </tr>
-          <tr><td>住所</td><td>千葉県習志野市津田沼1丁目11-4 JPT津田沼ビル4F</td>
+          <tr>
+            <td>営業時間</td>
+            <td>24時間</td>
           </tr>
-          <tr><td>リンク</td><td><a href="https://www.karaokemanekineko.jp/locations/?id=589" target="_blank">https://www.karaokemanekineko.jp/locations/?id=589</a></td>
+          <tr>
+            <td>住所</td>
+            <td>千葉県習志野市津田沼1丁目11-4 JPT津田沼ビル4F</td>
           </tr>
+          <tr>
+            <td>リンク</td>
+            <td><a href="https://www.karaokemanekineko.jp/locations/?id=589" target="_blank">https://www.karaokemanekineko.jp/locations/?id=589</a></td>
+          </tr>
+        </tbody>
       </table>
-       
-        <br><img src="S__146718725_0.jpg" alt="カラオケまねきねこ津田沼北口店" class="thumbnail" />
+      
+      <img src="IMG_146718725_0.jpg" alt="カラオケまねきねこ津田沼北口店" class="clickable-image" width="300" />
     </div>
 
     <div class="description">
-        <h2>3位　カラオケ館津田沼店</h2>
-        学生は一般よりも安い料金のカラオケ
-        <table>
-          <tr><th>店舗情報</th></tr>
+      <h2>3位　カラオケ館津田沼店</h2>
+      学生は一般よりも安い料金のカラオケ
+      <table>
+        <thead>
           <tr>
-          <td>駅からの距離</td><td>約150m</td>
+            <th>店舗情報</th>
           </tr>
-          <tr><td>営業時間</td><td>9時00分~5時00分</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>駅からの距離</td>
+            <td>約150m</td>
           </tr>
-          <tr><td>住所</td><td>千葉県習志野市津田沼1-11-2</td>
+          <tr>
+            <td>営業時間</td>
+            <td>9時00分~5時00分</td>
           </tr>
-          <tr><td>リンク</td><td><a href="https://karaokekan.jp/shop/detail/132" target="_blank">https://karaokekan.jp/shop/detail/132</a></td>
+          <tr>
+            <td>住所</td>
+            <td>千葉県習志野市津田沼1-11-2</td>
           </tr>
+          <tr>
+            <td>リンク</td>
+            <td><a href="https://karaokekan.jp/shop/detail/132" target="_blank">https://karaokekan.jp/shop/detail/132</a></td>
+          </tr>
+        </tbody>
       </table>
-        
-        <br><img src="S__146718723_0.jpg" alt="カラオケ館津田沼店" class="thumbnail" />
+      
+      <img src="IMG_146718723_0.jpg" alt="カラオケ館津田沼店" class="clickable-image" width="300" />
     </div>
 
     <div class="description">
-        <h2>4位　津田沼ビート</h2>
-        カフェやゲームセンターがあるショッピングモール
-        <table>
-          <tr><th>店舗情報</th></tr>
+      <h2>4位　津田沼ビート</h2>
+      カフェやゲームセンターがあるショッピングモール
+      <table>
+        <thead>
           <tr>
-          <td>駅からの距離</td><td>約190m</td>
+            <th>店舗情報</th>
           </tr>
-          <tr><td>営業時間</td><td>10時00分~20時00分</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>駅からの距離</td>
+            <td>約190m</td>
           </tr>
-          <tr><td>住所</td><td>千葉県船橋市前原西2丁目19-1</td>
+          <tr>
+            <td>営業時間</td>
+            <td>10時00分~20時00分</td>
           </tr>
-          <tr><td>リンク</td><td><a href="https://tsudanuma-viit.jp/" target="_blank">https://tsudanuma-viit.jp/</a></td>
+          <tr>
+            <td>住所</td>
+            <td>千葉県船橋市前原西2丁目19-1</td>
           </tr>
+          <tr>
+            <td>リンク</td>
+            <td><a href="https://tsudanuma-viit.jp/" target="_blank">https://tsudanuma-viit.jp/</a></td>
+          </tr>
+        </tbody>
       </table>
-       
-        <br><img src="S__146636802.jpg" alt="津田沼ビート" class="thumbnail" />
+      
+      <img src="IMG_146636802.jpg" alt="津田沼ビート" class="clickable-image" width="300" />
     </div>
 
     <div class="description">
-        <h2>5位　モリシア津田沼</h2>
-        カフェ、雑貨、ファッションなどの様々な店がそろったショッピングモール
-        <table>
-          <tr><th>店舗情報</th></tr>
+      <h2>5位　モリシア津田沼</h2>
+      カフェ、雑貨、ファッションなどの様々な店がそろったショッピングモール
+      <table>
+        <thead>
           <tr>
-          <td>駅からの距離</td><td>約250m</td>
+            <th>店舗情報</th>
           </tr>
-          <tr><td>営業時間</td><td>ショップ10時00分~21時00分<br>レストラン11時00分~22時00分</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>駅からの距離</td>
+            <td>約250m</td>
           </tr>
-          <tr><td>住所</td><td>千葉県習志野市谷津1丁目16-1</td>
+          <tr>
+            <td>営業時間</td>
+            <td>ショップ10時00分~21時00分<br>レストラン11時00分~22時00分</td>
           </tr>
-          <tr><td>リンク</td><td><a href="https://morisia.com/" target="_blank">https://morisia.com/</a></td>
+          <tr>
+            <td>住所</td>
+            <td>千葉県習志野市谷津1丁目16-1</td>
           </tr>
+          <tr>
+            <td>リンク</td>
+            <td><a href="https://morisia.com/" target="_blank">https://morisia.com/</a></td>
+          </tr>
+        </tbody>
       </table>
-        
-        <br><img src="S__146628610.jpg" alt="モリシア津田沼" class="thumbnail" />
+      
+      <img src="IMG_146628610.jpg" alt="モリシア津田沼" class="clickable-image" width="300" />
     </div>
-      <section id="other-rankings">
-        <h2>他のランキング</h2> <!-- 他のランキングのURLリストタイトル -->
+
+    <section id="other-rankings">
+      <h2>他のランキング</h2> <!-- 他のランキングのURLリストタイトル -->
         <ul>
-            <li><a href="tyoujikan.html">滞在時間(長)</a></li>
-            <li><a href="tanjikan.html">滞在時間(短)</a></li>
+          <li><a href="index.html">TOPページ</a></li>
+          <li><a href="tyoujikan.html">滞在時間(長)</a></li>
+          <li><a href="tanjikan.html">滞在時間(短)</a></li>
         </ul>
-     </section>
+      
+    </section>
+  </main>
 
-    </main>
+  <footer>
+    <p>©shimoda_a</p>
+  </footer>
 
-    <footer>
-      <p>©shimoda_a</p>
-    </footer>
-    <!-- モーダル -->
-    <div class="modal" id="modal">
-      <span class="close" id="close">&times;</span>
-      <img class="modal-content" id="modal-img">
-   </div>
+  
+<!-- モーダル -->
+  <div class="modal" id="imageModal">
+    <span class="close" id="close">&times;</span>
+    <img src="IMG_146718726_0.jpg" alt="" class="modal-content" id="modal-img">
+  </div>
+  <div class="modal" id="imageModal2">
+    <span class="close" id="close2">&times;</span>
+    <img src="IMG_146718725_0.jpg" alt="" class="modal-content" id="modal-img2">
+  </div>
+  <div class="modal" id="imageModal3">
+    <span class="close" id="close3">&times;</span>
+    <img src="IMG_146718723_0.jpg" alt="" class="modal-content" id="modal-img3">
+  </div>
+  <div class="modal" id="imageModal4">
+    <span class="close" id="close4">&times;</span>
+    <img src="IMG_146636802.jpg" alt="" class="modal-content" id="modal-img4">
+  </div>
+  <div class="modal" id="imageModal5">
+    <span class="close" id="close5">&times;</span>
+    <img src="IMG_146628610.jpg" alt="" class="modal-content" id="modal-img5">
+  </div>
 
-   <script src="ekikara.js"></script> <!-- 拡大用JavaScript -->
+  <script>
+    // すべての画像を選択
+    const images = document.querySelectorAll('.clickable-image');
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modal-img');
+    const closeModal = document.querySelector('.close');
+
+    // 画像がクリックされたときにモーダルを開く
+    images.forEach(image => {
+        image.addEventListener('click', () => {
+            modal.style.display = "block";
+            modalImage.src = image.src;
+        });
+    });
+
+    // モーダルを閉じる処理
+    closeModal.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+
+    // モーダルの外をクリックしたときに閉じる処理
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+  </script>
 </body>
-
 </html>

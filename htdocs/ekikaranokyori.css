@@ -12,11 +12,12 @@ header {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-     a {
-            color: white; /* リンクの文字色を白に設定 */
-            text-decoration: none; /* 下線を消す */
-        }
 }
+        
+header a {
+    color: white; /* リンクの文字色を白に設定 */
+    text-decoration: none; /* 下線を消す */
+}     
 
 
 
@@ -55,6 +56,7 @@ a {
     color: #007bff;
     text-decoration: none;
 }
+
 
 a:hover {
     text-decoration: underline;
