@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #90D7EC !important;
+    background-color: #c098d3 !important;
     padding: 20px 0;
     text-align: center;
 }
@@ -37,7 +37,7 @@ main {
 
 h2 {
     color: #333;
-    border-bottom: 2px solid #90D7EC;
+    border-bottom: 2px solid #c098d3;
     padding-bottom: 5px;
     margin-bottom: 20px;
 }
@@ -121,7 +121,7 @@ th, td {
 }
 
 th {
-    background-color: #90D7EC; /* ヘッダーの背景色を淡い青色に */
+    background-color: #c098d3; /* ヘッダーの背景色を淡い青色に */
     color: white; /* ヘッダーテキストの色を白に */
     text-align: center; /* ヘッダーテキストを中央揃え */
 }
@@ -199,7 +199,7 @@ th {
 }
 
 #other-rankings a {
-    color: #90D7EC;
+    color: #c098d3;
     text-decoration: none;
     font-size: 1.2em;
 }
@@ -229,7 +229,7 @@ footer p {
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     
     header {
-        background-color: #90D7EC !important;
+        background-color: #c098d3 !important;
     }
 
     header a {
