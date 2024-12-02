@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>津田沼駅情報</title> 
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      background-color: #e9ecef;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+
+    nav a:hover {
+      color: #0056b3;
+    }
+
+    section {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .line-info {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .access-info, .facilities-info {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    svg {
+      width: 100%;
+      height: 500px;
+    }
+    .station {
+      fill: #007bff;
+      stroke: #0056b3;
+      stroke-width: 2;
+    }
+    .station-label {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-anchor: middle;
+    }
+    .line {
+      fill: none;
+      stroke-width: 3;
+    }
+    .line-rapid {
+      stroke: #ff6347; /* 赤色: 迅速線 */
+    }
+    .line-local {
+      stroke: #4682b4; /* 青色: 各駅停車線 */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>津田沼駅の路線情報</h1>
+  </header>
+  <nav>
+    <a href="#sobu-yokosuka">総武・横須賀線（快速）</a>
+    <a href="#chuo-sobu">中央・総武線（各駅停車）</a>
+    <a href="#access">駅周辺の施設・アクセス</a>
+  </nav>
+
+  <section id="sobu-yokosuka">
+    <div class="line-info">
+      <h2>1. 総武・横須賀線（快速）</h2>
+      <ul>
+        <li>東京や品川方面へのアクセスが便利で、津田沼駅から東京駅まで約28分で到着します。</li>
+        <li>始発電車も運行しており、朝の通勤にも便利です。</li>
+        <li>多くの社会人や学生にとって、住みやすい街として人気があります。</li>
+      </ul>
+    </div>
+
+    <!-- Add the route map below this section -->
+    <div>
+      <h3>路線図</h3>
+      <svg></svg>
+      <script>
+        // 駅のデータ (例)
+        const stations = [
+          { name: '津田沼', x: 50, y: 100 },
+          { name: '船橋', x: 150, y: 100 },
+          { name: '市川', x: 250, y: 100 },
+          { name: '新小岩', x: 350, y: 100 },
+          { name: '錦糸町', x: 450, y: 100 },
+          { name: '馬喰町', x: 550, y: 100 },
+          { name: '新日本橋', x: 650, y: 100 },
+          { name: '東京', x: 750, y: 100 },
+          { name: '品川', x: 850, y: 100 },
+          { name: '新川崎', x: 950, y: 100 },
+          { name: '横浜', x: 1050, y: 100 },
+          { name: '鎌倉', x: 1150, y: 150 },
+          { name: '逗子', x: 1250, y: 150 },
+          { name: '横須賀', x: 1350, y: 150 },
+          { name: '久里浜', x: 1450, y: 150 }
+        ];
+
+        // 路線情報
+        const rapidLine = [
+          stations[0], stations[1], stations[2], stations[3], stations[4], 
+          stations[5], stations[6], stations[7], stations[8], stations[9]
+        ];
+        const localLine = [
+          stations[0], stations[2], stations[3], stations[4], stations[5], 
+          stations[6], stations[7], stations[8], stations[9], stations[10], 
+          stations[11], stations[12], stations[13], stations[14]
+        ];
+
+        // SVG要素を取得
+        const svg = d3.select('svg');
+
+        // 線を描画する関数
+        const line = d3.line()
+          .x(d => d.x)
+          .y(d => d.y);
+
+        // 迅速線の描画
+        svg.append('path')
+          .attr('d', line(rapidLine))
+          .attr('class', 'line line-rapid');
+
+        // 各駅停車線の描画
+        svg.append('path')
+          .attr('d', line(localLine))
+          .attr('class', 'line line-local');
+
+        // 駅の円を追加
+        svg.selectAll('circle')
+          .data(stations)
+          .enter()
+          .append('circle')
+          .attr('class', 'station')
+          .attr('cx', d => d.x)
+          .attr('cy', d => d.y)
+          .attr('r', 5);
+
+        // 駅名のラベルを追加
+        svg.selectAll('text')
+          .data(stations)
+          .enter()
+          .append('text')
+          .attr('class', 'station-label')
+          .attr('x', d => d.x)
+          .attr('y', d => d.y - 10)
+          .text(d => d.name);
+      </script>
+    </div>
+  </section>
+
+  <section id="chuo-sobu">
+    <div class="line-info">
+      <h2>2. 中央・総武線（各駅停車）</h2>
+      <ul>
+        <li>各駅停車のため、途中駅での乗降が可能です。</li>
+        <li>千葉方面に向かう便も充実しており、広範囲にわたる移動が便利です。</li>
+        <li>全車両が通勤や通学に便利な設備を備えており、快適な乗車が可能です。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="access" class="access-info">
+    <h2>駅周辺の施設・アクセス</h2>
+    <img src="img\signboard.jpg" alt="画像の説明" width="50%" height="50%">
+    <ul>
+      <li>津田沼駅周辺にはショッピングモールや飲食店が多く、便利な生活圏です。</li>
+      <li>駅近くの「津田沼パルコ」や「イオンモール津田沼」などでショッピングを楽しむことができます。</li>
+      <li>また、駅周辺には病院、学校、銀行などの施設も充実しています。</li>
+    </ul>
+  </section>
