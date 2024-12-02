@@ -14,6 +14,7 @@ header {
 }
 
 header h1 {
+    color:white;
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 2px;
@@ -95,7 +96,7 @@ li {
 
 .ranking-text strong {
     font-size: 1.5em;
-    color: #90D7EC;
+    color: #c098d3;
 }
 
 /* Google Maps iframe */
