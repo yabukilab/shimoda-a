@@ -1,34 +1,22 @@
 /* ベーススタイル */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #c098d3 !important;
+    background-color: #c098d3;
     padding: 20px 0;
     text-align: center;
 }
 
 header h1 {
-    color:white;
+    color: white;
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 2px;
-}
-
-/* リンクスタイル */
-header a {
-    color: white; /* リンクの文字色を白に設定 */
-    text-decoration: none; /* 下線を消す */
-}
-
-header a:hover {
-    color: lightgray; /* ホバー時の色を設定 */
-    text-decoration: underline; /* ホバー時に下線を追加 */
 }
 
 /* メインコンテンツ */
@@ -66,6 +54,32 @@ li {
 }
 
 /* 各施設情報 */
+/* ランキングアイテムの順位表示 */
+.ranking-item {
+    position: relative; /* 相対位置を指定して順位を絶対位置で配置 */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.rank {
+    position: absolute; /* 絶対位置で配置 */
+    top: 10px; /* 上から10px */
+    left: 10px; /* 左から10px */
+    background-color: #c098d3; /* 順位表示の背景色 */
+    color: white; /* 文字色は白 */
+    font-size: 1.5rem; /* フォントサイズを大きめに */
+    padding: 5px 10px; /* 周りに余白を追加 */
+    border-radius: 5px; /* 角を丸く */
+    font-weight: bold; /* 太字にして目立たせる */
+    letter-spacing: 1px; /* 少し文字間隔を広げて視認性をアップ */
+}
+
 .ranking-item {
     display: flex;
     flex-wrap: wrap;
@@ -97,34 +111,6 @@ li {
 .ranking-text strong {
     font-size: 1.5em;
     color: #c098d3;
-}
-
-/* Google Maps iframe */
-iframe {
-    border: none;
-    margin-top: 10px;
-}
-
-/* 店舗情報テーブル */
-table {
-    border-collapse: collapse; /* テーブルの枠線を結合 */
-    width: 100%; /* テーブル幅を100%に */
-    margin-top: 10px; /* テーブルの上部に余白 */
-}
-
-table, th, td {
-    border: 1px solid #ddd; /* テーブル全体、ヘッダー、データセルに薄い灰色の1pxボーダー */
-}
-
-th, td {
-    padding: 10px; /* セル内の余白を10pxに統一 */
-    text-align: left; /* テキストを左揃え */
-}
-
-th {
-    background-color: #c098d3; /* ヘッダーの背景色を淡い青色に */
-    color: white; /* ヘッダーテキストの色を白に */
-    text-align: center; /* ヘッダーテキストを中央揃え */
 }
 
 /* モーダル用のスタイル */
@@ -179,62 +165,5 @@ th {
 @media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
-    }
-}
-
-/* 他のランキングセクション */
-#other-rankings {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#other-rankings ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#other-rankings li {
-    margin-bottom: 10px;
-}
-
-#other-rankings a {
-    color: #c098d3;
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-#other-rankings a:hover {
-    text-decoration: underline;
-}
-
-/* フッター */
-footer {
-    background-color: white;
-    color: #333;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    margin-top: 20px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9em;
-}
-
-/* タブレットやiPad用の特定のスタイル */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    
-    header {
-        background-color: #c098d3 !important;
-    }
-
-    header a {
-        color: white !important;
-        text-decoration: none !important;
     }
 }
