@@ -1,0 +1,101 @@
+/* 全体設定 */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+header {
+  background-color: #5563e4;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+h1 {
+  margin: 0;
+  background-color: rgb(30, 172, 73);
+}
+
+nav {
+  background-color: #0b0202;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  color: #ffcc00;
+}
+
+/* メインコンテンツ */
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+.line-info h2 {
+  font-size: 24px;
+  color: #0044cc;
+}
+
+.line-info ul {
+  padding-left: 20px;
+}
+
+.line-map img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 20px 0;
+}
+
+.access-info {
+  background-color: #e0e0e0;
+  padding: 20px;
+}
+
+.access-content {
+  display: flex;
+  align-items: center;
+}
+
+.access-content img {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.access-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
