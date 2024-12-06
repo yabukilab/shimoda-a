@@ -1,207 +1,128 @@
+/* ベーススタイル */
+body {
+    background-color: #7bc372;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* メイン画像 */
+.main-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* コンテナ */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
-}
-
-h1 {
-    font-size: 6em;
-    margin-bottom: 15px;
-    font-family: Arial, sans-serif;
-}
-
-.main-image img {
-    width: 100%;
     max-width: 800px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.images {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 800px;
-}
-
-.image {
-    width: 45%;
-    position: relative;
-}
-
-.image a {
-    display: block;
-    text-align: left;
-    text-decoration: none;
-    color: inherit;
-    white-space: normal;
-}
-
-.image img {
-    width: 100%;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.image:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.image p {
-    margin-top: 20px;
-    font-weight: bold;
-    text-align: left;
-    white-space: normal;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
-.button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-}
-
-body {
-    background-color: #7bc372;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Rounded M+ 1c', sans-serif;
-    padding: 20px;
-    background-color: #f5f5f5;
-}
-
-.map-container {
-    width: 100%;
-    max-width: 800px;
-    margin-top: 20px;
-    text-align: center;
+    margin: 0 auto;
     background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.map-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+/* 見出し */
+h1 {
+    font-size: 4em;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
 }
 
-.map-embed {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* 段落 */
+.container p {
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-.map-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* リンクリスト */
+.container ul {
+    list-style: none;
+    padding: 0;
     width: 100%;
-    height: 100%;
-    border: none;
+    text-align: center;
 }
 
+.container li {
+    margin: 10px 0;
+}
 
-/*仮実装（タブレットはOK）*/
+.container a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
 
-/* PC用のCSSはメディアクエリの外に記述する */
+.container a:hover {
+    color: #1abc9c;
+}
 
-@media screen and (max-width: 959px) {
-    /* 959px以下に適用されるCSS（タブレット用） */
+/* ボタンリンクのスタイル */
+.link-buttons {
+    display: flex;
+    flex-wrap: wrap; /* 必要に応じて折り返し */
+    gap: 15px;
+    justify-content: center; /* センター揃え */
+    margin-top: 20px;
+}
 
-    h1 {
-        font-size: 3.5em;
-        /* タブレット用にフォントサイズを小さく */
-    }
+.link-buttons .button {
+    display: block;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    color: #040b04;
+    background-color: #fff;
+    border: 2px solid #1ed71a;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .image {
-        width: 48%;
-        /* 画像を少し大きくして並びを調整 */
-    }
+.link-buttons .button:hover {
+    background-color: #1ed71a;
+    color: #fff;
+    border-color: #7ae17a;  /* ホバー時に枠線の色を変更 */
+    transform: scale(1.05); /* ホバー時に少し大きく */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
 
-    .image p {
-        margin-top: 15px;
-        /* タブレットで余白を少し減らす */
-    }
-
-    .map-container {
-        padding: 15px;
-        /* 地図周りの余白を調整 */
-    }
-
-    .map-embed {
-        padding-bottom: 56.25%;
-        /* 地図の高さ比率を維持 */
-    }
-
-    .button {
+/* レスポンシブ対応: スマホ用 */
+@media screen and (max-width: 600px) {
+    .link-buttons .button {
+        width: 100%; /* スマホではボタンを全幅に */
         font-size: 0.9em;
-        /* ボタンのフォントサイズを少し小さく */
+        padding: 10px 15px;
     }
-
 }
 
-@media screen and (max-width: 480px) {
+/* レスポンシブ対応 */
+@media screen and (max-width: 600px) {
     h1 {
         font-size: 1.5em;
-        /* スマホ用にフォントサイズを小さく */
-        line-height: 1.2;
-        /* 見出しの行間を狭く */
     }
 
-    h2{
-        font-size: 1.8em; 
-        margin-bottom: 8px;
-        text-align: left;
+    .container {
+        padding: 10px;
     }
 
-    .images {
-        flex-direction: column;
-        /* 画像を縦並びに変更 */
-        align-items: center;
+    .container p {
+        font-size: 0.9em;
     }
 
-    .image {
-        width: 100%;
-        /* スマホでは画像を1列に表示 */
-        margin-bottom: 15px;
-        /* 画像間のスペースを確保 */
-    }
-
-    .image p {
-        margin-top: 10px;
-        /* 余白を減らす */
-    }
-
-    .map-container {
-        padding: 0.5%;
-        /* 地図周りの余白を縮小 */
-        margin-top: 0.5%;
-    }
-
-    .map-embed {
-        width: 100%; /* 横幅を画面サイズに調整 */
-        height: 250px; /* 高さを固定して縮小 */
-        max-width: 100%; /* 画面の幅に収める */
-        margin: 0 auto; /* 中央揃え */
-    }
-
-    .button {
-        font-size: 0.8em;
-        /* ボタンのフォントサイズをさらに小さく */
-        padding: 8px 16px;
-        /* ボタンのパディングも縮小 */
+    .container a {
+        font-size: 0.9em;
     }
 }
