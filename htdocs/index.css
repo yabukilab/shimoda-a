@@ -1,0 +1,128 @@
+/* ベーススタイル */
+body {
+    background-color: #7bc372;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* メイン画像 */
+.main-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* コンテナ */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 見出し */
+h1 {
+    font-size: 4em;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+/* 段落 */
+.container p {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* リンクリスト */
+.container ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.container li {
+    margin: 10px 0;
+}
+
+.container a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.container a:hover {
+    color: #1abc9c;
+}
+
+/* ボタンリンクのスタイル */
+.link-buttons {
+    display: flex;
+    flex-wrap: wrap; /* 必要に応じて折り返し */
+    gap: 15px;
+    justify-content: center; /* センター揃え */
+    margin-top: 20px;
+}
+
+.link-buttons .button {
+    display: block;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    color: #040b04;
+    background-color: #fff;
+    border: 2px solid #1ed71a;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link-buttons .button:hover {
+    background-color: #1ed71a;
+    color: #fff;
+    border-color: #7ae17a;  /* ホバー時に枠線の色を変更 */
+    transform: scale(1.05); /* ホバー時に少し大きく */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* レスポンシブ対応: スマホ用 */
+@media screen and (max-width: 600px) {
+    .link-buttons .button {
+        width: 100%; /* スマホではボタンを全幅に */
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .container p {
+        font-size: 0.9em;
+    }
+
+    .container a {
+        font-size: 0.9em;
+    }
+}
