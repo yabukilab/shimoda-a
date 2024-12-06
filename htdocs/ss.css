@@ -1,0 +1,86 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center; /* 全体を中央揃え */
+}
+
+
+/* ヘッダー */
+header {
+    background-color: #007acc;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* メインセクション */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* セクション */
+section {
+    margin-bottom: 30px;
+}
+
+/* 画像スタイル */
+figure img {
+    max-width: 100%; /* 親要素の幅に収まるよう調整 */
+    max-height: 300px; /* 高さを制限して見やすく */
+    height: auto; /* アスペクト比を維持 */
+    display: inline-block; /* 中央揃え */
+    border-radius: 8px; /* 角を丸める */
+    margin: 0 auto 15px; /* 上下の余白を追加 */
+}
+
+/* タイトル */
+section h2 {
+    font-size: 1.8rem;
+    color: #007acc;
+    margin-bottom: 15px;
+}
+
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; /* テーブルを中央揃え */
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f9ff;
+    font-weight: bold;
+    text-align: center; /* テーブルヘッダーを中央揃え */
+}
+
+td {
+    background-color: #fff;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    background: #007acc;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
