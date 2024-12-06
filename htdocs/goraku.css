@@ -13,7 +13,7 @@ header {
 }
 
 header h1 {
-    color: white;
+    color: black;
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 2px;
@@ -53,37 +53,12 @@ li {
     margin-bottom: 40px;
 }
 
-/* 各施設情報 */
-/* ランキングアイテムの順位表示 */
+/* ランキングアイテム */
 .ranking-item {
-    position: relative; /* 相対位置を指定して順位を絶対位置で配置 */
+    position: relative; /* 順位を表示するための基準 */
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 30px;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
-.rank {
-    position: absolute; /* 絶対位置で配置 */
-    top: 10px; /* 上から10px */
-    left: 10px; /* 左から10px */
-    background-color: #c098d3; /* 順位表示の背景色 */
-    color: white; /* 文字色は白 */
-    font-size: 1.5rem; /* フォントサイズを大きめに */
-    padding: 5px 10px; /* 周りに余白を追加 */
-    border-radius: 5px; /* 角を丸く */
-    font-weight: bold; /* 太字にして目立たせる */
-    letter-spacing: 1px; /* 少し文字間隔を広げて視認性をアップ */
-}
-
-.ranking-item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 30px;
     background-color: #f9f9f9;
     padding: 10px;
@@ -111,6 +86,76 @@ li {
 .ranking-text strong {
     font-size: 1.5em;
     color: #c098d3;
+}
+
+/* 順位表示リンク */
+.rank {
+    position: absolute; /* ランキングアイテム内の左上に固定 */
+    top: 10px;
+    left: 10px;
+    background-color: #c098d3;
+    color: black;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.rank:hover {
+    text-decoration: underline;
+}
+
+/* テーブルスタイル（店舗情報） */
+.store-info {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.store-info th {
+    background-color: #c098d3; /* ヘッダー背景色 */
+    color: white; /* ヘッダー文字色 */
+    text-align: center;
+    padding: 10px;
+}
+
+.store-info td {
+    border: 1px solid #ddd; /* セルの枠線 */
+    padding: 10px;
+    text-align: left;
+}
+
+
+/* 偶数行に背景色を付ける */
+.store-info tr:nth-child(even) {
+    background-color: #f9f9f9; /* 偶数行の背景色 */
+}
+
+/* 奇数行に別の背景色を付ける（オプション） */
+.store-info tr:nth-child(odd) {
+    background-color: #ffffff; /* 奇数行の背景色 */
+}
+
+.store-info th {
+    background-color: #c098d3;
+    color: white;
+    text-align: center;
+}
+
+/* ホバー時の色 */
+.store-info tr:hover {
+    background-color: #f2d9f7; /* ホバーした行の背景色 */
+}
+
+.store-info td a {
+    color: #c098d3;
+    text-decoration: none;
+}
+
+.store-info td a:hover {
+    text-decoration: underline;
 }
 
 /* モーダル用のスタイル */
