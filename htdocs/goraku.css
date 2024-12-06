@@ -36,6 +36,85 @@ p {
     color: #333;
 }
 
+/* メディア（画像と地図）のコンテナ */
+.media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* 画像と地図の間に隙間を空ける */
+    margin-bottom: 20px; /* 上部の余白 */
+    flex-wrap: wrap; /* 画面が小さいときに画像と地図を縦に並べる */
+}
+
+/* 画像 */
+.media-container img {
+    max-width: 100%;  /* 画像を親要素の幅に合わせて調整 */
+    height: auto;  /* 高さを自動調整 */
+    max-width: 600px;  /* 最大幅を指定 */
+    border-radius: 8px;
+}
+
+/* 地図 */
+.media-container iframe {
+    width: 100%;
+    height: 450px;  /* 必要に応じて調整 */
+    max-width: 550px; /* 最大幅を指定 */
+    border-radius: 8px;
+}
+
+/* ランキングアイテム */
+.ranking-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 900px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* 中央配置 */
+}
+
+/* ランキングアイテムのテキスト */
+.ranking-text {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.store-info {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* ストア情報のテーブル */
+.store-info {
+    width: 100%; /* テーブルを親要素に合わせる */
+    margin-top: 20px;
+}
+
+.store-info th, .store-info td {
+    padding: 10px;
+    text-align: left;
+}
+
+.store-info th {
+    background-color: #c098d3;
+    color: white;
+}
+
+.store-info tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.store-info tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.store-info tr:hover {
+    background-color: #f2d9f7;
+}
+
 /* ランキングセクション */
 #ranking {
     background-color: white;
@@ -127,7 +206,6 @@ li {
     text-align: left;
 }
 
-
 /* 偶数行に背景色を付ける */
 .store-info tr:nth-child(even) {
     background-color: #f9f9f9; /* 偶数行の背景色 */
@@ -164,6 +242,7 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
 }
+
 /* モーダル用のスタイル */
 .modal {
     display: none;

@@ -10,11 +10,11 @@ body {
 
 /* メイン画像 */
 .main-image img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    display: block;
-    margin-bottom: 20px;
+    width: 100vw; /* ビューポート全体の横幅に広げる */
+    height: 300px; /* 固定の高さを指定 */
+    object-fit: cover; /* 画像を切り取って高さに収める */
+    display: block; /* ブロック要素として扱う */
+    margin: 0; /* 余白を消す */
 }
 
 /* コンテナ */
