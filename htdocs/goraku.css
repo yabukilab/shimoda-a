@@ -290,8 +290,14 @@ footer {
     }
 }
 
-@media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
+/* スマホ表示の調整 */
+@media (max-width: 767px) {
+    .media-container {
+        flex-direction: column; /* 画像と地図を縦に並べる */
+        align-items: center;
+    }
+
+    .media-map {
+        height: 300px; /* スマホ表示時の地図の高さを小さくする */
     }
 }
