@@ -10,15 +10,12 @@ body {
 
 /* メイン画像 */
 .main-image img {
-    width: 100%; /* 親要素の幅いっぱいに広げる */
-    max-width: 800px; /* 最大幅を800pxに制限 */
-    height: auto; /* 縦横比を保持 */
-    aspect-ratio: 16 / 9; /* 横長の比率を指定 */
-    display: block;
-    margin-bottom: 20px;
-    object-fit: cover; /* 必要に応じて画像のトリミング */
+    width: 100vw; /* ビューポート全体の横幅に広げる */
+    height: 300px; /* 固定の高さを指定 */
+    object-fit: cover; /* 画像を切り取って高さに収める */
+    display: block; /* ブロック要素として扱う */
+    margin: 0; /* 余白を消す */
 }
-
 
 /* コンテナ */
 .container {
