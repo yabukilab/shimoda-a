@@ -76,6 +76,13 @@ section {
   display: block;
   margin: 20px 0;
 }
+.access\info
+{
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 20px 0;
+}
 
 .access-content {
   display: flex;
