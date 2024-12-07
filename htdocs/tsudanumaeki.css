@@ -57,6 +57,7 @@ nav ul li a:hover {
 /* メインコンテンツの設定 */
 main {
   padding: 20px; /* 内側の余白を20pxに */
+  margin-bottom: 20px;
 }
 
 /* 各路線情報のセクションスタイル */
@@ -100,10 +101,10 @@ footer {
   background-color: #2a3d66; /* 背景色をヘッダーと同じ青に */
   color: #fff; /* 文字色を白に */
   text-align: center; /* 中央揃え */
-  padding: 10px; /* 内側の余白を10pxに */
   position: fixed; /* 画面下部に固定 */
   width: 100%; /* 幅を100%に */
   bottom: 0; /* 下に配置 */
+  
 }
 
 /* 駅周辺の施設情報リストのスタイル */
