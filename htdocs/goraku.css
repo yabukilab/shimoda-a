@@ -22,6 +22,7 @@ header h1 {
 /* メインコンテンツ */
 main {
     padding: 20px;
+    text-align: center; /* 文章も中央揃え */
 }
 
 h2 {
@@ -43,7 +44,7 @@ p {
     align-items: center;
     gap: 20px; /* 画像と地図の間に隙間を空ける */
     margin-bottom: 20px; /* 上部の余白 */
-    flex-wrap: wrap; /* 画面が小さいときに画像と地図を縦に並べる */
+    flex-wrap: nowrap; /* 画面が広い場合でも横に並べる */
 }
 
 /* 画像 */
@@ -58,7 +59,7 @@ p {
 .media-container iframe {
     width: 100%;
     height: 450px;  /* 必要に応じて調整 */
-    max-width: 550px; /* 最大幅を指定 */
+    max-width: 600px; /* 最大幅を指定 */
     border-radius: 8px;
 }
 
@@ -76,6 +77,12 @@ p {
     margin: 0 auto; /* 中央配置 */
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; /* テーブルを中央揃え */
+}
+
 /* ランキングアイテムのテキスト */
 .ranking-text {
     width: 100%;
@@ -83,16 +90,11 @@ p {
 }
 
 .store-info {
-    width: 100%;
-    margin-top: 20px;
+    width: 80%; /* テーブルを中央揃え */
+    margin: 20px auto; /* テーブルを中央揃え */
 }
 
 /* ストア情報のテーブル */
-.store-info {
-    width: 100%; /* テーブルを親要素に合わせる */
-    margin-top: 20px;
-}
-
 .store-info th, .store-info td {
     padding: 10px;
     text-align: left;
@@ -186,6 +188,25 @@ li {
     text-decoration: underline;
 }
 
+/* テーブルが親要素に合わせて中央に配置されるように */
+.store-info {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse; /* テーブルのセルが重ならないようにする */
+}
+
+/* テーブルのスタイル */
+.store-info th, .store-info td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* 枠線 */
+}
+
+/* ヘッダー行の背景色 */
+.store-info th {
+    background-color: #f4f4f4;
+}
+
 /* テーブルスタイル（店舗情報） */
 .store-info {
     border-collapse: collapse;
@@ -243,29 +264,6 @@ footer {
     margin-top: 20px;
 }
 
-/* モーダル用のスタイル */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
 .close {
     position: absolute;
     top: 20px;
@@ -292,8 +290,14 @@ footer {
     }
 }
 
-@media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
+/* スマホ表示の調整 */
+@media (max-width: 767px) {
+    .media-container {
+        flex-direction: column; /* 画像と地図を縦に並べる */
+        align-items: center;
+    }
+
+    .media-map {
+        height: 300px; /* スマホ表示時の地図の高さを小さくする */
     }
 }
