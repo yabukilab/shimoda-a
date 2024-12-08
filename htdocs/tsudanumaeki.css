@@ -1,117 +1,191 @@
-/* Reset some basic styles for consistency */
+/* 全体のリセット */
 * {
-  margin: 0; /* 余白をゼロに */
-  padding: 0; /* パディングをゼロに */
-  box-sizing: border-box; /* ボックスサイズをボーダーを含めたサイズに */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Bodyの基本設定 */
 body {
-  font-family: 'Arial', sans-serif; /* フォントをArialに設定 */
-  line-height: 1.6; /* 行間を1.6倍に */
-  background-color: #f4f4f4; /* 背景色を薄いグレーに */
-  color: #333; /* 文字色を暗いグレーに */
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #fff8f0; /* オフホワイト背景 */
+  color: #333;
+  padding-top: 20px;
 }
 
-/* ヘッダーのスタイル */
+/* ヘッダー */
 header {
-  background-color: #2a3d66; /* ヘッダー背景色を青っぽい色に */
-  color: #fff; /* 文字色を白に */
-  padding: 20px; /* 内側の余白を20pxに */
-  text-align: center; /* 中央揃え */
+  background-color: #ff7043; /* オレンジ色 */
+  color: white;
+  text-align: center;
+  padding: 15px;
 }
 
-/* h1のスタイル */
-h1 {
-  font-size: 2rem; /* フォントサイズを2remに */
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
-/* ナビゲーションメニューのスタイル */
+/* ナビゲーション */
 nav {
-  background-color: #333; /* 背景色をダークグレーに */
-  padding: 10px 0; /* 上下に10pxの余白を */
+  background-color: #f57c00; /* 濃いオレンジ */
 }
 
 nav ul {
-  display: flex; /* 横並びに */
-  justify-content: center; /* 中央揃え */
-  list-style-type: none; /* リストマーカーを消す */
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
 
 nav ul li {
-  margin: 0 15px; /* 各リストアイテムに左右15pxの余白 */
+  margin: 0 15px;
 }
 
 nav ul li a {
-  color: #fff; /* リンクの文字色を白に */
-  text-decoration: none; /* リンクの下線を消す */
-  font-weight: bold; /* 太字に */
-  padding: 5px 10px; /* 内側の余白を設定 */
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
 }
 
 nav ul li a:hover {
-  background-color: #444; /* ホバー時の背景色をダークグレーに */
-  border-radius: 5px; /* 角を丸く */
+  color: #ffcc80; /* オレンジの明るい色 */
 }
 
-/* メインコンテンツの設定 */
+/* メインコンテンツ */
 main {
-  padding: 20px; /* 内側の余白を20pxに */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* 白背景 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #f57c00; /* オレンジ色 */
+  border-bottom: 2px solid #ffcc80; /* 明るいオレンジでボーダー */
+  padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
-/* 各路線情報のセクションスタイル */
-.line-section {
-  margin-bottom: 30px; /* 下に30pxの余白 */
-  background-color: #fff; /* 背景色を白に */
-  border-radius: 8px; /* 角を丸く */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 薄い影をつける */
-  padding: 20px; /* 内側の余白を20pxに */
-}
-
-/* 路線情報のリストスタイル */
+/* 各駅情報 */
 .line-info ul {
-  padding-left: 20px; /* 左側に20pxのインデント */
+  list-style: none;
+  padding-left: 20px;
 }
 
 .line-info ul li {
-  margin-bottom: 10px; /* 各リストアイテムに下の余白 */
+  margin-bottom: 10px;
 }
 
-/* セクションタイトル（h2）のスタイル */
-h2 {
-  color: #2a3d66; /* タイトル文字色をヘッダーと同じ青に */
-  font-size: 1.5rem; /* フォントサイズを1.5remに */
-  margin-bottom: 15px; /* 下に15pxの余白 */
+.line-map {
+  text-align: center;
+  margin-top: 20px;
 }
 
-/* 画像のスタイル（左寄せ） */
-.line-map img, .access-info2 {
-  width: 100%; /* 画像の幅を100%に */
-  max-width: 400px; /* 最大幅を400pxに */
-  border-radius: 8px; /* 角を丸く */
-  margin: 10px 0; /* 上下に10pxの余白 */
-  display: block; /* ブロック表示にして、下のテキストと別に表示 */
-  margin-left: 0;  /* 左寄せ */
-  margin-right: auto; /* 右は自動で */
+.line-map img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-/* フッターのスタイル */
+/* 店舗情報 */
+.store-info {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff3e0; /* 明るいオレンジの背景 */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.store-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #f57c00; /* 濃いオレンジ */
+}
+
+.store-info p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.store-info img {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+  display: block;
+  border-radius: 8px;
+}
+
+.store-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.store-info th, .store-info td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.store-info th {
+  width: 25%;
+  background-color: #ffcc80; /* オレンジ色 */
+}
+
+.store-info td {
+  color: #555;
+}
+
+/* アクセス情報 */
+.access-info2 {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 他のリンク */
+#other-rankings ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#other-rankings ul li {
+  margin-bottom: 10px;
+}
+
+#other-rankings ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+#other-rankings ul li a:hover {
+  color: #f57c00; /* 濃いオレンジ */
+}
+
+/* フッター */
 footer {
-  background-color: #2a3d66; /* 背景色をヘッダーと同じ青に */
-  color: #fff; /* 文字色を白に */
-  text-align: center; /* 中央揃え */
-  position: fixed; /* 画面下部に固定 */
-  width: 100%; /* 幅を100%に */
-  bottom: 0; /* 下に配置 */
-  
+  background-color: #ff7043; /* オレンジ色 */
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
 }
 
-/* 駅周辺の施設情報リストのスタイル */
-.access-info ul {
-  margin-top: 20px; /* 上に20pxの余白 */
-}
-
-.access-info li {
-  margin-bottom: 20px; /* 下に20pxの余白 */
+footer p {
+  font-size: 1rem;
 }
