@@ -189,3 +189,93 @@ footer {
 footer p {
   font-size: 1rem;
 }
+
+/* タブレット表示用 (768px〜1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  header h1 {
+    font-size: 2rem; /* タブレット用にフォントサイズを小さく */
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .line-info ul li {
+    margin-bottom: 8px;
+  }
+
+  .store-info {
+    padding: 18px;
+  }
+
+  .store-info img {
+    max-width: 100%;
+    margin: 15px 0;
+  }
+
+  .store-info table {
+    font-size: 1rem;
+  }
+
+  footer p {
+    font-size: 0.95rem;
+  }
+}
+
+/* スマホ表示用 */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem; /* スマホ用にフォントサイズを小さく */
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .line-info ul li {
+    margin-bottom: 8px;
+  }
+
+  .store-info {
+    padding: 15px;
+  }
+
+  .store-info img {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .store-info table {
+    font-size: 0.9rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
