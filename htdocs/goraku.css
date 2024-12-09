@@ -227,58 +227,92 @@ footer {
     padding: 10px 0;
 }
 
-/* レスポンシブデザイン */
-@media (max-width: 1024px) {
-    .media-container {
-        flex-wrap: wrap; /* 小さい画面では縦並びに */
-        flex-direction: column; /* 必要に応じて明示的に指定 */
-        gap: 10px; /* 要素の隙間を調整 */
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .map, .image {
-        width: 100%; /* スマホ画面では横幅を100%に */
-        margin-bottom: 10px; /* 画像と地図の間に隙間を追加 */
-    }
-
-    .media-container img,
-    .media-container iframe {
-        width: 90%; /* 画像や地図を画面に収める */
-    }
-
-    .ranking-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .ranking-item img {
-        margin: 0 auto 15px; /* 画像に余白を追加 */
-    }
-
-    /* テーブルのスタイル調整 */
-    .store-info {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .store-info td, .store-info th {
-        font-size: 0.9em; /* フォントサイズを小さくしてテーブルを収める */
-    }
-}
-
-/* さらに小さいスクリーン（モバイル向け） */
-@media (max-width: 480px) {
+/* タブレット表示用 (768px〜1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
     header h1 {
-        font-size: 2rem; /* スマホで文字が大きくなりすぎないように */
+      font-size: 2rem; /* タブレット用にフォントサイズを小さく */
     }
-
-    .ranking-item {
-        padding: 15px;
-        margin-bottom: 20px;
+  
+    nav ul {
+      flex-direction: row;
+      justify-content: space-around;
     }
-
-    .store-info td, .store-info th {
-        padding: 8px; /* テーブルのセルの余白を調整 */
+  
+    nav ul li {
+      margin: 0 10px;
     }
-}
+  
+    main {
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 1.8rem;
+    }
+  
+    .line-info ul li {
+      margin-bottom: 8px;
+    }
+  
+    .store-info {
+      padding: 18px;
+    }
+  
+    .store-info img {
+      max-width: 100%;
+      margin: 15px 0;
+    }
+  
+    .store-info table {
+      font-size: 1rem;
+    }
+  
+    footer p {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* スマホ表示用 */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 1.8rem; /* スマホ用にフォントサイズを小さく */
+    }
+  
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav ul li {
+      margin: 10px 0;
+    }
+  
+    main {
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 1.6rem;
+    }
+  
+    .line-info ul li {
+      margin-bottom: 8px;
+    }
+  
+    .store-info {
+      padding: 15px;
+    }
+  
+    .store-info img {
+      max-width: 100%;
+      margin: 10px 0;
+    }
+  
+    .store-info table {
+      font-size: 0.9rem;
+    }
+  
+    footer p {
+      font-size: 0.9rem;
+    }
+  }
