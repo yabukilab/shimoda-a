@@ -37,6 +37,33 @@ p {
     color: #333;
 }
 
+ul {
+    list-style: none; /* リストスタイルを削除 */
+    padding: 0;       /* デフォルトの余白を削除 */
+    margin: 0;        /* デフォルトのマージンを削除 */
+}
+
+li {
+    list-style: none; /* 各リスト項目のマーカーを削除 */
+}
+
+.container {
+    display: flex;         /* Flexboxを使用 */
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center;    /* 子要素を中央揃え */
+    justify-content: center; /* 縦方向の中央揃え（必要に応じて） */
+}
+
+.image-map {
+    max-width: 100%; /* 横幅を調整 */
+    text-align: center;
+}
+
+.map, .image {
+    max-width: 600px; /* 適切な横幅を設定 */
+    margin: 0 auto;   /* 左右の余白を均等にして中央配置 */
+}
+
 /* メディア（画像と地図）のコンテナ */
 .media-container {
     display: flex;
@@ -81,7 +108,11 @@ p {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    flex-direction: column;    /* 縦方向に並べる */
+    align-items: center;
+    justify-content: center;   /* 縦方向の中央揃え */
+    text-align: center;        /* テキストも中央揃え */
+    margin: 0 auto;            /* 全体を中央に配置 */
     margin-bottom: 30px;
     background-color: #f9f9f9;
     padding: 20px;
@@ -191,6 +222,12 @@ footer {
         align-items: center;
     }
 
+    @media screen and (max-width: 768px) {
+        .map, .image {
+            width: 100%; /* スマホ画面では横幅を100%に */
+        }
+    }
+    
     .media-container img,
     .media-container iframe {
         width: 90%;
@@ -201,4 +238,69 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+}
+/* ベーススタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #c098d3;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    color: black;
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+/* メインコンテンツ */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #c098d3;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+ul {
+    list-style: none; /* リストスタイルを削除 */
+    padding: 0;       /* デフォルトの余白を削除 */
+    margin: 0;        /* デフォルトのマージンを削除 */
+}
+
+li {
+    list-style: none; /* 各リスト項目のマーカーを削除 */
+}
+
+.container {
+    display: flex;         /* Flexboxを使用 */
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center;    /* 子要素を中央揃え */
+    justify-content: center; /* 縦方向の中央揃え（必要に応じて） */
+}
+
+.image-map {
+    max-width: 100%; /* 横幅を調整 */
+    text-align: center;
+}
+
+.map, .image {
+    max-width: 600px; /* 適切な横幅を設定 */
+    margin: 0 auto;   /* 左右の余白を均等にして中央配置 */
 }
