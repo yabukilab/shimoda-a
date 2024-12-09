@@ -273,46 +273,88 @@ footer {
   }
   
   /* スマホ表示用 */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    header, main, footer {
+        width: 100%;
+        text-align: center;
+    }
+
     header h1 {
-      font-size: 1.8rem; /* スマホ用にフォントサイズを小さく */
+        font-size: 1.8rem; /* スマホ用にフォントサイズを小さく */
     }
-  
+
     nav ul {
-      flex-direction: column;
-      align-items: center;
+        flex-direction: column;
+        align-items: center;
     }
-  
+
     nav ul li {
-      margin: 10px 0;
+        margin: 10px 0;
     }
-  
+
     main {
-      padding: 15px;
+        padding: 15px;
     }
-  
+
     h2 {
-      font-size: 1.6rem;
+        font-size: 1.6rem;
     }
-  
+
     .line-info ul li {
-      margin-bottom: 8px;
+        margin-bottom: 8px;
     }
-  
+
     .store-info {
-      padding: 15px;
+        padding: 15px;
     }
-  
+
     .store-info img {
-      max-width: 100%;
-      margin: 10px 0;
+        max-width: 100%;
+        margin: 10px 0;
     }
-  
+
     .store-info table {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  
+
     footer p {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  }
+
+    /* ランキングアイテムの修正 */
+    .ranking-item {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .ranking-item img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .ranking-text {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    /* iframeのサイズ調整 */
+    .media-container iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 250px; /* 高さを適切に設定 */
+        margin: 0 auto;
+    }
+
+    .media-container img {
+        max-width: 100%;
+        height: auto;
+    }
+}
