@@ -47,20 +47,33 @@ p {
     flex-wrap: wrap; /* 画面が広い場合は横並び */
 }
 
+.media-container img,
+.media-container iframe{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+}
+
 .media-container img {
     max-width: 100%;
     height: auto;
     max-width: 600px;
     border-radius: 8px;
-    aspect-ratio: 16/9;
 }
 
 .media-container iframe {
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9比率 = 9 / 16 * 100 */
+    position: relative;
+}
+
+.media-container iframe iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    max-width: 600px;
-    border-radius: 8px;
-    aspect-ratio: 16/9;
+    height: 100%;
 }
 
 /* ランキングアイテム */
