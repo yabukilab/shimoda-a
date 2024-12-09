@@ -19,6 +19,11 @@ header h1 {
     letter-spacing: 2px;
 }
 
+li {
+    list-style: none; /* 各リスト項目のマーカーを削除 */
+}
+
+
 /* メインコンテンツ */
 main {
     padding: 20px;
@@ -37,133 +42,73 @@ p {
     color: #333;
 }
 
-ul {
-    list-style: none; /* リストスタイルを削除 */
-    padding: 0;       /* デフォルトの余白を削除 */
-    margin: 0;        /* デフォルトのマージンを削除 */
-}
-
-li {
-    list-style: none; /* 各リスト項目のマーカーを削除 */
-}
-
-.container {
-    display: flex;         /* Flexboxを使用 */
-    flex-direction: column; /* 縦方向に配置 */
-    align-items: center;    /* 子要素を中央揃え */
-    justify-content: center; /* 縦方向の中央揃え（必要に応じて） */
-}
-
-.image-map {
-    max-width: 100%; /* 横幅を調整 */
-    text-align: center;
-}
-
-.map, .image {
-    max-width: 600px; /* 適切な横幅を設定 */
-    margin: 0 auto;   /* 左右の余白を均等にして中央配置 */
-}
-
-/* メディア（画像と地図）のコンテナ */
+/* メディアコンテナ */
 .media-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     gap: 20px;
+    flex-wrap: wrap;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* 画面が広い場合は横並び */
 }
 
-.media-container img,
-.media-container iframe{
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 8px;
-}
-
+/* 画像と地図を適切に調整 */
 .media-container img {
-    max-width: 100%;
+    width: 48%;  /* 画像を横並びにするため、幅を48%に */
     height: auto;
-    max-width: 600px;
     border-radius: 8px;
 }
 
 .media-container iframe {
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9比率 = 9 / 16 * 100 */
-    position: relative;
-}
-
-.media-container iframe iframe{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 48%;  /* 地図も48%で、画像と並べる */
+    height: 400px;  /* 高さを指定して、つぶれないように */
+    border-radius: 8px;
 }
 
 /* ランキングアイテム */
 .ranking-item {
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;    /* 縦方向に並べる */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;   /* 縦方向の中央揃え */
-    text-align: center;        /* テキストも中央揃え */
-    margin: 0 auto;            /* 全体を中央に配置 */
-    margin-bottom: 30px;
+    text-align: center;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    position: relative; /* 親要素に相対位置を指定 */
+    overflow: hidden; /* 枠から飛び出ないようにする */
 }
 
-.ranking-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-right: 20px;
+/* 画像と地図のサイズ調整 */
+.ranking-item img,
+.ranking-item iframe {
+    width: 100%; /* 枠に合わせて広がる */
+    max-width: 100%; /* 最大幅を100%に設定 */
+    height: auto; /* 高さは自動調整 */
+    border-radius: 8px; /* 角を丸くする */
+    display: block;
+    margin-bottom: 20px;
 }
 
-.ranking-text {
-    flex: 1;
-    min-width: 300px;
-    margin-left: 20px;
-    z-index: 1;
+.ranking-item iframe {
+    height: 400px; /* 高さを指定（例えば400px） */
 }
 
-.ranking-text p {
-    margin: 10px 0;
-}
-
-.ranking-text strong {
-    font-size: 1.5em;
-    color: #c098d3;
-}
-
-/* 順位表示リンク */
+/* ランキングの順位 */
 .rank {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #c098d3;
-    color: black;
-    font-size: 1.5rem;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-decoration: none;
-    z-index: 2;
+    position: absolute;  /* 絶対位置 */
+    top: 10px;           /* 上から10px */
+    left: 10px;          /* 左から10px */
+    background-color: #c098d3; /* 背景色 */
+    color: black;        /* 文字色 */
+    font-size: 1.5rem;   /* フォントサイズ */
+    padding: 5px 10px;   /* パディング */
+    border-radius: 5px;  /* 角丸 */
+    font-weight: bold;   /* 太字 */
+    z-index: 10;         /* 他の要素の上に表示 */
 }
 
-.rank:hover {
-    text-decoration: underline;
-}
-
-/* テーブルのスタイル */
+/* テーブルスタイル */
 .store-info {
     width: 80%;
     margin: 20px auto;
@@ -183,28 +128,12 @@ li {
     text-align: left;
 }
 
-/* 偶数行に背景色 */
 .store-info tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* 奇数行に背景色 */
-.store-info tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-
-/* ホバー時の行 */
 .store-info tr:hover {
     background-color: #f2d9f7;
-}
-
-.store-info td a {
-    color: #c098d3;
-    text-decoration: none;
-}
-
-.store-info td a:hover {
-    text-decoration: underline;
 }
 
 /* フッター */
@@ -215,27 +144,38 @@ footer {
     padding: 10px 0;
 }
 
-/* スマホ表示の調整 */
+/* スマホ対応 */
 @media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
     .media-container {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 
-    @media screen and (max-width: 768px) {
-        .map, .image {
-            width: 100%; /* スマホ画面では横幅を100%に */
-        }
-    }
-    
     .media-container img,
     .media-container iframe {
-        width: 90%;
-        height: auto; /* スマホ表示時の地図高さ */
+        width: 98%;        /* 横幅を100%にして親要素に合わせる */
+    }
+
+       /* 地図の高さ調整 */
+       .media-container iframe {
+        height: 250px;  /* スマホ時は地図の高さを調整 */
     }
 
     .ranking-item {
-        flex-direction: column;
-        text-align: center;
+        padding: 10px;
+    }
+
+    .store-info {
+        width: 100%;
     }
 }
+
