@@ -4,48 +4,40 @@ body {
     padding: 0;
     line-height: 1.6;
 }
-
 header {
     background: #2a9df4;
     color: #fff;
     padding: 20px;
     text-align: center;
 }
-
 nav {
     background: #f4f4f4;
     padding: 10px;
     text-align: center;
 }
-
 nav a {
     margin: 0 15px;
     text-decoration: none;
     color: #333;
 }
-
 section {
     padding: 20px;
 }
-
 .highlight {
     background: #f9f9f9;
     padding: 15px;
     margin: 20px 0;
     border: 1px solid #ddd;
 }
-
 .map-container {
     margin: 15px 0;
     text-align: center;
 }
-
 iframe {
-    width: 100%;
+    width: 50%;
     height: 300px;
     border: 0;
 }
-
 footer {
     background: #333;
     color: #fff;
