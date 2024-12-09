@@ -1,11 +1,14 @@
 /* ベーススタイル */
 body {
-    background-color: #7bc372;
+    background-color: #f4e4c1; /* サンドベージュ */
     font-family: Arial, sans-serif;
     font-size: 16px;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ページ全体の高さを100%に */
 }
 
 /* メイン画像 */
@@ -23,11 +26,19 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
+    width: 100%;
+    margin: 0;
+    background-color: #fff; /* 白背景で内容を目立たせる */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    flex: 1;
+}
+
+/* 内部コンテンツの最大幅を制限 */
+.container > * {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 /* 見出し */
@@ -82,8 +93,8 @@ h1 {
     text-align: center;
     text-decoration: none;
     color: #040b04;
-    background-color: #fff;
-    border: 2px solid #1ed71a;
+    background-color: #add8e6; /* パステルブルー */
+    border: 2px solid #87ceeb; /* ライトブルー */
     border-radius: 8px;
     font-size: 1em;
     font-weight: bold;
@@ -92,18 +103,23 @@ h1 {
 }
 
 .link-buttons .button:hover {
-    background-color: #1ed71a;
+    background-color: #87ceeb; /* ホバー時のライトブルー */
     color: #fff;
-    border-color: #7ae17a;  /* ホバー時に枠線の色を変更 */
+    border-color: #add8e6; /* 枠線の色を調整 */
     transform: scale(1.05); /* ホバー時に少し大きく */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
+
+/* フッター */
 footer {
     text-align: center;
-    color: white;
+    background-color: #9ab973; /* セージグリーン */
+    color: #fff;
     padding: 10px 0;
     margin-top: 20px;
+    flex-shrink: 0;
 }
+
 /* レスポンシブ対応: スマホ用 */
 @media screen and (max-width: 600px) {
     .link-buttons .button {
