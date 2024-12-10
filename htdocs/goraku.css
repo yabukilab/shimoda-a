@@ -23,7 +23,6 @@ li {
     list-style: none; /* 各リスト項目のマーカーを削除 */
 }
 
-
 /* メインコンテンツ */
 main {
     margin: 0 auto;
@@ -139,7 +138,7 @@ ul {
     position: absolute;  /* 絶対位置 */
     top: 10px;           /* 上から10px */
     left: 10px;          /* 左から10px */
-    background-color: #c098d3; /* 背景色 */
+    background-color: #f2d9f7; /* 背景色 */
     color: black;        /* 文字色 */
     font-size: 1.5rem;   /* フォントサイズ */
     padding: 5px 10px;   /* パディング */
@@ -237,4 +236,5 @@ footer p{
         width: 100%;
     }
 }
+
 
