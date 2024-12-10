@@ -54,8 +54,9 @@ nav ul li a:hover {
 
 /* メインコンテンツ */
 main {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%; /* 幅を100%にして、親要素に合わせる */
+  max-width: 1200px; /* .store-info と同じ最大幅 */
+  margin: 0 auto; /* 中央寄せ */
   padding: 20px;
   background-color: #ffffff; /* 白背景 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -102,6 +103,8 @@ h2 {
   background-color: #fff3e0; /* 明るいオレンジの背景 */
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 1200px; /* 最大幅 */
+  margin: 20px auto; /* 中央寄せ */
 }
 
 .store-info h2 {
