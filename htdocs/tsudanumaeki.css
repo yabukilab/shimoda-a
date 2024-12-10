@@ -162,8 +162,9 @@ h2 {
 /* 他のリンク */
 #other-rankings ul {
   list-style: none;
-  padding: 0;
+  padding: 0%;
   margin-top: 20px;
+  
 }
 
 #other-rankings ul li {
@@ -179,6 +180,11 @@ h2 {
 #other-rankings ul li a:hover {
   color: #f57c00; /* 濃いオレンジ */
 }
+
+#other-rankings {
+  padding-left: 20px; /* セクション全体に左側の余白を追加 */
+}
+
 
 /* フッター */
 footer {
