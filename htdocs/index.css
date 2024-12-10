@@ -18,7 +18,7 @@ body {
     object-fit: cover; /* 画像を切り取って高さに収める */
     display: block; /* ブロック要素として扱う */
     margin: 0; /* 余白を消す */
-    margin-bottom: 20px; /* 画像と下のコンテナの間に隙間を作る */
+    margin-bottom: 30px; /* 画像と下のコンテナの間に隙間を作る */
 }
 
 /* コンテナ */
