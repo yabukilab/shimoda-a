@@ -279,3 +279,9 @@ footer p {
     font-size: 0.9rem;
   }
 }
+
+.highlight {
+  color: #f57c00;
+  font-weight: bold;
+}
+
