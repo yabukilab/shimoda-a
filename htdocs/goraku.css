@@ -26,6 +26,8 @@ li {
 
 /* メインコンテンツ */
 main {
+    margin: 0 auto;
+    max-width: 1200px;
     padding: 20px;
     text-align: center;
 }
@@ -40,6 +42,37 @@ h2 {
 p {
     font-size: 1.1em;
     color: #333;
+}
+
+ul {
+    padding: 0; /* 不要なインデントを削除 */
+    margin: 0 auto; /* 中央揃え */
+    list-style: none; /* リストのデフォルトスタイルを削除 */
+    text-align: center; /* 子要素を中央揃え */
+}
+
+/* テナント数ランキングタイトル */
+.ranking-title {
+    font-size: 1.8em; /* フォントを少し大きく */
+    color: #4a235a; /* 濃いパープルで目立たせる */
+    background-color: #e8daef; /* 淡いパープルの背景で強調 */
+    padding: 10px;
+    border-radius: 5px; /* 角を丸くする */
+    text-align: center; /* 中央寄せ */
+    margin-bottom: 15px; /* 下の余白 */
+}
+
+/* サイトに飛べますの文章 */
+.jump-info {
+    font-size: 1.2em; /* 少し大きく */
+    color: #6c3483; /* 紫系の色で統一感 */
+    font-weight: bold; /* 太字で強調 */
+    margin-top: 15px; /* 上の余白 */
+    margin-bottom: 15px; /* 下の余白 */
+    text-align: center; /* 中央寄せ */
+    background-color: #f5eef8; /* 背景色を追加して視認性アップ */
+    padding: 8px;
+    border-radius: 5px; /* 角を丸くする */
 }
 
 /* メディアコンテナ */
@@ -70,11 +103,16 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     margin-bottom: 30px;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
     position: relative; /* 親要素に相対位置を指定 */
     overflow: hidden; /* 枠から飛び出ないようにする */
 }
@@ -83,7 +121,7 @@ p {
 .ranking-item img,
 .ranking-item iframe {
     width: 100%; /* 枠に合わせて広がる */
-    max-width: 100%; /* 最大幅を100%に設定 */
+    max-width: 600px; /* 最大幅を100%に設定 */
     height: auto; /* 高さは自動調整 */
     border-radius: 8px; /* 角を丸くする */
     display: block;
@@ -108,23 +146,36 @@ p {
     z-index: 10;         /* 他の要素の上に表示 */
 }
 
+/* 地図と店舗情報の間の文章 */
+.ranking-text p {
+    font-size: 1.3em; /* フォントサイズを拡大 */
+    line-height: 1.6; /* 行間を広げて読みやすく */
+    margin-top: 10px; /* 上の余白を調整 */
+    margin-bottom: 20px; /* 下の余白を調整 */
+    color: #333; /* 色を統一 */
+}
+
 /* テーブルスタイル */
 .store-info {
     width: 80%;
-    margin: 20px auto;
+    max-width: 600px;
+    margin: 0 auto;
     border-collapse: collapse;
+    font-size: 1.2em;
+    text-align: left;
 }
 
 .store-info th {
     background-color: #c098d3;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 14px;
+    font-size: 1.3em;
 }
 
 .store-info td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 14px;
     text-align: left;
 }
 
