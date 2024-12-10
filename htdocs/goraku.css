@@ -13,7 +13,7 @@ header {
 }
 
 header h1 {
-    color: black;
+    color: white;
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 2px;
@@ -121,7 +121,7 @@ ul {
 .ranking-item img,
 .ranking-item iframe {
     width: 100%; /* 枠に合わせて広がる */
-    max-width: 600px; /* 最大幅を100%に設定 */
+    max-width: 100%; /* 最大幅を100%に設定 */
     height: auto; /* 高さは自動調整 */
     border-radius: 8px; /* 角を丸くする */
     display: block;
@@ -129,7 +129,9 @@ ul {
 }
 
 .ranking-item iframe {
-    height: 400px; /* 高さを指定（例えば400px） */
+    width: 100%; /* 枠に合わせて広がる */
+    height: 500px; /* 高さを指定 */
+    border-radius: 8px; /* 角を丸くする */
 }
 
 /* ランキングの順位 */
@@ -157,9 +159,10 @@ ul {
 
 /* テーブルスタイル */
 .store-info {
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 20px;
     border-collapse: collapse;
     font-size: 1.2em;
     text-align: left;
@@ -168,14 +171,15 @@ ul {
 .store-info th {
     background-color: #c098d3;
     color: white;
-    text-align: center;
-    padding: 14px;
+    text-align: left;
+    padding: 15px;
     font-size: 1.3em;
+    border: 1px solid #ddd;
 }
 
 .store-info td {
     border: 1px solid #ddd;
-    padding: 14px;
+    padding: 15px;
     text-align: left;
 }
 
@@ -191,8 +195,12 @@ ul {
 footer {
     text-align: center;
     background-color: #c098d3;
-    color: white;
+    color: white ;
     padding: 10px 0;
+}
+
+footer p{
+    color: white !important;
 }
 
 /* スマホ対応 */
