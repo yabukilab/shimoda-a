@@ -1,0 +1,66 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+header {
+  background-color: #007acc;
+  color: white;
+  padding: 10px 0;
+  font-size: 24px;
+}
+
+.update-time {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 12px;
+}
+
+.container {
+  padding: 40px;
+  border: 1px solid #000;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.button-area {
+  margin-top: 20px;
+}
+
+.compare-button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.compare-button img {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.compare-button-text {
+  margin-top: 10px;
+  font-size: 16px;
+  color: black;
+}
