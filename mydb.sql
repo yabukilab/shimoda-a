@@ -16,6 +16,68 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `price_history`
+--
+
+DROP TABLE IF EXISTS `price_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `price_history` (
+  `history_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  `price` int(10) unsigned NOT NULL,
+  `recorded_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`history_id`),
+  KEY `product_id` (`product_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `price_history_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  CONSTRAINT `price_history_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `price_history`
+--
+
+LOCK TABLES `price_history` WRITE;
+/*!40000 ALTER TABLE `price_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `price_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `price_weekly_avg`
+--
+
+DROP TABLE IF EXISTS `price_weekly_avg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `price_weekly_avg` (
+  `avg_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  `average_price` decimal(10,2) NOT NULL,
+  `average_period_start` date NOT NULL,
+  `average_period_end` date NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`avg_id`),
+  KEY `product_id` (`product_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `price_weekly_avg_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  CONSTRAINT `price_weekly_avg_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `price_weekly_avg`
+--
+
+LOCK TABLES `price_weekly_avg` WRITE;
+/*!40000 ALTER TABLE `price_weekly_avg` DISABLE KEYS */;
+/*!40000 ALTER TABLE `price_weekly_avg` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `prices`
 --
 
@@ -23,15 +85,17 @@ DROP TABLE IF EXISTS `prices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prices` (
-  `price_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) unsigned NOT NULL,
-  `store_id` int(11) unsigned NOT NULL,
-  `price` int(11) unsigned NOT NULL,
-  `image_path` varchar(255) NOT NULL,
+  `price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  `price` int(10) unsigned NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`price_id`),
-  KEY `product_id` (`product_id`),
-  KEY `store_id` (`store_id`)
+  UNIQUE KEY `product_id` (`product_id`,`store_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  CONSTRAINT `prices_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,7 +116,7 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `products` (
-  `product_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -75,8 +139,8 @@ DROP TABLE IF EXISTS `stores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stores` (
-  `store_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `store_name` varchar(255) NOT NULL,
+  `store_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `store_name` varchar(100) NOT NULL,
   PRIMARY KEY (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -99,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-12 15:31:57
+-- Dump completed on 2025-06-20 16:33:21

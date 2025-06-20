@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>商品検索</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    img { height: 80px; }
+    .pagination { margin-top: 10px; }
+    .page-btn { margin: 0 5px; cursor: pointer; }
+  </style>
+  <script>
+    let allResults = []; // 全検索結果を保持
+    let itemsPerPage = 10;
+    let currentPage = 1;
+
+    function fetchProducts() {
+      const keyword = document.getElementById('searchBox').value;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "search.php?keyword=" + encodeURIComponent(keyword), true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          allResults = JSON.parse(xhr.responseText);
+          currentPage = 1;
+          renderTable();
+          renderPagination();
+        }
+      };
+      xhr.send();
+    }
+
+    function renderTable() {
+      const tableDiv = document.getElementById("results");
+      let start = (currentPage - 1) * itemsPerPage;
+      let end = start + itemsPerPage;
+      let paginatedResults = allResults.slice(start, end);
+
+      let html = "<table><tr><th>選択</th><th>商品名</th><th>画像</th></tr>";
+      for (let item of paginatedResults) {
+        html += `<tr>
+          <td><input type='checkbox' name='product[]' value='${item.id}'></td>
+          <td>${item.name}</td>
+          <td><img src='${item.image_url}' alt='商品画像'></td>
+        </tr>`;
+      }
+      html += "</table>";
+      tableDiv.innerHTML = html;
+    }
+
+    function renderPagination() {
+      const pageDiv = document.getElementById("pagination");
+      let totalPages = Math.ceil(allResults.length / itemsPerPage);
+      let html = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<span class='page-btn' onclick='goToPage(${i})'>${i}</span>`;
+      }
+
+      pageDiv.innerHTML = html;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderTable();
+    }
+
+    window.onload = fetchProducts;
+  </script>
+</head>
+<body>
+  <h2>商品検索</h2>
+  <input type="text" id="searchBox" onkeyup="fetchProducts()" placeholder="商品名を入力">
+  <div id="results"></div>
+  <div id="pagination" class="pagination"></div>
+</body>
+</html>
