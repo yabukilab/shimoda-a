@@ -1,195 +1,166 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
--- ホスト: 127.0.0.1
--- 生成日時: 2025-06-20 08:47:59
--- サーバのバージョン： 10.4.32-MariaDB
--- PHP のバージョン: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: shimoda_a
+-- ------------------------------------------------------
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- データベース: `shimoda_a`
---
-CREATE DATABASE IF NOT EXISTS `shimoda_a` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `shimoda_a`;
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `prices`
+-- Table structure for table `price_history`
 --
 
-CREATE TABLE `prices` (
-  `price_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `store_id` int(10) UNSIGNED NOT NULL,
-  `price` int(10) UNSIGNED NOT NULL,
-  `image_path` varchar(255) DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `price_history`
---
-
+DROP TABLE IF EXISTS `price_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `price_history` (
-  `history_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `store_id` int(10) UNSIGNED NOT NULL,
-  `price` int(10) UNSIGNED NOT NULL,
-  `recorded_at` datetime DEFAULT current_timestamp()
+  `history_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  `price` int(10) unsigned NOT NULL,
+  `recorded_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`history_id`),
+  KEY `product_id` (`product_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `price_history_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  CONSTRAINT `price_history_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- テーブルの構造 `price_weekly_avg`
+-- Dumping data for table `price_history`
 --
 
+LOCK TABLES `price_history` WRITE;
+/*!40000 ALTER TABLE `price_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `price_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `price_weekly_avg`
+--
+
+DROP TABLE IF EXISTS `price_weekly_avg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `price_weekly_avg` (
-  `avg_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `store_id` int(10) UNSIGNED NOT NULL,
+  `avg_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
   `average_price` decimal(10,2) NOT NULL,
   `average_period_start` date NOT NULL,
   `average_period_end` date NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`avg_id`),
+  KEY `product_id` (`product_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `price_weekly_avg_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  CONSTRAINT `price_weekly_avg_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- テーブルの構造 `products`
+-- Dumping data for table `price_weekly_avg`
 --
 
+LOCK TABLES `price_weekly_avg` WRITE;
+/*!40000 ALTER TABLE `price_weekly_avg` DISABLE KEYS */;
+/*!40000 ALTER TABLE `price_weekly_avg` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prices`
+--
+
+DROP TABLE IF EXISTS `prices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prices` (
+  `price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `store_id` int(10) unsigned NOT NULL,
+  `price` int(10) unsigned NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`price_id`),
+  UNIQUE KEY `product_id` (`product_id`,`store_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  CONSTRAINT `prices_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prices`
+--
+
+LOCK TABLES `prices` WRITE;
+/*!40000 ALTER TABLE `prices` DISABLE KEYS */;
+/*!40000 ALTER TABLE `prices` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `products` (
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `product_name` varchar(255) NOT NULL
+  `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- テーブルの構造 `stores`
+-- Dumping data for table `products`
 --
 
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stores`
+--
+
+DROP TABLE IF EXISTS `stores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stores` (
-  `store_id` int(10) UNSIGNED NOT NULL,
-  `store_name` varchar(100) NOT NULL
+  `store_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `store_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- ダンプしたテーブルのインデックス
+-- Dumping data for table `stores`
 --
 
---
--- テーブルのインデックス `prices`
---
-ALTER TABLE `prices`
-  ADD PRIMARY KEY (`price_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `store_id` (`store_id`);
+LOCK TABLES `stores` WRITE;
+/*!40000 ALTER TABLE `stores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stores` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- テーブルのインデックス `price_history`
---
-ALTER TABLE `price_history`
-  ADD PRIMARY KEY (`history_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `store_id` (`store_id`);
-
---
--- テーブルのインデックス `price_weekly_avg`
---
-ALTER TABLE `price_weekly_avg`
-  ADD PRIMARY KEY (`avg_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `store_id` (`store_id`);
-
---
--- テーブルのインデックス `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`);
-
---
--- テーブルのインデックス `stores`
---
-ALTER TABLE `stores`
-  ADD PRIMARY KEY (`store_id`);
-
---
--- ダンプしたテーブルの AUTO_INCREMENT
---
-
---
--- テーブルの AUTO_INCREMENT `prices`
---
-ALTER TABLE `prices`
-  MODIFY `price_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- テーブルの AUTO_INCREMENT `price_history`
---
-ALTER TABLE `price_history`
-  MODIFY `history_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- テーブルの AUTO_INCREMENT `price_weekly_avg`
---
-ALTER TABLE `price_weekly_avg`
-  MODIFY `avg_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- テーブルの AUTO_INCREMENT `products`
---
-ALTER TABLE `products`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- テーブルの AUTO_INCREMENT `stores`
---
-ALTER TABLE `stores`
-  MODIFY `store_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- ダンプしたテーブルの制約
---
-
---
--- テーブルの制約 `prices`
---
-ALTER TABLE `prices`
-  ADD CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `prices_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`);
-
---
--- テーブルの制約 `price_history`
---
-ALTER TABLE `price_history`
-  ADD CONSTRAINT `price_history_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `price_history_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`);
-
---
--- テーブルの制約 `price_weekly_avg`
---
-ALTER TABLE `price_weekly_avg`
-  ADD CONSTRAINT `price_weekly_avg_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `price_weekly_avg_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-06-20 16:33:21
