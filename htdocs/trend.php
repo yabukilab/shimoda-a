@@ -14,7 +14,7 @@ $graphImagePath = "graph-placeholder.png"; // 実際には動的に生成・取�
 <head>
   <meta charset="UTF-8">
   <title>商品価格推移閲覧</title>
-  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
