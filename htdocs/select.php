@@ -1,21 +1,29 @@
 <?php
-header('Content-Type: application/json');
+require_once 'db.php'; // DB接続とエスケープ関数h()を利用
 
-$pdo = new PDO('mysql:host=localhost;dbname=supermarket', 'user', 'pass');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+header("Content-Type: application/json; charset=UTF-8");
 
-$keyword_raw = isset($_GET['keyword']) ? $_GET['keyword'] : '';
-$keyword = mb_convert_kana($keyword_raw, 'C', 'UTF-8');
+try {
+  $keyword = $_GET['keyword'] ?? '';
 
-if (trim($keyword) === '') {
-    $stmt = $pdo->query("SELECT id, name, image_url FROM products");
-} else {
-    $like = '%' . $keyword . '%';
-    $stmt = $pdo->prepare("SELECT id, name, image_url FROM products WHERE
-        CONVERT(name USING utf8mb4) LIKE ? OR
-        CONVERT(mb_convert_kana(name, 'C')) LIKE ?");
-    $stmt->execute([$like, $like]);
+  $sql = "SELECT product_id, product_name FROM products WHERE product_name LIKE :keyword";
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+  $stmt->execute();
+  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  $products = array_map(function($row) {
+    return ['id' => $row['product_id'], 'name' => $row['product_name']];
+  }, $results);
+
+  $latestStmt = $db->query("SELECT MAX(updated_at) AS latest FROM prices");
+  $latestRow = $latestStmt->fetch(PDO::FETCH_ASSOC);
+  $latestDate = $latestRow ? $latestRow['latest'] : null;
+
+  echo json_encode([
+    'products' => $products,
+    'latest_updated_at' => $latestDate
+  ]);
+} catch (PDOException $e) {
+  echo json_encode(['error' => '接続エラー: ' . h($e->getMessage())]);
 }
-
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo json_encode($results, JSON_UNESCAPED_UNICODE);

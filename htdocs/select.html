@@ -2,77 +2,130 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>商品検索</title>
+  <title>商品選択</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    table { border-collapse: collapse; width: 100%; }
+    body { font-family: sans-serif; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    img { height: 80px; }
-    .pagination { margin-top: 10px; }
-    .page-btn { margin: 0 5px; cursor: pointer; }
+    .search-container { margin-bottom: 10px; }
+    .button-area { margin-top: 10px; text-align: right; }
+    .button-area button { margin-left: 5px; }
   </style>
   <script>
-    let allResults = []; // 全検索結果を保持
-    let itemsPerPage = 10;
-    let currentPage = 1;
+    // URLのパラメータを元に選択状態を保持するために最初に取得
+    let selectedFromURL = [];
 
     function fetchProducts() {
       const keyword = document.getElementById('searchBox').value;
 
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", "search.php?keyword=" + encodeURIComponent(keyword), true);
+      xhr.open("GET", "select.php?keyword=" + encodeURIComponent(keyword), true);
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          allResults = JSON.parse(xhr.responseText);
-          currentPage = 1;
-          renderTable();
-          renderPagination();
+          const response = JSON.parse(xhr.responseText);
+          renderTable(response.products);
+          renderUpdateDate(response.latest_updated_at);
         }
       };
       xhr.send();
     }
 
-    function renderTable() {
+    function renderTable(data) {
       const tableDiv = document.getElementById("results");
-      let start = (currentPage - 1) * itemsPerPage;
-      let end = start + itemsPerPage;
-      let paginatedResults = allResults.slice(start, end);
 
-      let html = "<table><tr><th>選択</th><th>商品名</th><th>画像</th></tr>";
-      for (let item of paginatedResults) {
+      if (!Array.isArray(data)) {
+        tableDiv.innerHTML = "<p>データ形式が不正です</p>";
+        console.error("不正なデータ:", data);
+        return;
+      }
+
+      if (data.length === 0) {
+        tableDiv.innerHTML = "<p>商品が見つかりませんでした</p>";
+        return;
+      }
+
+      let html = "<table><tr><th></th><th>商品名</th></tr>";
+
+      for (let item of data) {
+        const isChecked = selectedFromURL.includes(item.id.toString()) ? "checked" : "";
         html += `<tr>
-          <td><input type='checkbox' name='product[]' value='${item.id}'></td>
+          <td><input type='checkbox' name='product[]' value='${item.id}' ${isChecked}></td>
           <td>${item.name}</td>
-          <td><img src='${item.image_url}' alt='商品画像'></td>
         </tr>`;
       }
+
       html += "</table>";
       tableDiv.innerHTML = html;
     }
 
-    function renderPagination() {
-      const pageDiv = document.getElementById("pagination");
-      let totalPages = Math.ceil(allResults.length / itemsPerPage);
-      let html = "";
+    function renderUpdateDate(datetime) {
+      const updateDiv = document.getElementById("updateDate");
+      if (datetime) {
+        const date = new Date(datetime);
+        const formatted = date.getFullYear() + '/' +
+          String(date.getMonth() + 1).padStart(2, '0') + '/' +
+          String(date.getDate()).padStart(2, '0') + ' ' +
+          String(date.getHours()).padStart(2, '0') + ':' +
+          String(date.getMinutes()).padStart(2, '0');
+        updateDiv.textContent = "最終更新日時：" + formatted;
+      } else {
+        updateDiv.textContent = "最終更新日時：取得できません";
+      }
+    }
 
-      for (let i = 1; i <= totalPages; i++) {
-        html += `<span class='page-btn' onclick='goToPage(${i})'>${i}</span>`;
+    function handleCompare() {
+      const checkboxes = document.querySelectorAll("input[name='product[]']:checked");
+      const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+
+      if (selectedIds.length === 0) {
+        alert("商品を1つ以上選択してください。");
+        return;
       }
 
-      pageDiv.innerHTML = html;
+      if (selectedIds.length === 1) {
+        window.location.href = `details.html?id=${selectedIds[0]}`;
+      } else {
+        const params = selectedIds.map((id, index) => `id${index + 1}=${id}`).join("&");
+        window.location.href = `sum.php?${params}`;
+      }
     }
 
-    function goToPage(page) {
-      currentPage = page;
-      renderTable();
+    // チェック状態復元用URLパラメータ処理
+    function extractSelectedIdsFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      selectedFromURL = [];
+      for (const [key, value] of params.entries()) {
+        if (/^id\d+$/.test(key)) {
+          selectedFromURL.push(value);
+        }
+      }
     }
 
-    window.onload = fetchProducts;
+    window.onload = function () {
+      extractSelectedIdsFromURL();
+      fetchProducts();
+    };
   </script>
 </head>
 <body>
-  <h2>商品検索</h2>
-  <input type="text" id="searchBox" onkeyup="fetchProducts()" placeholder="商品名を入力">
+  <h2>商品選択</h2>
+  <p>商品を選択してください。<br>
+    商品名をクリックするとその商品の情報が表示されます。<br>
+    複数商品の合計金額を比較したい場合は左側の枠にチェックを入れてください。
+  </p>
+
+  <div id="updateDate" style="text-align: right;">最終更新日時：取得中...</div>
+
+  <div class="search-container">
+    <input type="text" id="searchBox" onkeyup="fetchProducts()" placeholder="🔍検索">
+  </div>
+
   <div id="results"></div>
-  <div id="pagination" class="pagination"></div>
+
+  <div class="button-area">
+    <button onclick="handleCompare()">比較</button>
+    <button onclick="location.href='suii.php'">推移</button>
+  </div>
 </body>
 </html>
