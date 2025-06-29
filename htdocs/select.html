@@ -3,17 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>商品選択</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { font-family: sans-serif; }
-    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    .search-container { margin-bottom: 10px; }
-    .button-area { margin-top: 10px; text-align: right; }
-    .button-area button { margin-left: 5px; }
-  </style>
+  <link rel="stylesheet" href="select.css">
   <script>
-    // URLのパラメータを元に選択状態を保持するために最初に取得
     let selectedFromURL = [];
 
     function fetchProducts() {
@@ -32,11 +23,10 @@
     }
 
     function renderTable(data) {
-      const tableDiv = document.getElementById("results");
+      const tableDiv = document.getElementById("tableBox");
 
       if (!Array.isArray(data)) {
         tableDiv.innerHTML = "<p>データ形式が不正です</p>";
-        console.error("不正なデータ:", data);
         return;
       }
 
@@ -46,7 +36,6 @@
       }
 
       let html = "<table><tr><th></th><th>商品名</th></tr>";
-
       for (let item of data) {
         const isChecked = selectedFromURL.includes(item.id.toString()) ? "checked" : "";
         html += `<tr>
@@ -54,7 +43,6 @@
           <td>${item.name}</td>
         </tr>`;
       }
-
       html += "</table>";
       tableDiv.innerHTML = html;
     }
@@ -87,11 +75,10 @@
         window.location.href = `details.html?id=${selectedIds[0]}`;
       } else {
         const params = selectedIds.map((id, index) => `id${index + 1}=${id}`).join("&");
-        window.location.href = `sum.php?${params}`;
+        window.location.href = `sum.html?${params}`;
       }
     }
 
-    // チェック状態復元用URLパラメータ処理
     function extractSelectedIdsFromURL() {
       const params = new URLSearchParams(window.location.search);
       selectedFromURL = [];
@@ -109,23 +96,30 @@
   </script>
 </head>
 <body>
-  <h2>商品選択</h2>
-  <p>商品を選択してください。<br>
+  <div class="header-bar"></div>
+  <div class="header-container">
+    <h2>商品選択</h2>
+    <div id="updateDate">最終更新日時：取得中...</div>
+  </div>
+
+  <p>
+    商品を選択してください。<br>
     商品名をクリックするとその商品の情報が表示されます。<br>
     複数商品の合計金額を比較したい場合は左側の枠にチェックを入れてください。
   </p>
 
-  <div id="updateDate" style="text-align: right;">最終更新日時：取得中...</div>
-
   <div class="search-container">
-    <input type="text" id="searchBox" onkeyup="fetchProducts()" placeholder="🔍検索">
+    <input type="text" id="searchBox" onkeyup="fetchProducts()" placeholder="検索">
   </div>
 
-  <div id="results"></div>
-
-  <div class="button-area">
-    <button onclick="handleCompare()">比較</button>
-    <button onclick="location.href='suii.php'">推移</button>
+  <div class="table-wrapper">
+    <div class="table-box" id="tableBox">
+      <!-- JSで表がここに描画されます -->
+    </div>
+    <div class="button-area">
+      <button onclick="handleCompare()">比較</button>
+      <button onclick="location.href='suii.php'">推移</button>
+    </div>
   </div>
 </body>
 </html>
