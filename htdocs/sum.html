@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>価格比較</title>
+    <style>
+        body { margin: 0; }
+        /* 一番上の青帯 */
+        .header-bar {
+            width: 100%;              /* 修正: 横幅を画面いっぱいに */
+            height: 60px;
+            background-color: #007acc;
+        }
+
+        /* タイトル中央 + 最終更新日時右寄せ配置 */
+        .header-container {
+            position: relative;       /* updateDateの絶対位置の基準 */
+            text-align: center;       /* h2中央揃え */
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .header-container h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #updateDate {
+            position: absolute;
+            right: 10%;               /* 画面右から10%の位置に配置 */
+            top: 50%;                 /* 垂直中央配置 */
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #555;
+            white-space: nowrap;      /* 折り返し防止 */
+        }
+
+        /* 戻るリンク */
+        .back-link {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            text-decoration: none;
+            color: #007acc;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* 選択商品部分 */
+        .selected-products {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* テーブルスタイル */
+        table {
+            width: 600%;
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .sort-link {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sort-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-bar"></div>
+
+<a href="#" id="back-link" class="back-link">← 戻る</a>
+
+<div class="header-container">
+    <h2>合計金額比較</h2>
+    <div id="updateDate"></div>
+</div>
+
+<p class="selected-products" id="selected-products"></p>
+
+<table id="price-table">
+    <thead>
+        <tr>
+            <th>店舗名</th>
+            <th><a href="#" id="sort-link" class="sort-link">合計金額</a></th>
+            <th>送料・手数料</th>
+        </tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+</table>
+
+<script>
+async function loadData(order = 'asc') {
+    const params = new URLSearchParams(window.location.search);
+    params.set('order', order);
+
+    try {
+        const response = await fetch('sum.php?' + params.toString());
+        const data = await response.json();
+
+        if (data.error) {
+            document.body.innerHTML = '<p style="text-align:center;color:red;">' + data.error + '</p>';
+            return;
+        }
+
+        document.getElementById('updateDate').textContent = '最終更新: ' + data.lastUpdated;
+        document.getElementById('selected-products').textContent = data.productNames.join(' + ');
+
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = '';
+        data.storePrices.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.store_name}</td>
+                <td>¥${Number(row.total_price).toLocaleString()}</td>
+                <td>${row.shipping_fee === 0 ? '無料' : '¥' + Number(row.shipping_fee).toLocaleString()}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        const backLink = document.getElementById('back-link');
+        const currentParams = new URLSearchParams(window.location.search);
+        let ids = [];
+        for (const [key, value] of currentParams.entries()) {
+            if (/^id\d+$/.test(key)) {
+                ids.push(`${key}=${value}`);
+            }
+        }
+        backLink.href = "select.html" + (ids.length > 0 ? "?" + ids.join("&") : "");
+
+        const sortLink = document.getElementById('sort-link');
+        sortLink.innerHTML = '合計金額 ' + (data.order === 'asc' ? '▽' : '△');
+        sortLink.href = '?' + params.toString().replace('order=' + data.order, 'order=' + data.nextOrder);
+        sortLink.onclick = (e) => {
+            e.preventDefault();
+            loadData(data.nextOrder);
+        };
+
+    } catch (error) {
+        document.body.innerHTML = '<p style="text-align:center;color:red;">データ取得エラー: ' + error + '</p>';
+    }
+}
+
+loadData();
+</script>
+
+</body>
+</html>
