@@ -27,6 +27,8 @@ CREATE TABLE `price_history` (
   `product_id` int(10) unsigned NOT NULL,
   `store_id` int(10) unsigned NOT NULL,
   `price` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned DEFAULT NULL,
+  `unit_price` decimal(10,2) DEFAULT NULL,
   `recorded_at` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`history_id`),
   KEY `product_id` (`product_id`),
@@ -57,6 +59,8 @@ CREATE TABLE `price_weekly_avg` (
   `product_id` int(10) unsigned NOT NULL,
   `store_id` int(10) unsigned NOT NULL,
   `average_price` decimal(10,2) NOT NULL,
+  `average_quantity` int(10) unsigned DEFAULT NULL,
+  `average_unit_price` decimal(10,2) DEFAULT NULL,
   `average_period_start` date NOT NULL,
   `average_period_end` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -89,6 +93,8 @@ CREATE TABLE `prices` (
   `product_id` int(10) unsigned NOT NULL,
   `store_id` int(10) unsigned NOT NULL,
   `price` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned DEFAULT NULL,
+  `unit_price` decimal(10,2) DEFAULT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`price_id`),
@@ -163,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-20 16:33:21
+-- Dump completed on 2025-07-01  5:11:00
