@@ -35,7 +35,7 @@ CREATE TABLE `price_history` (
   KEY `store_id` (`store_id`),
   CONSTRAINT `price_history_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   CONSTRAINT `price_history_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,40 +45,6 @@ CREATE TABLE `price_history` (
 LOCK TABLES `price_history` WRITE;
 /*!40000 ALTER TABLE `price_history` DISABLE KEYS */;
 /*!40000 ALTER TABLE `price_history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `price_weekly_avg`
---
-
-DROP TABLE IF EXISTS `price_weekly_avg`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `price_weekly_avg` (
-  `avg_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int(10) unsigned NOT NULL,
-  `store_id` int(10) unsigned NOT NULL,
-  `average_price` decimal(10,2) NOT NULL,
-  `average_quantity` int(10) unsigned DEFAULT NULL,
-  `average_unit_price` decimal(10,2) DEFAULT NULL,
-  `average_period_start` date NOT NULL,
-  `average_period_end` date NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`avg_id`),
-  KEY `product_id` (`product_id`),
-  KEY `store_id` (`store_id`),
-  CONSTRAINT `price_weekly_avg_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  CONSTRAINT `price_weekly_avg_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `price_weekly_avg`
---
-
-LOCK TABLES `price_weekly_avg` WRITE;
-/*!40000 ALTER TABLE `price_weekly_avg` DISABLE KEYS */;
-/*!40000 ALTER TABLE `price_weekly_avg` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -102,7 +68,7 @@ CREATE TABLE `prices` (
   KEY `store_id` (`store_id`),
   CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   CONSTRAINT `prices_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +91,7 @@ CREATE TABLE `products` (
   `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +114,7 @@ CREATE TABLE `stores` (
   `store_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `store_name` varchar(100) NOT NULL,
   PRIMARY KEY (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-01  5:11:00
+-- Dump completed on 2025-07-03 15:23:19
