@@ -69,6 +69,12 @@ p {
   justify-content: space-between;
 }
 
+/* ===================== 追加: 表部分のみスクロール可能にする ===================== */
+.table-box.table-scrollable {
+  max-height: 400px;   /* 約15行分に合わせて調整可能 */
+  overflow-y: auto;
+}
+
 /* テーブル自体 */
 table {
   width: 100%;
