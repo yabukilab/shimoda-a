@@ -91,7 +91,7 @@ CREATE TABLE `products` (
   `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +100,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (2,'超熟 6枚切り'),(3,'マ・マー 500g'),(4,'日清食品 カップヌードル'),(5,'鶏もも肉'),(6,'鮭(切り身)'),(7,'シャウエッセン'),(8,'味の素 冷凍ギョーザ'),(9,'国産玉ねぎ'),(10,'国産キャベツ'),(11,'国産にんじん'),(12,'国産もやし 200g'),(13,'海外産バナナ'),(14,'国産大根'),(15,'おいしい牛乳900ml'),(16,'明治 ブルガリアヨーグルト 400g'),(17,'雪印 スライスチーズ 7枚入り'),(18,'サントリー 天然水 2L'),(19,'コカ・コーラ 1.5L'),(20,'ジョージア カフェラテ 500ml'),(21,'サントリー 伊右衛門 600ml'),(22,'ボンカレーゴールド 中辛'),(23,'サッポロ一番 しょうゆ 5食入り'),(24,'キッコーマン 特選丸大豆しょうゆ 750ml'),(25,'カゴメ ケチャップ 500g'),(26,'ピュアセレクト 400g'),(27,'伯方の塩 500g'),(28,'サランラップ 22cm*50m'),(29,'雪印メグミルク なめらかプリン 70g*3'),(30,'エッセル スーパーカップ'),(31,'スコッティ カシミヤ ティッシュ'),(32,'おかめ納豆 極小粒ミニ 50g*3'),(33,'国産ブロッコリー'),(34,'ミツカン カンタン酢'),(35,'国産ほうれん草');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +115,7 @@ CREATE TABLE `stores` (
   `store_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `store_name` varchar(100) NOT NULL,
   PRIMARY KEY (`store_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,6 +124,7 @@ CREATE TABLE `stores` (
 
 LOCK TABLES `stores` WRITE;
 /*!40000 ALTER TABLE `stores` DISABLE KEYS */;
+INSERT INTO `stores` VALUES (5,'イオン'),(6,'イトーヨーカドー'),(7,'Amazon'),(8,'ライフ');
 /*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -135,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-03 15:23:19
+-- Dump completed on 2025-07-04 19:44:56
