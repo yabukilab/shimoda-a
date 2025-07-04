@@ -1,0 +1,110 @@
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+  background: #fff;
+  color: #333;
+}
+
+/* 青帯余白 */
+.blue-bar {
+  background-color: #007acc; /* 青 */
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* ナビゲーション */
+.top-bar {
+  background-color: white; /* 白背景で独立 */
+  color: #333;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.top-bar .center-title {
+  text-align: center;
+  flex: 1;
+  font-weight: bold;
+   font-size: 25px;
+}
+
+.top-bar .right-align {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.top-bar ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  width: 100%;
+}
+
+.top-bar ul li {
+  flex: 1;
+  text-align: center;
+}
+
+.top-bar ul li:first-child {
+  text-align: left;
+}
+
+.top-bar ul li:last-child {
+  text-align: right;
+}
+
+.updated {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+/* コンテナ全体を右寄せ */
+.summary-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* 表本体 */
+.summary-table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ラベルと値を左揃え */
+  font-size: 0.95rem;
+}
+
+.summary-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.25rem;
+}
+
+.summary-row .label {
+  display: inline-block;
+  width: 4.5em; /* ← ここでラベル幅を統一して「：」を揃える */
+  text-align: right;
+  font-weight: bold;
+}
+
+.summary-row .value {
+  white-space: nowrap;
+  padding-left: 0.5em;
+}

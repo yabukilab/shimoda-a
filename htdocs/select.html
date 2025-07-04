@@ -72,10 +72,23 @@
       }
 
       if (selectedIds.length === 1) {
-        window.location.href = `details.html?id=${selectedIds[0]}`;
+        window.location.href = `details.php?id=${selectedIds[0]}`;
       } else {
         const params = selectedIds.map((id, index) => `id${index + 1}=${id}`).join("&");
         window.location.href = `sum.html?${params}`;
+      }
+    }
+
+    function handleTrend() {
+      const checkboxes = document.querySelectorAll("input[name='product[]']:checked");
+      const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+
+      if (selectedIds.length === 0) {
+        alert("商品を1つ以上選択してください。");
+        return;
+      } else {
+        const params = selectedIds.map((id, index) => `id${index + 1}=${id}`).join("&");
+        window.location.href = `trend.php?${params}`;
       }
     }
 
@@ -118,7 +131,7 @@
     </div>
     <div class="button-area">
       <button onclick="handleCompare()">比較</button>
-      <button onclick="location.href='suii.php'">推移</button>
+      <button onclick="handleTrend()">推移</button>
     </div>
   </div>
 </body>
