@@ -72,11 +72,25 @@
       }
 
       if (selectedIds.length === 1) {
-        window.location.href = `details.html?id=${selectedIds[0]}`;
+        const params = `id1=${selectedIds[0]}&id=${selectedIds[0]}`;
+        window.location.href = `details.php?${params}`;
       } else {
         const params = selectedIds.map((id, index) => `id${index + 1}=${id}`).join("&");
         window.location.href = `sum.html?${params}`;
       }
+    }
+
+    function handletrend() {
+      const checkboxes = document.querySelectorAll("input[name='product[]']:checked");
+      const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+
+      if (selectedIds.length === 0) {
+        alert("商品を1つ以上選択してください。");
+        return;
+      }
+
+      const params = selectedIds.map((id, index) => `id${index + 1}=${id}`).join("&");
+      window.location.href = `trend.php?${params}`;
     }
 
     function extractSelectedIdsFromURL() {
@@ -113,12 +127,12 @@
   </div>
 
   <div class="table-wrapper">
-    <div class="table-box" id="tableBox">
+    <div class="table-box table-scrollable" id="tableBox">
       <!-- JSで表がここに描画されます -->
     </div>
     <div class="button-area">
       <button onclick="handleCompare()">比較</button>
-      <button onclick="location.href='suii.php'">推移</button>
+      <button onclick="handletrend()">推移</button>
     </div>
   </div>
 </body>
