@@ -63,16 +63,16 @@ try {
                 break;
             case 'Amazon':
                 if ($total < 10000) {
-                    $row['shipping_fee'] = "2時間440円\n1時間990円";
+                    $row['shipping_fee'] = "2時間間隔での配送440円\n1時間間隔での配送990円";
                 } else {
                     $row['shipping_fee'] = "送料無料";
                 }
                 break;
             case 'ライフ':
                 if ($total < 3000) {
-                    $row['shipping_fee'] = "2時間枠590円\n1時間枠890円";
+                    $row['shipping_fee'] = "2時間での配送590円\n1時間間隔での配送890円";
                 } elseif ($total < 8000) {
-                    $row['shipping_fee'] = "2時間枠290円\n1時間枠590円";
+                    $row['shipping_fee'] = "2時間間隔での配送290円\n1時間での配送590円";
                 } else {
                     $row['shipping_fee'] = "送料無料";
                 }
