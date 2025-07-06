@@ -41,8 +41,45 @@ try {
     $storePrices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($storePrices as &$row) {
-        $total = $row['total_price'];
-        $row['shipping_fee'] = ($total < 300) ? 500 : (($total < 500) ? 250 : 0);
+        $store = $row['store_name'];
+        $total = (int)$row['total_price'];
+
+        switch ($store) {
+            case 'イオン':
+                if ($total < 4000) {
+                    $row['shipping_fee'] = "550円";
+                } elseif ($total < 10000) {
+                    $row['shipping_fee'] = "330円";
+                } else {
+                    $row['shipping_fee'] = "165円";
+                }
+                break;
+            case 'イトーヨーカドー':
+                if ($total < 6000) {
+                    $row['shipping_fee'] = "490円";
+                } else {
+                    $row['shipping_fee'] = "330円";
+                }
+                break;
+            case 'Amazon':
+                if ($total < 10000) {
+                    $row['shipping_fee'] = "2時間440円\n1時間990円";
+                } else {
+                    $row['shipping_fee'] = "送料無料";
+                }
+                break;
+            case 'ライフ':
+                if ($total < 3000) {
+                    $row['shipping_fee'] = "2時間枠590円\n1時間枠890円";
+                } elseif ($total < 8000) {
+                    $row['shipping_fee'] = "2時間枠290円\n1時間枠590円";
+                } else {
+                    $row['shipping_fee'] = "送料無料";
+                }
+                break;
+            default:
+                $row['shipping_fee'] = "500円";
+        }
     }
     unset($row);
 
