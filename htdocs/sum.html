@@ -4,39 +4,32 @@
     <meta charset="UTF-8">
     <title>価格比較</title>
     <style>
-        body { margin: 0; }
-        /* 一番上の青帯 */
+        body { margin: 0; font-family: sans-serif; }
         .header-bar {
-            width: 100%;              /* 修正: 横幅を画面いっぱいに */
+            width: 100%;
             height: 60px;
             background-color: #007acc;
         }
-
-        /* タイトル中央 + 最終更新日時右寄せ配置 */
         .header-container {
-            position: relative;       /* updateDateの絶対位置の基準 */
-            text-align: center;       /* h2中央揃え */
+            position: relative;
+            text-align: center;
             margin-top: 30px;
             margin-bottom: 20px;
         }
-
         .header-container h2 {
             margin: 0;
             font-size: 24px;
             font-weight: bold;
         }
-
         #updateDate {
             position: absolute;
-            right: 10%;               /* 画面右から10%の位置に配置 */
-            top: 50%;                 /* 垂直中央配置 */
+            right: 10%;
+            top: 50%;
             transform: translateY(-50%);
             font-size: 16px;
             color: #555;
-            white-space: nowrap;      /* 折り返し防止 */
+            white-space: nowrap;
         }
-
-        /* 戻るリンク */
         .back-link {
             position: absolute;
             top: 60px;
@@ -47,44 +40,35 @@
             padding: 8px 12px;
             border-radius: 5px;
         }
-
         .back-link:hover {
             background-color: #e0e0e0;
         }
-
-        /* 選択商品部分 */
         .selected-products {
             text-align: center;
             font-size: 18px;
             margin-bottom: 20px;
         }
-
-        /* テーブルスタイル */
         table {
-            width: 600%;
-            max-width: 1000px;
+            width: 90%;
+            max-width: 600px;
             margin: 0 auto 20px auto;
             border-collapse: collapse;
             background-color: #fff;
         }
-
         th, td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
             font-size: 16px;
         }
-
         th {
             background-color: #f0f0f0;
         }
-
         .sort-link {
             color: #007acc;
             text-decoration: none;
             font-weight: bold;
         }
-
         .sort-link:hover {
             text-decoration: underline;
         }
@@ -134,11 +118,13 @@ async function loadData(order = 'asc') {
         const tbody = document.getElementById('table-body');
         tbody.innerHTML = '';
         data.storePrices.forEach(row => {
+            // 改行を<br>に変換
+            const shippingFeeFormatted = row.shipping_fee.replace(/\n/g, '<br>');
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${row.store_name}</td>
                 <td>¥${Number(row.total_price).toLocaleString()}</td>
-                <td>${row.shipping_fee === 0 ? '無料' : '¥' + Number(row.shipping_fee).toLocaleString()}</td>
+                <td>${shippingFeeFormatted}</td>
             `;
             tbody.appendChild(tr);
         });
