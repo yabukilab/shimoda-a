@@ -192,7 +192,7 @@ CREATE TABLE `stores` (
 
 LOCK TABLES `stores` WRITE;
 /*!40000 ALTER TABLE `stores` DISABLE KEYS */;
-INSERT INTO `stores` VALUES (5,'イオン'),(6,'イトーヨーカドー'),(7,'Amazon'),(8,'ライフ);
+INSERT INTO `stores` VALUES (5,'イオン'),(6,'イトーヨーカドー'),(7,'Amazon'),(8,'ライフ');
 /*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
