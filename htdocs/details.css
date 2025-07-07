@@ -24,7 +24,7 @@
   text-align: center;
   flex: 1;
   font-weight: bold;
-   font-size: 25px;
+  font-size: 25px;
 }
 
 .top-bar .right-align {
@@ -64,25 +64,47 @@
   padding: 0 0.5rem;
 }
 
+/* 商品画像スライダー（4:3固定化） */
 .image-slider {
   flex: 1 1 300px;
   position: relative;
   text-align: center;
 }
 
-.image-slider img {
-  max-width: 100%;
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* 4:3 = 0.75 */
+  overflow: hidden;
   border-radius: 8px;
+  background: #f9f9f9; /* 背景色 */
 }
 
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* アスペクト比維持で収める */
+}
+
+/* 矢印ボタン（見やすく・押しやすく修正済） */
 .arrow-container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
   cursor: pointer;
-  color: #fff;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
   user-select: none;
+  z-index: 10;
 }
 
 .arrow-container.left {
@@ -93,12 +115,14 @@
   right: 10px;
 }
 
+/* 画像カウンター */
 .image-count {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   color: #333;
 }
 
+/* 各店舗の価格表 */
 .price-table-wrapper {
   flex: 1 1 300px;
 }
