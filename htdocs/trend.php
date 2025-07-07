@@ -21,7 +21,21 @@ $stmt->execute($product_ids);
 $product_names = $stmt->fetchAll(PDO::FETCH_COLUMN);
 $combined_product_name = implode(', ', array_map('htmlspecialchars', $product_names));
 
-// データ取得（ネットスーパー別の日別合計価格）
+// 最新日付取得
+$sql_latest_date = "SELECT MAX(DATE(recorded_at)) as latest_date FROM price_history WHERE product_id IN (" . implode(',', array_fill(0, count($product_ids), '?')) . ")";
+$stmt = $db->prepare($sql_latest_date);
+$stmt->execute($product_ids);
+$latest_date = $stmt->fetchColumn();
+
+if (!$latest_date) {
+  echo "価格データが見つかりませんでした。";
+  exit;
+}
+
+// 12ヶ月前の日付
+$start_date = (new DateTime($latest_date))->modify('-11 months')->format('Y-m-d');
+
+// データ取得
 $sql = "
   SELECT DATE(ph.recorded_at) as date,
          s.store_name,
@@ -29,14 +43,16 @@ $sql = "
     FROM price_history ph
     JOIN stores s ON ph.store_id = s.store_id
    WHERE ph.product_id IN (" . implode(',', array_fill(0, count($product_ids), '?')) . ")
+     AND DATE(ph.recorded_at) BETWEEN ? AND ?
    GROUP BY s.store_id, DATE(ph.recorded_at)
    ORDER BY DATE(ph.recorded_at), s.store_name
 ";
+$params = array_merge($product_ids, [$start_date, $latest_date]);
 $stmt = $db->prepare($sql);
-$stmt->execute($product_ids);
+$stmt->execute($params);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// 商品ごとの詳細価格を取得
+// 商品ごとの詳細価格を取得（同様に絞る）
 $detail_sql = "
   SELECT DATE(ph.recorded_at) AS date,
          s.store_name,
@@ -46,39 +62,62 @@ $detail_sql = "
     JOIN stores s ON ph.store_id = s.store_id
     JOIN products p ON ph.product_id = p.product_id
    WHERE ph.product_id IN (" . implode(',', array_fill(0, count($product_ids), '?')) . ")
+     AND DATE(ph.recorded_at) BETWEEN ? AND ?
    ORDER BY DATE(ph.recorded_at), s.store_name, p.product_id
 ";
 $stmt = $db->prepare($detail_sql);
-$stmt->execute($product_ids);
+$stmt->execute($params);
 $rows_detailed = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// 整形処理
+// 閲覧日（今日）を基準に毎月の同日を12個取得
+// 例えば latest_date = "2025-07-07"
+$latestDateObj = new DateTime($latest_date);
+$dayOfMonth = $latestDateObj->format('d');  // 07
 
-// データ整形
-$data = [];
-$dates = [];
+// 11ヶ月前に移動して、同じ「日」にする
+$startDateObj = (clone $latestDateObj)->modify('-11 months');
+$startDateObj->setDate($startDateObj->format('Y'), $startDateObj->format('m'), $dayOfMonth);
+$start_date = $startDateObj->format('Y-m-d');
 
-foreach ($rows as $row) {
-  $date = $row['date'];
-  $store = $row['store_name'];
-  $price = (int)$row['total_price'];
-
-  $dates[$date] = true;
-  $data[$store][$date] = $price;
+$referenceDates = [];
+$baseDate = new DateTime($latest_date); // 今日
+for ($i = 11; $i >= 0; $i--) {
+  $targetDate = (clone $baseDate)->modify("-{$i} months");
+  $referenceDates[] = $targetDate->format('Y-m-d');
 }
 
-$all_dates = array_keys($dates);
-sort($all_dates);
+// データ整形：日付・店舗ごとに集計された価格を再構成
+$data_map = []; // $data_map[store][date] = price;
+foreach ($rows as $row) {
+  $store = $row['store_name'];
+  $date = $row['date'];
+  $price = (int)$row['total_price'];
+  $data_map[$store][$date] = $price;
+}
 
+// 各店舗の折れ線グラフ用データに変換（12点）
 $chart_data = [];
-foreach ($data as $store => $price_by_date) {
+$colors = ['#f44336', '#3f51b5', '#4caf50', '#ff9800'];
+$i = 0;
+foreach ($data_map as $store => $price_by_date) {
+  $data_points = [];
+  foreach ($referenceDates as $d) {
+    $data_points[] = $price_by_date[$d] ?? null;
+  }
+
   $chart_data[] = [
     'label' => $store,
-    'data' => array_map(fn($d) => $price_by_date[$d] ?? null, $all_dates),
-    'borderColor' => '#' . substr(md5($store), 0, 6),
-    'tension' => 0,
-    'spanGaps' => true
+    'data' => $data_points,
+    'borderColor' => $colors[$i++ % count($colors)],
+    'fill' => false,
+    'tension' => 0
   ];
 }
+
+// X軸用ラベルとして使用（labels）
+$all_dates = $referenceDates;
+
 
 // 個別の商品価格を格納
 $detailsData = [];
@@ -91,41 +130,19 @@ foreach ($rows_detailed as $row) {
 }
 
 // 最終更新日時
-$last_update_sql = "
-  SELECT MAX(recorded_at) AS latest FROM price_history WHERE product_id IN (" . implode(',', array_fill(0, count($product_ids), '?')) . ")
-";
-$stmt = $db->prepare($last_update_sql);
-$stmt->execute($product_ids);
-$latest_update = $stmt->fetchColumn();
+$latest_update = $latest_date;
 
-// 最安値
-$min_sql = "
-  SELECT DATE(ph.recorded_at) AS date,
-         s.store_name,
-         SUM(ph.price) AS total_price
-    FROM price_history ph
-    JOIN stores s ON ph.store_id = s.store_id
-   WHERE ph.product_id IN (" . implode(',', array_fill(0, count($product_ids), '?')) . ")
-   GROUP BY s.store_id, DATE(ph.recorded_at)
-   ORDER BY total_price ASC
-   LIMIT 1
-";
-$stmt = $db->prepare($min_sql);
-$stmt->execute($product_ids);
-$min = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// 最高値
-$max_sql = str_replace('ASC', 'DESC', $min_sql);
-$stmt = $db->prepare($max_sql);
-$stmt->execute($product_ids);
-$max = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// 最安値・最高値の取得（合計価格）
+// 最安値・最高値（合計価格から）
+// 最安値・最高値（グラフに表示されている12日付に限定）
 $minPrice = null;
 $maxPrice = null;
 $minInfo = $maxInfo = [];
 
 foreach ($rows as $row) {
+  $date = $row['date'];
+  if (!in_array($date, $referenceDates)) continue;
+
   $price = (int)$row['total_price'];
   if ($minPrice === null || $price < $minPrice) {
     $minPrice = $price;
@@ -136,16 +153,15 @@ foreach ($rows as $row) {
     $maxInfo = $row;
   }
 }
-// 最高値（グラフの最大値設定用）
-$yAxisMax = max(array_column($rows, 'total_price'));
 
-// URLパラメータの再構築
+$yAxisMax = ceil(max(array_column($rows, 'total_price')) * 1.05);
+
+// URLパラメータ
 $returnQuery = http_build_query(array_combine(
   array_map(fn($i) => "id" . ($i + 1), array_keys($product_ids)),
   $product_ids
 ));
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -162,11 +178,11 @@ $returnQuery = http_build_query(array_combine(
     <ul>
       <li><a href="select.html?<?= h($returnQuery) ?>">戻る</a></li>
       <li class="center-title"><strong>ネットスーパー価格</strong></li>
-      <li class="right-align">最終更新：<?php echo htmlspecialchars($latest_update); ?></li>
+      <li class="right-align">最終更新：<?= htmlspecialchars($latest_update) ?></li>
     </ul>
   </nav>
 
-  <h2 class="product-title"><?php echo $combined_product_name; ?> の価格推移</h2>
+  <h2 class="product-title"><?= $combined_product_name ?> の価格推移</h2>
 
   <div class="chart-container">
     <canvas id="priceChart"></canvas>
@@ -176,30 +192,28 @@ $returnQuery = http_build_query(array_combine(
     <div class="summary-table">
       <div class="summary-row">
         <span class="label">最安値：</span>
-        <span class="value"><?= h($min['total_price']) ?>円（<?= h($min['date']) ?> <?= h($min['store_name']) ?>）</span>
+        <span class="value"><?= h($minInfo['total_price']) ?>円（<?= h($minInfo['date']) ?> <?= h($minInfo['store_name']) ?>）</span>
       </div>
       <div class="summary-row">
         <span class="label">最高値：</span>
-        <span class="value"><?= h($max['total_price']) ?>円（<?= h($max['date']) ?> <?= h($max['store_name']) ?>）</span>
+        <span class="value"><?= h($maxInfo['total_price']) ?>円（<?= h($maxInfo['date']) ?> <?= h($maxInfo['store_name']) ?>）</span>
       </div>
     </div>
   </div>
 
-
   <script>
     const detailsData = <?= json_encode($detailsData, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>;
     const ctx = document.getElementById('priceChart').getContext('2d');
-    const chart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: {
-        labels: <?php echo json_encode($all_dates); ?>,
-        datasets: <?php echo json_encode($chart_data); ?>
+        labels: <?= json_encode($all_dates) ?>,
+        datasets: <?= json_encode($chart_data) ?>,
       },
       options: {
         responsive: true,
         plugins: {
           legend: { position: 'bottom' },
-          title: { display: false },
           tooltip: {
             callbacks: {
               label: function(context) {
@@ -207,7 +221,6 @@ $returnQuery = http_build_query(array_combine(
                 const date = context.label;
                 const total = context.formattedValue;
                 let lines = [`${store}: ${total}円`];
-
                 const breakdown = detailsData[store]?.[date];
                 if (breakdown) {
                   breakdown.forEach(([name, price]) => {
@@ -220,24 +233,17 @@ $returnQuery = http_build_query(array_combine(
           }
         },
         scales: {
-          y: { beginAtZero: true,
-               suggestedMax: <?php echo ceil($yAxisMax * 1.05);?>,
-               title: { display: true, text: '価格（円）' } },
-          x: { title: { display: true, text: '日付' } }
+          y: {
+            beginAtZero: true,
+            suggestedMax: <?= $yAxisMax ?>,
+            title: { display: true, text: '価格（円）' }
+          },
+          x: {
+            title: { display: true, text: '日付' }
+          }
         }
       }
     });
-
-    function goBack() {
-      const params = new URLSearchParams(window.location.search);
-      const selected = [];
-      for (const [key, value] of params.entries()) {
-        if (key.startsWith('id')) {
-          selected.push(`id[]=${value}`);
-        }
-      }
-      location.href = `select.html?${selected.join('&')}`;
-    }
   </script>
 </body>
 </html>
