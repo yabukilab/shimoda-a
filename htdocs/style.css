@@ -7,17 +7,17 @@ body {
 
 header {
   background-color: #007acc;
-  height: 60px;
+  height: 80px; /* 高さを60px → 80px に変更 */
 }
 
 .title-bar {
   position: relative;
-  padding: 10px 20px;
+  padding: 20px 20px; /* 上下20pxに拡張 */
   text-align: center;
 }
 
 .app-title {
-  font-size: 24px;
+  font-size: 32px; /* 24px → 32px に変更 */
   font-weight: bold;
 }
 
@@ -26,7 +26,7 @@ header {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  font-size: 12px;
+  font-size: 14px; /* 少し大きめに変更 */
   color: #555;
 }
 
