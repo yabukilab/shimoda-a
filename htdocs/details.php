@@ -52,7 +52,16 @@ $max_price = max($all_prices);
 
 $show_unit_price = array_reduce($prices, fn($c, $p) => $c || (!empty($p['quantity']) && $p['quantity'] > 0), false);
 
-$updated_at = htmlspecialchars($prices[0]['updated_at'] ?? '不明');
+// 最新の更新日時を取得
+$sql = "SELECT MAX(updated_at) AS latest_updated_at FROM prices WHERE product_id = :id";
+$stmt = $db->prepare($sql);
+$stmt->execute(['id' => $product_id]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$updated_at = isset($row['latest_updated_at']) && $row['latest_updated_at'] !== null
+    ? htmlspecialchars(date('Y/m/d H:i', strtotime($row['latest_updated_at'])))
+    : '不明';
+
 
 // グラフ用履歴データ取得
 $sql = "SELECT DATE(ph.recorded_at) AS date, ph.price, s.store_name
