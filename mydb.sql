@@ -169,7 +169,7 @@ INSERT INTO products VALUES
 (33,'国産ブロッコリー'),
 (34,'ミツカン カンタン酢'),
 (35,'国産ほうれん草');
-/!40000 ALTER TABLE products ENABLE KEYS */;
+/*!40000 ALTER TABLE products ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
