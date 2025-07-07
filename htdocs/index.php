@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php'; // DB接続とh()関数を読み込み
+require_once 'db.php';
 
 $latestDate = '取得失敗';
 
@@ -8,10 +8,9 @@ try {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $latestDate = $row && $row['latest_date'] ? date('Y/m/d H:i', strtotime($row['latest_date'])) : 'データなし';
 } catch (PDOException $e) {
-    $latestDate = '取得失敗: ' . h($e->getMessage()); // 本番では非表示推奨
+    $latestDate = '取得失敗: ' . h($e->getMessage());
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -21,12 +20,11 @@ try {
 </head>
 <body>
 
-  <header>
-    ネットスーパー価格比較
-  </header>
+  <header></header>
 
-  <div class="update-time">
-    最終更新日時：<?= h($latestDate) ?>
+  <div class="title-bar">
+    <div class="app-title">ネットスーパー価格比較</div>
+    <div class="update-time">最終更新日時：<?= h($latestDate) ?></div>
   </div>
 
   <div class="container">
