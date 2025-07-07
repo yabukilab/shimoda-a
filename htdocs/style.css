@@ -7,7 +7,7 @@ body {
 
 header {
   background-color: #007acc;
-  height: 80px; /* 高さを60px → 80px に変更 */
+  height: 60px; /* 高さを60px → 80px に変更 */
 }
 
 .title-bar {
