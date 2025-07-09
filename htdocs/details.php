@@ -87,6 +87,11 @@ $stmt = $db->prepare($sql_prices);
 $stmt->execute(['id' => $product_ids]);
 $prices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// 最安値・最高値取得（色付け用）
+$all_prices = array_column($prices, 'price');
+$min_price = min($all_prices);
+$max_price = max($all_prices);
+
 // 商品画像取得
 $sql_image = "SELECT image_path FROM prices WHERE product_id = :id ORDER BY store_id";
 $stmt = $db->prepare($sql_image);
@@ -191,6 +196,10 @@ $returnQuery = http_build_query(['id1' => $product_ids]);
 <title><?php echo $combined_product_name; ?> - 商品価格</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
 <link rel="stylesheet" href="details.css" />
+<style>
+.green { color: green; }
+.red { color: red; }
+</style>
 </head>
 <body>
 <div class="blue-bar"></div>
@@ -244,10 +253,11 @@ $returnQuery = http_build_query(['id1' => $product_ids]);
                     $unit_price = ($show_unit_price && $p['quantity'] > 0)
                         ? round($p['price'] / $p['quantity'] * 100, 2)
                         : null;
+                    $class = ($p['price'] == $min_price) ? 'green' : (($p['price'] == $max_price) ? 'red' : '');
                 ?>
                 <tr>
                     <td><?php echo htmlspecialchars($p['store_name']); ?></td>
-                    <td><?php echo number_format($p['price']); ?> 円</td>
+                    <td class="<?php echo $class; ?>"><?php echo number_format($p['price']); ?> 円</td>
                     <?php if ($show_unit_price): ?>
                     <td><?php echo $unit_price !== null ? number_format($unit_price, 2) . ' 円/100g' : '-'; ?></td>
                     <?php endif; ?>
@@ -296,7 +306,6 @@ function sortTable(column, asc = true) {
 }
 
 // 折れ線グラフ
-const detailsData = <?php echo json_encode($detailsData, JSON_UNESCAPED_UNICODE); ?>;
 const ctx = document.getElementById('priceChart').getContext('2d');
 new Chart(ctx, {
     type: 'line',
@@ -309,16 +318,6 @@ new Chart(ctx, {
         interaction: { mode: 'index', intersect: false },
         plugins: {
             legend: { position: 'bottom' },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        const store = context.dataset.label;
-                        const total = context.formattedValue;
-                        return `${store}: ${total}円`;
-                    }
-                }
-            }
-
         },
         scales: {
             y: {
