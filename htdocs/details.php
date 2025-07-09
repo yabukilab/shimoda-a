@@ -313,19 +313,12 @@ new Chart(ctx, {
                 callbacks: {
                     label: function(context) {
                         const store = context.dataset.label;
-                        const date = context.label;
                         const total = context.formattedValue;
-                        let lines = [`${store}: ${total}円`];
-                        const breakdown = detailsData[store]?.[date];
-                        if (breakdown) {
-                            breakdown.forEach(([name, price]) => {
-                                lines.push(`  ${name}: ${price}円`);
-                            });
-                        }
-                        return lines;
+                        return `${store}: ${total}円`;
                     }
                 }
             }
+
         },
         scales: {
             y: {
