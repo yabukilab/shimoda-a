@@ -5,6 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 try {
   $keyword = $_GET['keyword'] ?? '';
+  $keyword = mb_convert_kana($keyword, "KV", "UTF-8");
 
   $sql = "SELECT product_id, product_name FROM products WHERE product_name LIKE :keyword";
   $stmt = $db->prepare($sql);
