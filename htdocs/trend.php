@@ -70,24 +70,11 @@ $stmt->execute($params);
 $rows_detailed = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 整形処理
-// 閲覧日（今日）を基準に毎月の同日を12個取得
-// 例えば latest_date = "2025-07-07"
-$latestDateObj = new DateTime($latest_date);
-$dayOfMonth = $latestDateObj->format('d');  // 07
+// 日付の一覧を抽出（重複排除、昇順ソート）
+$all_dates = array_unique(array_column($rows, 'date'));
+sort($all_dates);
 
-// 11ヶ月前に移動して、同じ「日」にする
-$startDateObj = (clone $latestDateObj)->modify('-11 months');
-$startDateObj->setDate($startDateObj->format('Y'), $startDateObj->format('m'), $dayOfMonth);
-$start_date = $startDateObj->format('Y-m-d');
-
-$referenceDates = [];
-$baseDate = new DateTime($latest_date); // 今日
-for ($i = 11; $i >= 0; $i--) {
-  $targetDate = (clone $baseDate)->modify("-{$i} months");
-  $referenceDates[] = $targetDate->format('Y-m-d');
-}
-
-// データ整形：日付・店舗ごとに集計された価格を再構成
+// 日付・店舗ごとに集計された価格を再構成
 $data_map = []; // $data_map[store][date] = price;
 foreach ($rows as $row) {
   $store = $row['store_name'];
@@ -96,14 +83,16 @@ foreach ($rows as $row) {
   $data_map[$store][$date] = $price;
 }
 
-// 各店舗の折れ線グラフ用データに変換（12点）
+// 各店舗の折れ線グラフ用データに変換（全日分）
+$colors = ['#f44336', '#3f51b5', '#4caf50', '#ff9800', '#9c27b0', '#00bcd4'];
 $chart_data = [];
-$colors = ['#f44336', '#3f51b5', '#4caf50', '#ff9800'];
 $i = 0;
+
 foreach ($data_map as $store => $price_by_date) {
   $data_points = [];
-  foreach ($referenceDates as $d) {
-    $data_points[] = $price_by_date[$d] ?? null;
+
+  foreach ($all_dates as $d) {
+    $data_points[] = isset($price_by_date[$d]) ? $price_by_date[$d] : null;
   }
 
   $chart_data[] = [
@@ -111,13 +100,18 @@ foreach ($data_map as $store => $price_by_date) {
     'data' => $data_points,
     'borderColor' => $colors[$i++ % count($colors)],
     'fill' => false,
-    'tension' => 0
+    'tension' => 0.3
   ];
 }
 
-// X軸用ラベルとして使用（labels）
-$all_dates = $referenceDates;
-
+// 最大値計算（Y軸のスケール調整用）
+$max_values = [];
+foreach ($data_map as $store => $price_by_date) {
+  foreach ($price_by_date as $price) {
+    $max_values[] = $price;
+  }
+}
+$yAxisMax = ceil(max($max_values) * 1.05);
 
 // 個別の商品価格を格納
 $detailsData = [];
@@ -140,9 +134,6 @@ $maxPrice = null;
 $minInfo = $maxInfo = [];
 
 foreach ($rows as $row) {
-  $date = $row['date'];
-  if (!in_array($date, $referenceDates)) continue;
-
   $price = (int)$row['total_price'];
   if ($minPrice === null || $price < $minPrice) {
     $minPrice = $price;
@@ -154,7 +145,6 @@ foreach ($rows as $row) {
   }
 }
 
-$yAxisMax = ceil(max(array_column($rows, 'total_price')) * 1.05);
 
 // URLパラメータ
 $returnQuery = http_build_query(array_combine(
@@ -233,13 +223,28 @@ $returnQuery = http_build_query(array_combine(
           }
         },
         scales: {
+          x: {
+            type: 'category',
+            offset: false, // 端にピッタリ揃える
+            ticks: {
+              autoSkip: true,
+              maxTicksLimit: 12, // 最大12個だけ表示
+              maxRotation: 0,     // 回転させない（任意）
+              minRotation: 0,
+              align: 'center'
+            },
+            title: {
+              display: true,
+              text: '日付'
+            }
+          },
           y: {
             beginAtZero: true,
             suggestedMax: <?= $yAxisMax ?>,
-            title: { display: true, text: '価格（円）' }
-          },
-          x: {
-            title: { display: true, text: '日付' }
+            title: {
+              display: true,
+              text: '価格（円）'
+            }
           }
         }
       }

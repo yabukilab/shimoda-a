@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="select.css">
   <script>
     let selectedFromURL = [];
+    let selectedIds = []; // ← 選択されたIDを常時保持する配列
 
     function fetchProducts() {
       const keyword = document.getElementById('searchBox').value;
@@ -37,7 +38,7 @@
 
       let html = "<table><tr><th></th><th>商品名</th></tr>";
       for (let item of data) {
-        const isChecked = selectedFromURL.includes(item.id.toString()) ? "checked" : "";
+        const isChecked = (selectedIds.includes(item.id.toString()) || selectedFromURL.includes(item.id.toString())) ? "checked" : "";
         html += `<tr>
           <td><input type='checkbox' name='product[]' value='${item.id}' ${isChecked}></td>
           <td>${item.name}</td>
@@ -45,6 +46,22 @@
       }
       html += "</table>";
       tableDiv.innerHTML = html;
+      document.querySelectorAll("input[name='product[]']").forEach(cb => {
+        cb.addEventListener('change', function() {
+          const id = cb.value;
+          if (cb.checked) {
+            if (!selectedIds.includes(id)) {
+              selectedIds.push(id);
+            }
+          } else {
+            selectedIds = selectedIds.filter(x => x !== id);
+            // ★ ここで selectedFromURL からも削除する
+            selectedFromURL = selectedFromURL.filter(x => x !== id);
+          }
+        });
+      });
+
+
     }
 
     function renderUpdateDate(datetime) {
@@ -117,7 +134,7 @@
 
   <p>
     商品を選択してください。<br>
-    複数商品の合計金額を比較したい場合は左側の枠に複数チェックを入れてください。
+    複数商品の合計金額を比較したい場合は左側の枠にチェックを入れてください。
   </p>
 
   <div class="search-container">
